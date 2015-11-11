@@ -1,0 +1,337 @@
+\hypertarget{group___stemming}{\section{Stemming}
+\label{group___stemming}\index{Stemming@{Stemming}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classstemming_1_1stem}{stemming\-::stem$<$ string\-\_\-type\-T $>$}
+\begin{DoxyCompactList}\small\item\em The base class for language-\/specific stemmers. The template argument for the stemmers are the type of std\-::basic\-\_\-string that you are trying to stem, by default std\-::wstring (Unicode strings). As long as the char type of your basic\-\_\-string is wchar\-\_\-t, then you can use any type of basic\-\_\-string. This is to say, if your basic\-\_\-string has a custom char\-\_\-traits or allocator, then just specify it in your template argument to the stemmer. Example\-: \end{DoxyCompactList}\item 
+class \hyperlink{classstemming_1_1no__op__stem}{stemming\-::no\-\_\-op\-\_\-stem$<$ string\-\_\-type\-T $>$}
+\item 
+class \hyperlink{classstemming_1_1english__stem}{stemming\-::english\-\_\-stem$<$ string\-\_\-type\-T $>$}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{group___stemming_ga364b7a76f683d5244715638069a4fa93}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::find\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-list)}\label{group___stemming_ga364b7a76f683d5244715638069a4fa93}
+
+\item 
+\hypertarget{group___stemming_gab381c0d6a6291c2c21515e9398e83085}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::find\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-list)}\label{group___stemming_gab381c0d6a6291c2c21515e9398e83085}
+
+\item 
+\hypertarget{group___stemming_gae6cb258098ba91462d421977b1eed8e7}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::find\-\_\-spanish\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-list)}\label{group___stemming_gae6cb258098ba91462d421977b1eed8e7}
+
+\item 
+\hypertarget{group___stemming_ga9626e49b982eda0d8ec3bb861d864b42}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::find\-\_\-french\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-list)}\label{group___stemming_ga9626e49b982eda0d8ec3bb861d864b42}
+
+\item 
+\hypertarget{group___stemming_ga53dcfe6b18fe5b5882474f222190ef1b}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::find\-\_\-russian\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-list)}\label{group___stemming_ga53dcfe6b18fe5b5882474f222190ef1b}
+
+\item 
+\hypertarget{group___stemming_ga9dcc3d89844ecd5c81eabf80936a0209}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::update\-\_\-r\-\_\-sections} (const string\-\_\-type\-T \&text)}\label{group___stemming_ga9dcc3d89844ecd5c81eabf80936a0209}
+
+\item 
+bool \hyperlink{group___stemming_ga0b423c8a1a53ec586da4613472d61e34}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-apostrophe} (const wchar\-\_\-t \&ch) const 
+\item 
+\hypertarget{group___stemming_ga36818a956dd34c388fa9942ed46e28b4}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::trim\-\_\-western\-\_\-punctuation} (string\-\_\-type\-T \&text) const }\label{group___stemming_ga36818a956dd34c388fa9942ed46e28b4}
+
+\item 
+\hypertarget{group___stemming_gac318ddd46a716673edf3678c47d3035c}{bool \hyperlink{group___stemming_gac318ddd46a716673edf3678c47d3035c}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U) const }\label{group___stemming_gac318ddd46a716673edf3678c47d3035c}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for one character \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gaad4dff424a3ae8a82dcfe6adac7c9d30}{bool \hyperlink{group___stemming_gaad4dff424a3ae8a82dcfe6adac7c9d30}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U) const }\label{group___stemming_gaad4dff424a3ae8a82dcfe6adac7c9d30}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for two characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gabbe6496d43b49dab0745e6d6b4e2831d}{bool \hyperlink{group___stemming_gabbe6496d43b49dab0745e6d6b4e2831d}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U) const }\label{group___stemming_gabbe6496d43b49dab0745e6d6b4e2831d}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for three characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga694dd20e52adc89edadf120bf92a28ff}{bool \hyperlink{group___stemming_ga694dd20e52adc89edadf120bf92a28ff}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U) const }\label{group___stemming_ga694dd20e52adc89edadf120bf92a28ff}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for four characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga001757aa7530b8acea05df8405def025}{bool \hyperlink{group___stemming_ga001757aa7530b8acea05df8405def025}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U) const }\label{group___stemming_ga001757aa7530b8acea05df8405def025}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for five characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gabe83f7592028b43f5cec9ce35ae1d9df}{bool \hyperlink{group___stemming_gabe83f7592028b43f5cec9ce35ae1d9df}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U) const }\label{group___stemming_gabe83f7592028b43f5cec9ce35ae1d9df}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for six characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga79f18e256337d37054c80de470660a65}{bool \hyperlink{group___stemming_ga79f18e256337d37054c80de470660a65}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U) const }\label{group___stemming_ga79f18e256337d37054c80de470660a65}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for seven characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gaa18daf5b33d220d93dff22d6e591edd6}{bool \hyperlink{group___stemming_gaa18daf5b33d220d93dff22d6e591edd6}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const wchar\-\_\-t suffix8\-L, const wchar\-\_\-t suffix8\-U) const }\label{group___stemming_gaa18daf5b33d220d93dff22d6e591edd6}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for eight characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gab905150e381f068c6b04eba851bb6263}{bool \hyperlink{group___stemming_gab905150e381f068c6b04eba851bb6263}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const wchar\-\_\-t suffix8\-L, const wchar\-\_\-t suffix8\-U, const wchar\-\_\-t suffix9\-L, const wchar\-\_\-t suffix9\-U) const }\label{group___stemming_gab905150e381f068c6b04eba851bb6263}
+
+\begin{DoxyCompactList}\small\item\em is\-\_\-suffix for nine characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga2ae63cf92bc4f4f40f0093e4842a235f}{bool \hyperlink{group___stemming_ga2ae63cf92bc4f4f40f0093e4842a235f}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-partial\-\_\-suffix} (const string\-\_\-type\-T \&text, const size\-\_\-t start\-\_\-index, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U)}\label{group___stemming_ga2ae63cf92bc4f4f40f0093e4842a235f}
+
+\begin{DoxyCompactList}\small\item\em comparison for two characters \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga728ea4e26737b04d04e02bea863f29e4}{bool \hyperlink{group___stemming_ga728ea4e26737b04d04e02bea863f29e4}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-partial\-\_\-suffix} (const string\-\_\-type\-T \&text, const size\-\_\-t start\-\_\-index, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U)}\label{group___stemming_ga728ea4e26737b04d04e02bea863f29e4}
+
+\begin{DoxyCompactList}\small\item\em comparison for three characters \end{DoxyCompactList}\item 
+bool \hyperlink{group___stemming_ga2c92d7447b5cc97d0fca165d2b0e7d68}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U)
+\begin{DoxyCompactList}\small\item\em R\-V suffix functions. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga359356fbaafc3c7154d94fda6916ffa0}{bool \hyperlink{group___stemming_ga359356fbaafc3c7154d94fda6916ffa0}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U)}\label{group___stemming_ga359356fbaafc3c7154d94fda6916ffa0}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for two characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga00fa5d00ff53320a437fe96a5bfa8f44}{bool \hyperlink{group___stemming_ga00fa5d00ff53320a437fe96a5bfa8f44}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U)}\label{group___stemming_ga00fa5d00ff53320a437fe96a5bfa8f44}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for three characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gacdaff4e73f7f3841beed04775b5d4f21}{bool \hyperlink{group___stemming_gacdaff4e73f7f3841beed04775b5d4f21}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U)}\label{group___stemming_gacdaff4e73f7f3841beed04775b5d4f21}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for four characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga99ef9b0e80da18c39cc0206a666bd4b1}{bool \hyperlink{group___stemming_ga99ef9b0e80da18c39cc0206a666bd4b1}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U)}\label{group___stemming_ga99ef9b0e80da18c39cc0206a666bd4b1}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for five characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga527b081fee02f191713a50dbc396f986}{bool \hyperlink{group___stemming_ga527b081fee02f191713a50dbc396f986}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U)}\label{group___stemming_ga527b081fee02f191713a50dbc396f986}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for six characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gabd6431b54fc5175c29809c627c44a587}{bool \hyperlink{group___stemming_gabd6431b54fc5175c29809c627c44a587}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U)}\label{group___stemming_gabd6431b54fc5175c29809c627c44a587}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for seven characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga553b6ed34e6b03e2c1ca42ea2db08ba6}{bool \hyperlink{group___stemming_ga553b6ed34e6b03e2c1ca42ea2db08ba6}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const wchar\-\_\-t suffix8\-L, const wchar\-\_\-t suffix8\-U)}\label{group___stemming_ga553b6ed34e6b03e2c1ca42ea2db08ba6}
+
+\begin{DoxyCompactList}\small\item\em R\-V suffix comparison for eight characters. \end{DoxyCompactList}\item 
+bool \hyperlink{group___stemming_gaefe544e653b27bd5c1fab7b5a18d80a1}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U)
+\begin{DoxyCompactList}\small\item\em R1 suffix functions. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gab8cb2e00b39091f74b1064e1f0314c6f}{bool \hyperlink{group___stemming_gab8cb2e00b39091f74b1064e1f0314c6f}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U)}\label{group___stemming_gab8cb2e00b39091f74b1064e1f0314c6f}
+
+\begin{DoxyCompactList}\small\item\em R1 suffix comparison for two characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga1fe4a63adfa5d4f378a060352d52edc1}{bool \hyperlink{group___stemming_ga1fe4a63adfa5d4f378a060352d52edc1}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U)}\label{group___stemming_ga1fe4a63adfa5d4f378a060352d52edc1}
+
+\begin{DoxyCompactList}\small\item\em R1 suffix comparison for three characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga3fef2f8916933fa1965928f8e43a1b58}{bool \hyperlink{group___stemming_ga3fef2f8916933fa1965928f8e43a1b58}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U)}\label{group___stemming_ga3fef2f8916933fa1965928f8e43a1b58}
+
+\begin{DoxyCompactList}\small\item\em R1 suffix comparison for four characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga88f0e5e0cc055f013b6321215eb18ef3}{bool \hyperlink{group___stemming_ga88f0e5e0cc055f013b6321215eb18ef3}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U)}\label{group___stemming_ga88f0e5e0cc055f013b6321215eb18ef3}
+
+\begin{DoxyCompactList}\small\item\em R1 suffix comparison for five characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga19c2ee5166c7a9c81160408438c1f9a0}{bool \hyperlink{group___stemming_ga19c2ee5166c7a9c81160408438c1f9a0}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U)}\label{group___stemming_ga19c2ee5166c7a9c81160408438c1f9a0}
+
+\begin{DoxyCompactList}\small\item\em R1 suffix comparison for six characters. \end{DoxyCompactList}\item 
+bool \hyperlink{group___stemming_gac2c9cace7e6d90ca0b8c08f2ca2809e3}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U)
+\begin{DoxyCompactList}\small\item\em R2 suffix functions. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga8325bde2b5c8d5676d2b8e2b822b29a4}{bool \hyperlink{group___stemming_ga8325bde2b5c8d5676d2b8e2b822b29a4}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U)}\label{group___stemming_ga8325bde2b5c8d5676d2b8e2b822b29a4}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for two characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gab5c71d01e3285eec2e79521c1b76f79d}{bool \hyperlink{group___stemming_gab5c71d01e3285eec2e79521c1b76f79d}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U)}\label{group___stemming_gab5c71d01e3285eec2e79521c1b76f79d}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for three characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gac12e9f11d41f69e71c7379387c4564b9}{bool \hyperlink{group___stemming_gac12e9f11d41f69e71c7379387c4564b9}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U)}\label{group___stemming_gac12e9f11d41f69e71c7379387c4564b9}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for four characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gaca8fba0d6b27d8da969508adc281cfa5}{bool \hyperlink{group___stemming_gaca8fba0d6b27d8da969508adc281cfa5}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U)}\label{group___stemming_gaca8fba0d6b27d8da969508adc281cfa5}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for five characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gad85a9757083c5fcbd6300367df2a648b}{bool \hyperlink{group___stemming_gad85a9757083c5fcbd6300367df2a648b}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U)}\label{group___stemming_gad85a9757083c5fcbd6300367df2a648b}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for six characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga65e9882d17885e66208840b277fcee2e}{bool \hyperlink{group___stemming_ga65e9882d17885e66208840b277fcee2e}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2} (const string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U)}\label{group___stemming_ga65e9882d17885e66208840b277fcee2e}
+
+\begin{DoxyCompactList}\small\item\em R2 suffix comparison for seven characters. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga3bda630783eae1661f00fc5d2b51ce5c}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga3bda630783eae1661f00fc5d2b51ce5c}
+
+\item 
+\hypertarget{group___stemming_ga843e54b874cbb56a5d5997987137c933}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga843e54b874cbb56a5d5997987137c933}
+
+\item 
+\hypertarget{group___stemming_gaf5c33c5c4644373cd85390c7e3282084}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gaf5c33c5c4644373cd85390c7e3282084}
+
+\item 
+\hypertarget{group___stemming_ga6be1595a7c29fec666ff808701be3eb2}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga6be1595a7c29fec666ff808701be3eb2}
+
+\item 
+\hypertarget{group___stemming_gabac9ef13a80efee3dad9b72476f7cd49}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gabac9ef13a80efee3dad9b72476f7cd49}
+
+\item 
+\hypertarget{group___stemming_ga3fbbd1cbf322889ba4e4940d87449bb0}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga3fbbd1cbf322889ba4e4940d87449bb0}
+
+\item 
+\hypertarget{group___stemming_gacdf0457bd3392f1ac23dadef5515cebd}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r1} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gacdf0457bd3392f1ac23dadef5515cebd}
+
+\item 
+\hypertarget{group___stemming_ga722e75e6404934da2f0c9c00ffded48a}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga722e75e6404934da2f0c9c00ffded48a}
+
+\item 
+\hypertarget{group___stemming_ga33bf1854d1748ba97e30ad798f828b0e}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga33bf1854d1748ba97e30ad798f828b0e}
+
+\item 
+\hypertarget{group___stemming_gac78dd58f01ed17a41eedc33d5b2deedb}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gac78dd58f01ed17a41eedc33d5b2deedb}
+
+\item 
+\hypertarget{group___stemming_ga3a79fd0ac96d009d0c93f1bec847c2ff}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga3a79fd0ac96d009d0c93f1bec847c2ff}
+
+\item 
+\hypertarget{group___stemming_ga222f7af1124d34e58b3c38fa4b2ee669}{bool \hyperlink{group___stemming_ga222f7af1124d34e58b3c38fa4b2ee669}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga222f7af1124d34e58b3c38fa4b2ee669}
+
+\begin{DoxyCompactList}\small\item\em R2 deletion for five character suffix. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga95aca52d1f624638130a9d1c66570edb}{bool \hyperlink{group___stemming_ga95aca52d1f624638130a9d1c66570edb}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga95aca52d1f624638130a9d1c66570edb}
+
+\begin{DoxyCompactList}\small\item\em R2 deletion for six character suffix. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga9542e67a264c728cfb636767dc75a07c}{bool \hyperlink{group___stemming_ga9542e67a264c728cfb636767dc75a07c}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga9542e67a264c728cfb636767dc75a07c}
+
+\begin{DoxyCompactList}\small\item\em R2 deletion for seven character suffix. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga9bbc2192839ce8ebcf88d0220cfa2441}{bool \hyperlink{group___stemming_ga9bbc2192839ce8ebcf88d0220cfa2441}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-r2} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const wchar\-\_\-t suffix8\-L, const wchar\-\_\-t suffix8\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga9bbc2192839ce8ebcf88d0220cfa2441}
+
+\begin{DoxyCompactList}\small\item\em R2 deletion for eight character suffix. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga3754d998db70ac20861ab3e87c3e5f25}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga3754d998db70ac20861ab3e87c3e5f25}
+
+\item 
+\hypertarget{group___stemming_ga5d0a95806d9264f7238bf425311d1dfc}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga5d0a95806d9264f7238bf425311d1dfc}
+
+\item 
+\hypertarget{group___stemming_ga70623a86bd9b759befe998a364d2bad2}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga70623a86bd9b759befe998a364d2bad2}
+
+\item 
+\hypertarget{group___stemming_gaa14e355385422f170a184e1e2182c6b0}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gaa14e355385422f170a184e1e2182c6b0}
+
+\item 
+\hypertarget{group___stemming_gadb10d6f58dca24420ce2b1fd7e58928f}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gadb10d6f58dca24420ce2b1fd7e58928f}
+
+\item 
+\hypertarget{group___stemming_ga2102feb734da90e80172d1f34102c8cd}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_ga2102feb734da90e80172d1f34102c8cd}
+
+\item 
+\hypertarget{group___stemming_gacc427221d55bf93e113f2811eedca74a}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gacc427221d55bf93e113f2811eedca74a}
+
+\item 
+\hypertarget{group___stemming_gab0b50197480905de68f3be29714860d7}{bool {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::delete\-\_\-if\-\_\-is\-\_\-in\-\_\-rv} (string\-\_\-type\-T \&text, const wchar\-\_\-t suffix1\-L, const wchar\-\_\-t suffix1\-U, const wchar\-\_\-t suffix2\-L, const wchar\-\_\-t suffix2\-U, const wchar\-\_\-t suffix3\-L, const wchar\-\_\-t suffix3\-U, const wchar\-\_\-t suffix4\-L, const wchar\-\_\-t suffix4\-U, const wchar\-\_\-t suffix5\-L, const wchar\-\_\-t suffix5\-U, const wchar\-\_\-t suffix6\-L, const wchar\-\_\-t suffix6\-U, const wchar\-\_\-t suffix7\-L, const wchar\-\_\-t suffix7\-U, const wchar\-\_\-t suffix8\-L, const wchar\-\_\-t suffix8\-U, const bool success\-\_\-on\-\_\-find=true)}\label{group___stemming_gab0b50197480905de68f3be29714860d7}
+
+\item 
+\hypertarget{group___stemming_ga760765796790f28c1acfa3b1e603781d}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::remove\-\_\-german\-\_\-umlauts} (string\-\_\-type\-T \&text)}\label{group___stemming_ga760765796790f28c1acfa3b1e603781d}
+
+\item 
+\hypertarget{group___stemming_ga85e349feabc837fa38ceb40cbfe8f16e}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::italian\-\_\-acutes\-\_\-to\-\_\-graves} (string\-\_\-type\-T \&text)}\label{group___stemming_ga85e349feabc837fa38ceb40cbfe8f16e}
+
+\item 
+\hypertarget{group___stemming_gad7324f61a80140d122da1c087289b737}{void \hyperlink{group___stemming_gad7324f61a80140d122da1c087289b737}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::hash\-\_\-dutch\-\_\-yi} (string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-string)}\label{group___stemming_gad7324f61a80140d122da1c087289b737}
+
+\begin{DoxyCompactList}\small\item\em Hash initial y, y after a vowel, and i between vowels into hashed character. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga00a03f9e29573b89ff269e3832aa019b}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::unhash\-\_\-dutch\-\_\-yi} (string\-\_\-type\-T \&text)}\label{group___stemming_ga00a03f9e29573b89ff269e3832aa019b}
+
+\item 
+\hypertarget{group___stemming_ga2ab335f89cb2e65564a7985156d6ce19}{void \hyperlink{group___stemming_ga2ab335f89cb2e65564a7985156d6ce19}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::hash\-\_\-german\-\_\-yu} (string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-string)}\label{group___stemming_ga2ab335f89cb2e65564a7985156d6ce19}
+
+\begin{DoxyCompactList}\small\item\em Hash 'u' and 'y' between vowels. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga70ee7015775ebb7d8b98a1724f94448e}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::unhash\-\_\-german\-\_\-yu} (string\-\_\-type\-T \&text)}\label{group___stemming_ga70ee7015775ebb7d8b98a1724f94448e}
+
+\item 
+void \hyperlink{group___stemming_ga0fa77155cef02f4efa2a537450ef4004}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::hash\-\_\-french\-\_\-yui} (string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-string)
+\item 
+\hypertarget{group___stemming_ga11e5585424ce623ee7842a039bdfb7cb}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::unhash\-\_\-french\-\_\-yui} (string\-\_\-type\-T \&text)}\label{group___stemming_ga11e5585424ce623ee7842a039bdfb7cb}
+
+\item 
+\hypertarget{group___stemming_gab7cc895f7a16b9bec4a4c4614111ecb3}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::hash\-\_\-y} (string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-string)}\label{group___stemming_gab7cc895f7a16b9bec4a4c4614111ecb3}
+
+\item 
+\hypertarget{group___stemming_gacc93df08d3d68d2468aa3e7cf23c7089}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::unhash\-\_\-y} (string\-\_\-type\-T \&text)}\label{group___stemming_gacc93df08d3d68d2468aa3e7cf23c7089}
+
+\item 
+\hypertarget{group___stemming_ga11d05105fc3e03bd5f2ff581bc4eb6fe}{void \hyperlink{group___stemming_ga11d05105fc3e03bd5f2ff581bc4eb6fe}{stemming\-::stem$<$ string\-\_\-type\-T $>$\-::hash\-\_\-italian\-\_\-ui} (string\-\_\-type\-T \&text, const wchar\-\_\-t $\ast$vowel\-\_\-string)}\label{group___stemming_ga11d05105fc3e03bd5f2ff581bc4eb6fe}
+
+\begin{DoxyCompactList}\small\item\em Hash u after q, and u, i between vowels. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_gab4f2f7360665b96d941ba614dc3d5092}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::unhash\-\_\-italian\-\_\-ui} (string\-\_\-type\-T \&text)}\label{group___stemming_gab4f2f7360665b96d941ba614dc3d5092}
+
+\item 
+\hypertarget{group___stemming_ga44d995c39f2a31089ae3505fb483cbfa}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::remove\-\_\-dutch\-\_\-umlauts} (string\-\_\-type\-T \&text)}\label{group___stemming_ga44d995c39f2a31089ae3505fb483cbfa}
+
+\item 
+\hypertarget{group___stemming_ga42ba7697636adbf2d757c360a981920f}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::remove\-\_\-dutch\-\_\-acutes} (string\-\_\-type\-T \&text)}\label{group___stemming_ga42ba7697636adbf2d757c360a981920f}
+
+\item 
+\hypertarget{group___stemming_ga0b3535733088736897f35f8d925c92e9}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::remove\-\_\-spanish\-\_\-acutes} (string\-\_\-type\-T \&text)}\label{group___stemming_ga0b3535733088736897f35f8d925c92e9}
+
+\item 
+\hypertarget{group___stemming_ga09ab497dfe31fc007c70d7f7d790fa51}{size\-\_\-t {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::get\-\_\-r1} () const }\label{group___stemming_ga09ab497dfe31fc007c70d7f7d790fa51}
+
+\item 
+\hypertarget{group___stemming_ga87fa173343063b5e85722edefe493ab5}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::set\-\_\-r1} (const size\-\_\-t val)}\label{group___stemming_ga87fa173343063b5e85722edefe493ab5}
+
+\item 
+\hypertarget{group___stemming_ga90aba2c99e1fa12883eba32211089f3b}{size\-\_\-t {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::get\-\_\-r2} () const }\label{group___stemming_ga90aba2c99e1fa12883eba32211089f3b}
+
+\item 
+\hypertarget{group___stemming_ga032bb774988c5b8f6fae7cf28b59d485}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::set\-\_\-r2} (const size\-\_\-t val)}\label{group___stemming_ga032bb774988c5b8f6fae7cf28b59d485}
+
+\item 
+\hypertarget{group___stemming_gaefa75f006e0b4b623a2608dc23dff605}{size\-\_\-t {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::get\-\_\-rv} () const }\label{group___stemming_gaefa75f006e0b4b623a2608dc23dff605}
+
+\item 
+\hypertarget{group___stemming_ga1fda692e873dfcae7048679ffdb29a5e}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::set\-\_\-rv} (const size\-\_\-t val)}\label{group___stemming_ga1fda692e873dfcae7048679ffdb29a5e}
+
+\item 
+\hypertarget{group___stemming_gacefba08458c6a8cc00a733afb3a064ed}{void {\bfseries stemming\-::stem$<$ string\-\_\-type\-T $>$\-::reset\-\_\-r\-\_\-values} ()}\label{group___stemming_gacefba08458c6a8cc00a733afb3a064ed}
+
+\item 
+\hypertarget{group___stemming_ga5e95ea3afb739e7bea6b14a3e9150c89}{void \hyperlink{group___stemming_ga5e95ea3afb739e7bea6b14a3e9150c89}{stemming\-::no\-\_\-op\-\_\-stem$<$ string\-\_\-type\-T $>$\-::operator()} (const string\-\_\-type\-T \&) const }\label{group___stemming_ga5e95ea3afb739e7bea6b14a3e9150c89}
+
+\begin{DoxyCompactList}\small\item\em No-\/op stemming of declared string type. \end{DoxyCompactList}\item 
+\hypertarget{group___stemming_ga8109dda5e97b7c138f9aa9ec9ea4ee9f}{{\footnotesize template$<$typename T $>$ }\\void \hyperlink{group___stemming_ga8109dda5e97b7c138f9aa9ec9ea4ee9f}{stemming\-::no\-\_\-op\-\_\-stem$<$ string\-\_\-type\-T $>$\-::operator()} (const T \&) const }\label{group___stemming_ga8109dda5e97b7c138f9aa9ec9ea4ee9f}
+
+\begin{DoxyCompactList}\small\item\em No-\/op stemming of flexible string type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Language-\/specific stemming classes. 
+
+\subsection{Function Documentation}
+\hypertarget{group___stemming_ga0fa77155cef02f4efa2a537450ef4004}{\index{Stemming@{Stemming}!hash\-\_\-french\-\_\-yui@{hash\-\_\-french\-\_\-yui}}
+\index{hash\-\_\-french\-\_\-yui@{hash\-\_\-french\-\_\-yui}!Stemming@{Stemming}}
+\subsubsection[{hash\-\_\-french\-\_\-yui}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ void {\bf stemming\-::stem}$<$ string\-\_\-type\-T $>$\-::hash\-\_\-french\-\_\-yui (
+\begin{DoxyParamCaption}
+\item[{string\-\_\-type\-T \&}]{text, }
+\item[{const wchar\-\_\-t $\ast$}]{vowel\-\_\-string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{group___stemming_ga0fa77155cef02f4efa2a537450ef4004}
+Hash u or i preceded and followed by a vowel, and y preceded or followed by a vowel. u after q is also hashed. For example, jouer -\/$>$ jo\-Uer ennuie -\/$>$ ennu\-Ie yeux -\/$>$ Yeux quand -\/$>$ q\-Uand \hypertarget{group___stemming_ga0b423c8a1a53ec586da4613472d61e34}{\index{Stemming@{Stemming}!is\-\_\-apostrophe@{is\-\_\-apostrophe}}
+\index{is\-\_\-apostrophe@{is\-\_\-apostrophe}!Stemming@{Stemming}}
+\subsubsection[{is\-\_\-apostrophe}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ bool {\bf stemming\-::stem}$<$ string\-\_\-type\-T $>$\-::is\-\_\-apostrophe (
+\begin{DoxyParamCaption}
+\item[{const wchar\-\_\-t \&}]{ch}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{group___stemming_ga0b423c8a1a53ec586da4613472d61e34}
+Determines if a character is an apostrophe (includes straight single quotes). 
+\begin{DoxyParams}{Parameters}
+{\em ch} & The letter to be analyzed. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group___stemming_gaefe544e653b27bd5c1fab7b5a18d80a1}{\index{Stemming@{Stemming}!is\-\_\-suffix\-\_\-in\-\_\-r1@{is\-\_\-suffix\-\_\-in\-\_\-r1}}
+\index{is\-\_\-suffix\-\_\-in\-\_\-r1@{is\-\_\-suffix\-\_\-in\-\_\-r1}!Stemming@{Stemming}}
+\subsubsection[{is\-\_\-suffix\-\_\-in\-\_\-r1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ bool {\bf stemming\-::stem}$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r1 (
+\begin{DoxyParamCaption}
+\item[{const string\-\_\-type\-T \&}]{text, }
+\item[{const wchar\-\_\-t}]{suffix1\-L, }
+\item[{const wchar\-\_\-t}]{suffix1\-U}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{group___stemming_gaefe544e653b27bd5c1fab7b5a18d80a1}
+
+
+R1 suffix functions. 
+
+R1 suffix comparison for one character \hypertarget{group___stemming_gac2c9cace7e6d90ca0b8c08f2ca2809e3}{\index{Stemming@{Stemming}!is\-\_\-suffix\-\_\-in\-\_\-r2@{is\-\_\-suffix\-\_\-in\-\_\-r2}}
+\index{is\-\_\-suffix\-\_\-in\-\_\-r2@{is\-\_\-suffix\-\_\-in\-\_\-r2}!Stemming@{Stemming}}
+\subsubsection[{is\-\_\-suffix\-\_\-in\-\_\-r2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ bool {\bf stemming\-::stem}$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-r2 (
+\begin{DoxyParamCaption}
+\item[{const string\-\_\-type\-T \&}]{text, }
+\item[{const wchar\-\_\-t}]{suffix1\-L, }
+\item[{const wchar\-\_\-t}]{suffix1\-U}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{group___stemming_gac2c9cace7e6d90ca0b8c08f2ca2809e3}
+
+
+R2 suffix functions. 
+
+R2 suffix comparison for one character \hypertarget{group___stemming_ga2c92d7447b5cc97d0fca165d2b0e7d68}{\index{Stemming@{Stemming}!is\-\_\-suffix\-\_\-in\-\_\-rv@{is\-\_\-suffix\-\_\-in\-\_\-rv}}
+\index{is\-\_\-suffix\-\_\-in\-\_\-rv@{is\-\_\-suffix\-\_\-in\-\_\-rv}!Stemming@{Stemming}}
+\subsubsection[{is\-\_\-suffix\-\_\-in\-\_\-rv}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ bool {\bf stemming\-::stem}$<$ string\-\_\-type\-T $>$\-::is\-\_\-suffix\-\_\-in\-\_\-rv (
+\begin{DoxyParamCaption}
+\item[{const string\-\_\-type\-T \&}]{text, }
+\item[{const wchar\-\_\-t}]{suffix1\-L, }
+\item[{const wchar\-\_\-t}]{suffix1\-U}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{group___stemming_ga2c92d7447b5cc97d0fca165d2b0e7d68}
+
+
+R\-V suffix functions. 
+
+R\-V suffix comparison for one character 

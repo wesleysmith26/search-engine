@@ -1,0 +1,67 @@
+\hypertarget{classstring__util_1_1string__tokenize}{\section{string\-\_\-util\-:\-:string\-\_\-tokenize$<$ T $>$ Class Template Reference}
+\label{classstring__util_1_1string__tokenize}\index{string\-\_\-util\-::string\-\_\-tokenize$<$ T $>$@{string\-\_\-util\-::string\-\_\-tokenize$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$string\-\_\-util.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classstring__util_1_1string__tokenize_a9fa8071705dcc90643f09e06a9477c84}{string\-\_\-tokenize} (const T \&val, const T \&delim)
+\item 
+\hypertarget{classstring__util_1_1string__tokenize_aa5a47b04db8cb0a89a1abee60433a749}{bool \hyperlink{classstring__util_1_1string__tokenize_aa5a47b04db8cb0a89a1abee60433a749}{has\-\_\-more\-\_\-tokens} () const }\label{classstring__util_1_1string__tokenize_aa5a47b04db8cb0a89a1abee60433a749}
+
+\begin{DoxyCompactList}\small\item\em Returns whether or not there are more tokens in the string. \end{DoxyCompactList}\item 
+bool \hyperlink{classstring__util_1_1string__tokenize_a1406728dca7da668c3173b04dcd76aa1}{has\-\_\-more\-\_\-delimiters} () const 
+\item 
+T \hyperlink{classstring__util_1_1string__tokenize_a1a8c9f87285c8e4f14419af752d84f37}{get\-\_\-next\-\_\-token} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class string\-\_\-util\-::string\-\_\-tokenize$<$ T $>$}
+
+Tokenizes a string using a set of delimiters. \begin{DoxyDate}{Date}
+2010 
+\end{DoxyDate}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classstring__util_1_1string__tokenize_a9fa8071705dcc90643f09e06a9477c84}{\index{string\-\_\-util\-::string\-\_\-tokenize@{string\-\_\-util\-::string\-\_\-tokenize}!string\-\_\-tokenize@{string\-\_\-tokenize}}
+\index{string\-\_\-tokenize@{string\-\_\-tokenize}!string_util::string_tokenize@{string\-\_\-util\-::string\-\_\-tokenize}}
+\subsubsection[{string\-\_\-tokenize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf string\-\_\-util\-::string\-\_\-tokenize}$<$ T $>$\-::{\bf string\-\_\-tokenize} (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{val, }
+\item[{const T \&}]{delim}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstring__util_1_1string__tokenize_a9fa8071705dcc90643f09e06a9477c84}
+Constructor which takes the string to parse and the delimiters to use. 
+\begin{DoxyParams}{Parameters}
+{\em val} & The string to parse. \\
+\hline
+{\em delim} & The set of delimiters to separate the string. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classstring__util_1_1string__tokenize_a1a8c9f87285c8e4f14419af752d84f37}{\index{string\-\_\-util\-::string\-\_\-tokenize@{string\-\_\-util\-::string\-\_\-tokenize}!get\-\_\-next\-\_\-token@{get\-\_\-next\-\_\-token}}
+\index{get\-\_\-next\-\_\-token@{get\-\_\-next\-\_\-token}!string_util::string_tokenize@{string\-\_\-util\-::string\-\_\-tokenize}}
+\subsubsection[{get\-\_\-next\-\_\-token}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T {\bf string\-\_\-util\-::string\-\_\-tokenize}$<$ T $>$\-::get\-\_\-next\-\_\-token (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstring__util_1_1string__tokenize_a1a8c9f87285c8e4f14419af752d84f37}
+Returns the next token from the original string as a string object Note that empty tokens can be returned if there is proceeding or trailing delimiters in the string, or if there are repeated delimiters next to each other. \hypertarget{classstring__util_1_1string__tokenize_a1406728dca7da668c3173b04dcd76aa1}{\index{string\-\_\-util\-::string\-\_\-tokenize@{string\-\_\-util\-::string\-\_\-tokenize}!has\-\_\-more\-\_\-delimiters@{has\-\_\-more\-\_\-delimiters}}
+\index{has\-\_\-more\-\_\-delimiters@{has\-\_\-more\-\_\-delimiters}!string_util::string_tokenize@{string\-\_\-util\-::string\-\_\-tokenize}}
+\subsubsection[{has\-\_\-more\-\_\-delimiters}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf string\-\_\-util\-::string\-\_\-tokenize}$<$ T $>$\-::has\-\_\-more\-\_\-delimiters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstring__util_1_1string__tokenize_a1406728dca7da668c3173b04dcd76aa1}
+Returns whether or not there are more delimiters in the string. This is useful for seeing if there are any delimiters at all when first loading the string. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+indexing/string\-\_\-util.\-h\end{DoxyCompactItemize}

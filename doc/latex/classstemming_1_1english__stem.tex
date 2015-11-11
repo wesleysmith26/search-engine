@@ -1,0 +1,253 @@
+\hypertarget{classstemming_1_1english__stem}{\section{stemming\-:\-:english\-\_\-stem$<$ string\-\_\-type\-T $>$ Class Template Reference}
+\label{classstemming_1_1english__stem}\index{stemming\-::english\-\_\-stem$<$ string\-\_\-type\-T $>$@{stemming\-::english\-\_\-stem$<$ string\-\_\-type\-T $>$}}
+}
+
+
+{\ttfamily \#include $<$english\-\_\-stem.\-h$>$}
+
+Inheritance diagram for stemming\-:\-:english\-\_\-stem$<$ string\-\_\-type\-T $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classstemming_1_1english__stem}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classstemming_1_1english__stem_a8163a8cc4186b749665d616cbf11c492}{operator()} (string\-\_\-type\-T \&text)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename string\-\_\-type\-T = std\-::wstring$>$class stemming\-::english\-\_\-stem$<$ string\-\_\-type\-T $>$}
+
+Overview
+
+I have made more than one attempt to improve the structure of the Porter algorithm by making it follow the pattern of ending removal of the Romance language stemmers. It is not hard to see why one should want to do this\-: step 1b of the Porter stemmer removes ed and ing, which are i-\/suffixes ($\ast$) attached to verbs. If these suffixes are removed, there should be no need to remove d-\/suffixes which are not verbal, although it will try to do so. This seems to be a deficiency in the Porter stemmer, not shared by the Romance stemmers. Again, the divisions between steps 2, 3 and 4 seem rather arbitrary, and are not found in the Romance stemmers.
+
+Nevertheless, these attempts at improvement have been abandoned. They seem to lead to a more complicated algorithm with no very obvious improvements. A reason for not taking note of the outcome of step 1b may be that English endings do not determine word categories quite as strongly as endings in the Romance languages. For example, condition and position in French have to be nouns, but in English they can be verbs as well as nouns,
+
+We are all conditioned by advertising They are positioning themselves differently today
+
+A possible reason for having separate steps 2, 3 and 4 is that d-\/suffix combinations in English are quite complex, a point which has been made elsewhere.
+
+But it is hardly surprising that after twenty years of use of the Porter stemmer, certain improvements do suggest themselves, and a new algorithm for English is therefore offered here. (It could be called the 'Porter2' stemmer to distinguish it from the Porter stemmer, from which it derives.) The changes are not so very extensive\-: (1) terminating y is changed to i rather less often, (2) suffix us does not lose its s, (3) a few additional suffixes are included for removal, including (4) suffix ly. In addition, a small list of exceptional forms is included. In December 2001 there were two further adjustments\-: (5) Steps 5a and 5b of the old Porter stemmer were combined into a single step. This means that undoubling final ll is not done with removal of final e. (6) In Step 3 ative is removed only when in region R2.
+
+To begin with, here is the basic algorithm without reference to the exceptional forms. An exact comparison with the Porter algorithm needs to be done quite carefully if done at all. Here we indicate by $\ast$ points of departure, and by + additional features. In the sample vocabulary, Porter and Porter2 stem slightly under 5\% of words to different forms.
+
+Dr. Martin Porter
+
+Define a vowel as one of
+\begin{DoxyItemize}
+\item a e i o u y
+\end{DoxyItemize}
+
+Define a double as one of
+\begin{DoxyItemize}
+\item bb dd ff gg mm nn pp rr tt
+\end{DoxyItemize}
+
+Define a valid li-\/ending as one of
+\begin{DoxyItemize}
+\item c d e g h k m n r t
+\end{DoxyItemize}
+
+Define a short syllable in a word as either (a) a vowel followed by a non-\/vowel other than w, x or Y and preceded by a non-\/vowel, or $\ast$ (b) a vowel at the beginning of the word followed by a non-\/vowel.
+
+So rap, trap, entrap end with a short syllable, and ow, on, at are classed as short syllables. But uproot, bestow, disturb do not end with a short syllable.
+
+A word is called short if it consists of a short syllable preceded by zero or more consonants. R1 is the region after the first non-\/vowel following a vowel, or the end of the word if there is no such non-\/vowel. R2 is the region after the first non-\/vowel following a vowel in R1, or the end of the word if there is no such non-\/vowel. If the word has two letters or less, leave it as it is. Otherwise, do each of the following operations, Set initial y, or y after a vowel, to Y, and then establish the regions R1 and R2.
+
+\begin{DoxyParagraph}{Algorithm\-:}
+
+\end{DoxyParagraph}
+{\bfseries Step 1a\-:}
+
+Search for the longest among the following suffixes, and perform the action indicated\-:
+\begin{DoxyItemize}
+\item sses
+\begin{DoxyItemize}
+\item Replace by ss.
+\end{DoxyItemize}
+\item ied+ ies$\ast$
+\begin{DoxyItemize}
+\item Replace by i if preceded by just one letter, otherwise by ie (so ties -\/$>$ tie, cries -\/$>$ cri).
+\end{DoxyItemize}
+\item s
+\begin{DoxyItemize}
+\item Delete if the preceding word part contains a vowel not immediately before the s (so gas and this retain the s, gaps and kiwis lose it).
+\end{DoxyItemize}
+\item us+ ss
+\begin{DoxyItemize}
+\item Do nothing.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries Step 1b\-:}
+
+Search for the longest among the following suffixes, and perform the action indicated\-:
+\begin{DoxyItemize}
+\item eed eedly+
+\begin{DoxyItemize}
+\item Replace by ee if in R1.
+\end{DoxyItemize}
+\item ed edly+ ing ingly+
+\begin{DoxyItemize}
+\item Delete if the preceding word part contains a vowel, and then
+\item If the word ends at, bl or iz add e (so luxuriat -\/$>$ luxuriate), or
+\item If the word ends with a double remove the last letter (so hopp -\/$>$ hop), or
+\item If the word is short, add e (so hop -\/$>$ hope).
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries Step 1c\-:}
+
+Replace suffix y or Y by i if preceded by a non-\/vowel which is not the first letter of the word (so cry -\/$>$ cri, by -\/$>$ by, say -\/$>$ say)
+
+{\bfseries Step 2\-:}
+
+Search for the longest among the following suffixes, and, if found and in R1, perform the action indicated\-:
+\begin{DoxyItemize}
+\item tional
+\begin{DoxyItemize}
+\item Replace by tion.
+\end{DoxyItemize}
+\item enci
+\begin{DoxyItemize}
+\item Replace by ence.
+\end{DoxyItemize}
+\item anci
+\begin{DoxyItemize}
+\item Replace by ance
+\end{DoxyItemize}
+\item abli
+\begin{DoxyItemize}
+\item Replace by able.
+\end{DoxyItemize}
+\item entli
+\begin{DoxyItemize}
+\item Replace by ent.
+\end{DoxyItemize}
+\item izer ization
+\begin{DoxyItemize}
+\item Replace by ize.
+\end{DoxyItemize}
+\item ational ation ator
+\begin{DoxyItemize}
+\item Replace by ate.
+\end{DoxyItemize}
+\item alism aliti alli
+\begin{DoxyItemize}
+\item Replace by al.
+\end{DoxyItemize}
+\item fulness
+\begin{DoxyItemize}
+\item Replace by ful.
+\end{DoxyItemize}
+\item ousli ousness
+\begin{DoxyItemize}
+\item Replace by ous.
+\end{DoxyItemize}
+\item iveness iviti
+\begin{DoxyItemize}
+\item Replace by ive.
+\end{DoxyItemize}
+\item biliti bli+
+\begin{DoxyItemize}
+\item Replace by ble.
+\end{DoxyItemize}
+\item ogi+
+\begin{DoxyItemize}
+\item Replace by og if preceded by l.
+\end{DoxyItemize}
+\item fulli+
+\begin{DoxyItemize}
+\item Replace by ful.
+\end{DoxyItemize}
+\item lessli+
+\begin{DoxyItemize}
+\item Replace by less.
+\end{DoxyItemize}
+\item li+
+\begin{DoxyItemize}
+\item Delete if preceded by a valid li-\/ending.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries Step 3\-:}
+
+Search for the longest among the following suffixes, and, if found and in R1, perform the action indicated\-:
+\begin{DoxyItemize}
+\item tional+
+\begin{DoxyItemize}
+\item Replace by tion.
+\end{DoxyItemize}
+\item ational+
+\begin{DoxyItemize}
+\item Replace by ate.
+\end{DoxyItemize}
+\item alize
+\begin{DoxyItemize}
+\item Replace by al.
+\end{DoxyItemize}
+\item icate iciti ical
+\begin{DoxyItemize}
+\item Replace by ic.
+\end{DoxyItemize}
+\item ful ness
+\begin{DoxyItemize}
+\item Delete.
+\end{DoxyItemize}
+\item ative$\ast$
+\begin{DoxyItemize}
+\item Delete if in R2.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries Step 4\-:}
+
+Search for the longest among the following suffixes, and, if found and in R2, perform the action indicated\-:
+\begin{DoxyItemize}
+\item al ance ence er ic able ible ant ement ment ent ism ate iti ous ive ize
+\begin{DoxyItemize}
+\item Delete
+\end{DoxyItemize}
+\item ion
+\begin{DoxyItemize}
+\item Delete if preceded by s or t.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+{\bfseries Step 5\-:}
+
+Search for the following suffixes, and, if found, perform the action indicated\-:
+\begin{DoxyItemize}
+\item e
+\begin{DoxyItemize}
+\item Delete if in R2, or in R1 and not preceded by a short syllable.
+\end{DoxyItemize}
+\item l
+\begin{DoxyItemize}
+\item Delete if in R2 and preceded by l. 
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{classstemming_1_1english__stem_a8163a8cc4186b749665d616cbf11c492}{\index{stemming\-::english\-\_\-stem@{stemming\-::english\-\_\-stem}!operator()@{operator()}}
+\index{operator()@{operator()}!stemming::english_stem@{stemming\-::english\-\_\-stem}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename string\-\_\-type\-T  = std\-::wstring$>$ void {\bf stemming\-::english\-\_\-stem}$<$ string\-\_\-type\-T $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{string\-\_\-type\-T \&}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classstemming_1_1english__stem_a8163a8cc4186b749665d616cbf11c492}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em text} & English string to stem. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+stemming/english\-\_\-stem.\-h\end{DoxyCompactItemize}

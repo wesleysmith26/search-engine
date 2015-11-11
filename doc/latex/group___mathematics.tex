@@ -1,0 +1,181 @@
+\hypertarget{group___mathematics}{\section{Mathematics}
+\label{group___mathematics}\index{Mathematics@{Mathematics}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classdouble__less}{double\-\_\-less}
+\begin{DoxyCompactList}\small\item\em \char`\"{}less\char`\"{} interface for double values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{group___mathematics_ga3bdfe9dcca3b6f83b6b362f30639e68e}{safe\-\_\-modulus} (const T dividend, const T divisor)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{group___mathematics_ga59fed2e2713556d98a699dfe8a912124}{safe\-\_\-divide} (const T dividend, const T divisor)
+\item 
+bool \hyperlink{group___mathematics_ga1f34402f043ad5a6c6d08b0b9575846c}{compare\-\_\-doubles} (const double actual, const double expected, const double delta=1e-\/6)
+\item 
+bool \hyperlink{group___mathematics_ga8fa00f6eb709cc57ab9861a3d24a4f6b}{compare\-\_\-doubles\-\_\-less} (const double left, const double right, const double delta=1e-\/6)
+\item 
+bool \hyperlink{group___mathematics_gaf21128bc418cde39e42205d6af8309f3}{compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal} (const double left, const double right, const double delta=1e-\/6)
+\item 
+bool \hyperlink{group___mathematics_gadca5f00a820552c04da890b07945fadf}{compare\-\_\-doubles\-\_\-greater} (const double left, const double right, const double delta=1e-\/6)
+\item 
+\hypertarget{group___mathematics_ga8ab290c346a3fa091aac241536ce1c95}{bool {\bfseries double\-\_\-less\-::operator()} (const double \&left, const double \&right) const }\label{group___mathematics_ga8ab290c346a3fa091aac241536ce1c95}
+
+\item 
+{\footnotesize template$<$typename T $>$ }\\bool \hyperlink{group___mathematics_gad1be2b3af9940c545752e8e39b2749a3}{int\-\_\-to\-\_\-bool} (const T int\-Val)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Math and statistics classes. 
+
+\subsection{Function Documentation}
+\hypertarget{group___mathematics_ga1f34402f043ad5a6c6d08b0b9575846c}{\index{Mathematics@{Mathematics}!compare\-\_\-doubles@{compare\-\_\-doubles}}
+\index{compare\-\_\-doubles@{compare\-\_\-doubles}!Mathematics@{Mathematics}}
+\subsubsection[{compare\-\_\-doubles}]{\setlength{\rightskip}{0pt plus 5cm}bool compare\-\_\-doubles (
+\begin{DoxyParamCaption}
+\item[{const double}]{actual, }
+\item[{const double}]{expected, }
+\item[{const double}]{delta = {\ttfamily 1e-\/6}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_ga1f34402f043ad5a6c6d08b0b9575846c}
+Compares two double values (given the specified precision). 
+\begin{DoxyParams}{Parameters}
+{\em actual} & The value being reviewed. \\
+\hline
+{\em expected} & The expected value to compare against. \\
+\hline
+{\em delta} & The tolerance of how different the values can be. The larger the delta, the higher precision used in the comparison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the value matches the expected value. 
+\end{DoxyReturn}
+\hypertarget{group___mathematics_gadca5f00a820552c04da890b07945fadf}{\index{Mathematics@{Mathematics}!compare\-\_\-doubles\-\_\-greater@{compare\-\_\-doubles\-\_\-greater}}
+\index{compare\-\_\-doubles\-\_\-greater@{compare\-\_\-doubles\-\_\-greater}!Mathematics@{Mathematics}}
+\subsubsection[{compare\-\_\-doubles\-\_\-greater}]{\setlength{\rightskip}{0pt plus 5cm}bool compare\-\_\-doubles\-\_\-greater (
+\begin{DoxyParamCaption}
+\item[{const double}]{left, }
+\item[{const double}]{right, }
+\item[{const double}]{delta = {\ttfamily 1e-\/6}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_gadca5f00a820552c04da890b07945fadf}
+Compares two double values for greater than (given the specified precision). 
+\begin{DoxyParams}{Parameters}
+{\em left} & The value being reviewed. \\
+\hline
+{\em right} & The other value to compare against. \\
+\hline
+{\em delta} & The tolerance of how different the values can be. The larger the delta, the higher precision used in the comparison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the value is greater than the other value. 
+\end{DoxyReturn}
+\hypertarget{group___mathematics_ga8fa00f6eb709cc57ab9861a3d24a4f6b}{\index{Mathematics@{Mathematics}!compare\-\_\-doubles\-\_\-less@{compare\-\_\-doubles\-\_\-less}}
+\index{compare\-\_\-doubles\-\_\-less@{compare\-\_\-doubles\-\_\-less}!Mathematics@{Mathematics}}
+\subsubsection[{compare\-\_\-doubles\-\_\-less}]{\setlength{\rightskip}{0pt plus 5cm}bool compare\-\_\-doubles\-\_\-less (
+\begin{DoxyParamCaption}
+\item[{const double}]{left, }
+\item[{const double}]{right, }
+\item[{const double}]{delta = {\ttfamily 1e-\/6}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_ga8fa00f6eb709cc57ab9861a3d24a4f6b}
+Compares two double values for less than (given the specified precision). 
+\begin{DoxyParams}{Parameters}
+{\em left} & The value being reviewed. \\
+\hline
+{\em right} & The other value to compare against. \\
+\hline
+{\em delta} & The tolerance of how different the values can be. The larger the delta, the higher precision used in the comparison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the value is less than the other value. 
+\end{DoxyReturn}
+\hypertarget{group___mathematics_gaf21128bc418cde39e42205d6af8309f3}{\index{Mathematics@{Mathematics}!compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal@{compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal}}
+\index{compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal@{compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal}!Mathematics@{Mathematics}}
+\subsubsection[{compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal}]{\setlength{\rightskip}{0pt plus 5cm}bool compare\-\_\-doubles\-\_\-less\-\_\-or\-\_\-equal (
+\begin{DoxyParamCaption}
+\item[{const double}]{left, }
+\item[{const double}]{right, }
+\item[{const double}]{delta = {\ttfamily 1e-\/6}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_gaf21128bc418cde39e42205d6af8309f3}
+Compares two double values for less than or equal to (given the specified precision). 
+\begin{DoxyParams}{Parameters}
+{\em left} & The value being reviewed. \\
+\hline
+{\em right} & The other value to compare against. \\
+\hline
+{\em delta} & The tolerance of how different the values can be. The larger the delta, the higher precision used in the comparison. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the value is less than or equal to the other value. 
+\end{DoxyReturn}
+\hypertarget{group___mathematics_gad1be2b3af9940c545752e8e39b2749a3}{\index{Mathematics@{Mathematics}!int\-\_\-to\-\_\-bool@{int\-\_\-to\-\_\-bool}}
+\index{int\-\_\-to\-\_\-bool@{int\-\_\-to\-\_\-bool}!Mathematics@{Mathematics}}
+\subsubsection[{int\-\_\-to\-\_\-bool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool int\-\_\-to\-\_\-bool (
+\begin{DoxyParamCaption}
+\item[{const T}]{int\-Val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_gad1be2b3af9940c545752e8e39b2749a3}
+Converts an integral type to a boolean. Compilers complain about directly assigning an int to a bool (casting doesn't help either), so this works around that. 
+\begin{DoxyParams}{Parameters}
+{\em int\-Val} & The integer value to convert to a boolean. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The boolean equivalent of the integer. 
+\end{DoxyReturn}
+\hypertarget{group___mathematics_ga59fed2e2713556d98a699dfe8a912124}{\index{Mathematics@{Mathematics}!safe\-\_\-divide@{safe\-\_\-divide}}
+\index{safe\-\_\-divide@{safe\-\_\-divide}!Mathematics@{Mathematics}}
+\subsubsection[{safe\-\_\-divide}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T safe\-\_\-divide (
+\begin{DoxyParamCaption}
+\item[{const T}]{dividend, }
+\item[{const T}]{divisor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_ga59fed2e2713556d98a699dfe8a912124}
+Division operation that checks for division by zero or into zero (returns zero for those situations). 
+\begin{DoxyParams}{Parameters}
+{\em dividend} & The dividend (i.\-e., the value being divided). \\
+\hline
+{\em divisor} & The divisor (i.\-e., the value dividing by). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The quotient of the division operation, or zero if one of the values was invalid. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the template type has a floating point precision, then the result will retain its precision. 
+\end{DoxyNote}
+\hypertarget{group___mathematics_ga3bdfe9dcca3b6f83b6b362f30639e68e}{\index{Mathematics@{Mathematics}!safe\-\_\-modulus@{safe\-\_\-modulus}}
+\index{safe\-\_\-modulus@{safe\-\_\-modulus}!Mathematics@{Mathematics}}
+\subsubsection[{safe\-\_\-modulus}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T safe\-\_\-modulus (
+\begin{DoxyParamCaption}
+\item[{const T}]{dividend, }
+\item[{const T}]{divisor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group___mathematics_ga3bdfe9dcca3b6f83b6b362f30639e68e}
+\begin{DoxyDate}{Date}
+2015 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Oleander Software, Ltd. 
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Oleander Software, Ltd.
+\end{DoxyAuthor}
+This program is free software; you can redistribute it and/or modify it under the terms of the B\-S\-D License.\-Modulus operation that checks for modulus by zero or into zero (returns zero for those situations). 
+\begin{DoxyParams}{Parameters}
+{\em dividend} & The dividend (i.\-e., the value being divided). \\
+\hline
+{\em divisor} & The divisor (i.\-e., the value dividing by). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The remainder of the modulus operation, or zero if one of the values was invalid. 
+\end{DoxyReturn}
