@@ -1,4 +1,5 @@
 ﻿#include <sstream>
+#include <cctype>
 #include <iostream>
 
 #include "documentparser.h"
@@ -40,7 +41,7 @@ void DocumentParser::readDocument(char* filename)
         //removeStopwords(documentContents, documentNumber);
     }
 
-    std::string words = "this is a test sentence to have stopwords removed";
+    std::string words = "This is a test sentence to have stopwords removed";
     std::cout << "original text:" << std::endl;
     std::cout << words << "\n" << std::endl;
     removeStopwords(words, 1);
@@ -145,8 +146,18 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
     {
         for (int j = 0; j < docWords.size(); j++)
         {
-            if (stopWords[i] == docWords.at(j))
+            // convert word from document to lowercase to check for stop words
+            std::string word = docWords.at(j);
+            char* temp = new char[word.length() + 1];
+            std::strcpy(temp, word.c_str());
+
+            for (int x = 0; x < word.length(); x++)
+                temp[x] = tolower(temp[x]);
+
+            if (stopWords[i] == temp)
                 docWords.erase(docWords.begin() + j);
+
+            delete[] temp;
         }
     }
 
