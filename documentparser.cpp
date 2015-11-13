@@ -1,5 +1,6 @@
 ﻿#include <sstream>
 #include <cctype>
+#include <algorithm>
 #include <iostream>
 
 #include "documentparser.h"
@@ -41,9 +42,8 @@ void DocumentParser::readDocument(char* filename)
         //removeStopwords(documentContents, documentNumber);
     }
 
-    std::string words = "This is a test sentence to have stopwords removed";
-    std::cout << "original text:" << std::endl;
-    std::cout << words << "\n" << std::endl;
+    std::string words = "The tall brown fox jumps over the tree while he is "
+                        "running.";
     removeStopwords(words, 1);
 }
 
@@ -161,10 +161,7 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
         }
     }
 
-    std::cout << "Text after removal of stopwords:" << std::endl;
-    for (int i = 0; i < docWords.size(); i++)
-        std::cout << docWords.at(i) << " ";
-    std::cout << std::endl;
+    removeStems(docWords);
 }
 
 std::vector<std::string> DocumentParser::splitString(std::string &text)
@@ -184,5 +181,15 @@ std::vector<std::string> DocumentParser::splitString(std::string &text)
 
 void DocumentParser::removeStems(std::vector<std::string> &words)
 {
+    stemming::english_stem<> wordStemmer;
 
+    // have to convert between wstring and string because the stemming library
+    // uses wstrings
+    for (int i = 0; i < words.size(); i++)
+    {
+        std::wstring temp(words.at(i).length(), L' ');
+        std::copy(words.at(i).begin(), words.at(i).end(), temp.begin());
+        wordStemmer(temp);
+        words.at(i).assign(temp.begin(), temp.end());
+    }
 }

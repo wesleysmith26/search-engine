@@ -1,4 +1,4 @@
-/**
+﻿/**
 \date 2004-2015
 \copyright Oleander Software, Ltd.
 \author Oleander Software, Ltd.
