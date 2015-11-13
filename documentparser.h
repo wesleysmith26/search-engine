@@ -33,7 +33,7 @@ private:
      * \brief removes stems from strings
      *
      * removes stems from strings using the Oleander Stemming Library, which
-     * uses the Porter Stemming Algorithms to remove stems
+     * uses the Porter Stemming Algorithms to remove stems.
      * \param words a vector of strings
      */
     void removeStems(std::vector<std::string>& words);

@@ -1,6 +1,7 @@
 ﻿#include <sstream>
 #include <cctype>
 #include <algorithm>
+#include <map>
 #include <iostream>
 
 #include "documentparser.h"
@@ -14,7 +15,7 @@ void DocumentParser::readDocument(char* filename)
     rapidxml::xml_document<> doc;
     doc.parse<0>(xmlFile.data());
 
-    // need to ignore first 3 pages, they don't contain any wikibooks text
+    // ignore first 3 pages, they don't contain any wikibooks text
     rapidxml::xml_node<>* root = doc.first_node("mediawiki");
     rapidxml::xml_node<>* page = root->first_node("page");
     rapidxml::xml_node<>* revision = page->first_node("revision");
@@ -45,6 +46,8 @@ void DocumentParser::readDocument(char* filename)
     std::string words = "The tall brown fox jumps over the tree while he is "
                         "running.";
     removeStopwords(words, 1);
+    std::string words2 = "The short brown dog ran over the fox.";
+    removeStopwords(words2, 2);
 }
 
 void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
@@ -162,6 +165,10 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
     }
 
     removeStems(docWords);
+    std::cout << "Document " << docNumber << " Contents:" << std::endl;
+    for (int i = 0; i < docWords.size(); i++)
+        std::cout << docWords.at(i) << " ";
+    std::cout << std::endl;
 }
 
 std::vector<std::string> DocumentParser::splitString(std::string &text)
