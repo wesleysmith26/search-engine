@@ -1,7 +1,7 @@
 ﻿#include <sstream>
 #include <cctype>
 #include <algorithm>
-#include <map>
+#include <utility>
 #include <iostream>
 
 #include "documentparser.h"
@@ -14,8 +14,6 @@ void DocumentParser::readDocument(char* filename)
     rapidxml::file<> xmlFile(filename);
     rapidxml::xml_document<> doc;
     doc.parse<0>(xmlFile.data());
-
-    // ignore first 3 pages, they don't contain any wikibooks text
     rapidxml::xml_node<>* root = doc.first_node("mediawiki");
     rapidxml::xml_node<>* page = root->first_node("page");
     rapidxml::xml_node<>* revision = page->first_node("revision");
@@ -27,27 +25,25 @@ void DocumentParser::readDocument(char* filename)
     text = revision->first_node("text");
 
     std::string documentContents = text->value();
-    int documentNumber = 4;
+    int documentNumber = 1;
+    //std::cout << "Document #: " << documentNumber << std::endl;
 
-    //removeStopwords(documentContents, documentNumber);
+    removeStopwords(documentContents, documentNumber);
 
-    // continue parsing the xml document
     while (page->next_sibling("page") != nullptr)
     {
+        text = nullptr;
         page = page->next_sibling("page");
         revision = page->first_node("revision");
         text = revision->first_node("text");
         documentContents = text->value();
         documentNumber++;
+        //std::cout << "Document #: " << documentNumber << std::endl;
 
-        //removeStopwords(documentContents, documentNumber);
+        removeStopwords(documentContents, documentNumber);
     }
 
-    std::string words = "The tall brown fox jumps over the tree while he is "
-                        "running.";
-    removeStopwords(words, 1);
-    std::string words2 = "The short brown dog ran over the fox.";
-    removeStopwords(words2, 2);
+    //std::cout << "\nDocument Number for File: " << documentNumber << std::endl;
 }
 
 void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
@@ -164,11 +160,9 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
         }
     }
 
+    toLower(docWords);
     removeStems(docWords);
-    std::cout << "Document " << docNumber << " Contents:" << std::endl;
-    for (int i = 0; i < docWords.size(); i++)
-        std::cout << docWords.at(i) << " ";
-    std::cout << std::endl;
+    calculateTermFrequency(docWords, docNumber);
 }
 
 std::vector<std::string> DocumentParser::splitString(std::string &text)
@@ -186,6 +180,15 @@ std::vector<std::string> DocumentParser::splitString(std::string &text)
     return words;
 }
 
+void DocumentParser::toLower(std::vector<std::string> &pageWords)
+{
+    for (int i = 0; i < pageWords.size(); i++)
+    {
+        std::transform(pageWords.at(i).begin(), pageWords.at(i).end(),
+                       pageWords.at(i).begin(), ::tolower);
+    }
+}
+
 void DocumentParser::removeStems(std::vector<std::string> &words)
 {
     stemming::english_stem<> wordStemmer;
@@ -199,4 +202,92 @@ void DocumentParser::removeStems(std::vector<std::string> &words)
         wordStemmer(temp);
         words.at(i).assign(temp.begin(), temp.end());
     }
+}
+
+void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
+                                            int &pageNumber)
+{
+    // the string represents the word and the int represents the number of
+    // occurences on that page for the pageTermFrequency map
+    // or in the entire corpus for the totalTermFrequency map
+    std::map<std::string, int> pageTermFrequency;
+    static std::map<std::string, int> totalTermFrequency;
+    static int numberOfCalculations = 1;
+
+    // no terms for the current document
+    if (terms.size() == 0)
+    {
+        numberOfCalculations++;
+    }
+
+    while (numberOfCalculations == pageNumber)
+    {
+        static int termNumber = 1;
+
+        if (termNumber == 1)
+        {
+            // page map is empty so no need to check for duplciates
+            pageTermFrequency.insert(std::pair<std::string, int>
+                                    (terms.at(0), 1));
+
+            // corpus map is empty on the first calculation for duplicates with
+            // the first term, so there isn't a need to check for duplicates
+            if (numberOfCalculations == 1)
+            {
+                totalTermFrequency.insert(std::pair<std::string, int>
+                                         (terms.at(0), 1));
+                termNumber++;
+            }
+            else
+            {
+                checkForDuplicateTerm(terms.at(0), totalTermFrequency);
+                termNumber++;
+            }
+
+            // only 1 word was in the document
+            if (terms.size() == 1)
+            {
+                termNumber = 1;
+                numberOfCalculations++;
+            }
+        }
+        else if (termNumber > 1)
+        {
+            for (int i = 1; i < terms.size(); i++)
+            {
+                checkForDuplicateTerm(terms.at(i), pageTermFrequency);
+                checkForDuplicateTerm(terms.at(i), totalTermFrequency);
+
+                // all terms have been added
+                if (i == terms.size() - 1)
+                {
+                    termNumber = 1;
+                    numberOfCalculations++;
+                }
+            }
+        }
+    }
+
+    //IndexHandler handler;
+    //handler.addWord(pageTermFrequency, pageNumber);
+}
+
+void DocumentParser::checkForDuplicateTerm(std::string &word,
+                                           std::map<std::string, int> &terms)
+{
+    bool isDuplicate = false;
+
+    for (auto mapItr = terms.begin(); mapItr != terms.end(); ++mapItr)
+    {
+        if (word == mapItr->first)
+        {
+            isDuplicate = true;
+            int frequency = mapItr->second;
+            frequency++;
+            terms[word] = frequency;
+        }
+    }
+
+    if (isDuplicate == false)
+        terms.insert(std::pair<std::string, int>(word, 1));
 }
