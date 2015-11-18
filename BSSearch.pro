@@ -4,7 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    documentparser.cpp
+    documentparser.cpp \
+    indexhandler.cpp
 
 HEADERS += \
     indexing/common_lang_constants.h \
@@ -17,3 +18,5 @@ HEADERS += \
     rapidxml/rapidxml.hpp \
     rapidxml/rapidxml_utils.hpp \
     documentparser.h \
+    indexhandler.h \
+    avltree.h
