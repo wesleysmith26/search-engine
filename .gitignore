@@ -1,4 +1,3 @@
-*.pro.user*
 build-BSSearch-Desktop_Qt_5_5_0_GCC_64bit-Debug/
 *.xml
 Doxyfile
