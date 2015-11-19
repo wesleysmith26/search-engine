@@ -7,6 +7,7 @@
 
 #include "documentparser.h"
 #include "stemming/english_stem.h"
+#include "indexhandler.h"
 
 DocumentParser::DocumentParser() {}
 
@@ -17,21 +18,20 @@ void DocumentParser::readDocument(char* filename)
     doc.parse<0>(xmlFile.data());
     rapidxml::xml_node<>* root = doc.first_node("mediawiki");
     rapidxml::xml_node<>* page = root->first_node("page");
+    rapidxml::xml_node<>* title = page->first_node("title");
     rapidxml::xml_node<>* revision = page->first_node("revision");
     rapidxml::xml_node<>* text = revision->first_node("text");
-    page = page->next_sibling("page");
-    page = page->next_sibling("page");
-    page = page->next_sibling("page");
     revision = page->first_node("revision");
     text = revision->first_node("text");
 
+    std::string documentTitle = title->value();
     std::string documentContents = text->value();
     int documentNumber = 1;
     std::cout << "Document #: " << documentNumber;
 
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
-    removeStopwords(documentContents, documentNumber);
+    removeStopwords(documentContents, documentNumber, documentTitle);
     end = std::chrono::system_clock::now();
     std::chrono::duration<double> parseTime = end - start;
     double totalParseTime = parseTime.count();
@@ -43,14 +43,16 @@ void DocumentParser::readDocument(char* filename)
     {
         text = nullptr;
         page = page->next_sibling("page");
+        title = page->first_node("title");
         revision = page->first_node("revision");
         text = revision->first_node("text");
+        documentTitle = title->value();
         documentContents = text->value();
         documentNumber++;
         std::cout << "Document #: " << documentNumber;
 
         start = std::chrono::system_clock::now();
-        removeStopwords(documentContents, documentNumber);
+        removeStopwords(documentContents, documentNumber, documentTitle);
         end = std::chrono::system_clock::now();
         parseTime = end - start;
         totalParseTime += parseTime.count();
@@ -63,7 +65,8 @@ void DocumentParser::readDocument(char* filename)
                  "Total Parse Time: " << totalParseTime << "s" << std::endl;
 }
 
-void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
+void DocumentParser::removeStopwords(std::string& pageText, int docNumber,
+                                     std::string& pageTitle)
 {
     std::string stopWords[] = {"a", "able", "about", "above", "abroad",
     "according", "accordingly", "across", "actually", "adj", "after",
@@ -179,7 +182,7 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
 
     toLower(docWords);
     removeStems(docWords);
-    calculateTermFrequency(docWords, docNumber);
+    calculateTermFrequency(docWords, docNumber, pageTitle);
 }
 
 std::vector<std::string> DocumentParser::splitString(std::string &text)
@@ -222,7 +225,8 @@ void DocumentParser::removeStems(std::vector<std::string> &words)
 }
 
 void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
-                                            int &pageNumber)
+                                            int& pageNumber,
+                                            std::string& docTitle)
 {
     // the string represents the word and the int represents the number of
     // occurences on that page for the pageTermFrequency map
@@ -284,6 +288,9 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
             }
         }
     }
+
+    //IndexHandler myIndexHandler;
+    //myIndexHandler.addWord(pageTermFrequency, pageNumber, docTitle);
 }
 
 void DocumentParser::checkForDuplicateTerm(std::string &word,

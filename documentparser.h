@@ -21,7 +21,8 @@ private:
      * \param pageText a string
      * \param docNumber an integer
      */
-    void removeStopwords(std::string& pageText, int docNumber);
+    void removeStopwords(std::string& pageText, int docNumber,
+                         std::string& pageTitle);
 
     /*!
      * \brief splits a string into separate strings for each word
@@ -57,7 +58,7 @@ private:
      * \param pageNumber an integer
      */
     void calculateTermFrequency(std::vector<std::string>& terms,
-                                int& pageNumber);
+                                int& pageNumber, std::string& docTitle);
 
     /*!
      * \brief checks if a duplicate term will be added to the map
