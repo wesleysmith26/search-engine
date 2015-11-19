@@ -15,6 +15,7 @@ private:
         string keyword;
         LinkedList<int>* pageNumbers = new LinkedList<int>;
         LinkedList<double>* freqency = new LinkedList<double>;
+        LinkedList<string>* title = new LinkedList<string>;
         AvlNode* left;
         AvlNode* right;
         int height;
@@ -71,9 +72,9 @@ public:
         root = nullptr;
     }
 
-    void insert(string& key, int pg, double freq)
+    void insert(string& key, int& pg, double& freq, string& header)
     {
-        insert(key, pg, freq, root);
+        insert(key, pg, freq, header,root);
     }
 
     string& findKeyword(string& key)
@@ -91,6 +92,11 @@ public:
         return findFrequency(key, root);
     }
 
+    LinkedList<string>*& findTitle(string& key)
+    {
+        return findTitle(key, root);
+    }
+
     int& getSize()
     {
         return size;
@@ -98,7 +104,7 @@ public:
 
 private:
 
-    int height(AvlNode* t)
+    int height(AvlNode*& t)
     {
         return t == nullptr ? -1 : t->height;
     }
@@ -108,7 +114,7 @@ private:
         return lhs > rhs ? lhs : rhs;
     }
 
-    void insert(string key, int pg, double freq, AvlNode*& t)
+    void insert(string& key, int& pg, double& freq, string& header, AvlNode*& t)
     {
         if(t == nullptr)
         {
@@ -116,10 +122,11 @@ private:
             t->keyword = key;
             t->pageNumbers->push_back(pg);
             t->freqency->push_back(freq);
+            t->title->push_back(header);
             size++;
         } else if(key.compare(t->keyword) < 0) //insert left
         {
-            insert(key, pg, freq, t->left);
+            insert(key, pg, freq, header, t->left);
             if(height(t->left) - height(t->right) == 2)
             {
                 if(key.compare(t->left->keyword) < 0)
@@ -129,7 +136,7 @@ private:
             }
         } else if(key.compare(t->keyword) > 0) //insert right
         {
-            insert(key, pg, freq, t->right);
+            insert(key, pg, freq, header, t->right);
             if(height(t->right) - height(t->left) == 2)
             {
                 if(key.compare(t->right->keyword) > 0)
@@ -222,6 +229,18 @@ private:
             return findFrequency(key, t->left);
         else
             return findFrequency(key, t->right);
+    }
+
+    LinkedList<string>*& findTitle(string& key, AvlNode*& t)
+    {
+        if(t == nullptr)
+            return error->title;
+        else if(key == t->keyword)
+            return t->title;
+        else if(key.compare(t->keyword) < 0)
+            return findTitle(key, t->left);
+        else
+            return findTitle(key, t->right);
     }
 };
 #endif // AVLTREE

@@ -5,13 +5,12 @@ IndexHandler::IndexHandler()
     avl = new AvlTree();
 }
 
-void IndexHandler::addWord(map<string, double>& table, int pg)
+void IndexHandler::addWord(map<string, int>& table, int &pg, string &title)
 {
-    int x = pg;
-    for(map<string, double>::iterator it = table.begin(); it != table.end(); ++it)
+    for(map<string, int>::iterator it = table.begin(); it != table.end(); ++it)
     {
         string word = it->first;
-        double freq = it->second;
-        avl->insert(word, x, freq);
+        double freq = it->second/table.size();
+        avl->insert(word, pg, freq, title);
     }
 }

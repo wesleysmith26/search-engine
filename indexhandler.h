@@ -12,7 +12,7 @@ private:
     AvlTree* avl;
 public:
     IndexHandler();
-    void addWord(map<string, double>& table, int pg);
+    void addWord(map<string, int>& table, int& pg, string& title);
 
 };
 
