@@ -2,6 +2,7 @@
 #include <cctype>
 #include <algorithm>
 #include <utility>
+#include <chrono>
 #include <iostream>
 
 #include "documentparser.h"
@@ -26,9 +27,17 @@ void DocumentParser::readDocument(char* filename)
 
     std::string documentContents = text->value();
     int documentNumber = 1;
-    //std::cout << "Document #: " << documentNumber << std::endl;
+    std::cout << "Document #: " << documentNumber;
 
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    start = std::chrono::system_clock::now();
     removeStopwords(documentContents, documentNumber);
+    end = std::chrono::system_clock::now();
+    std::chrono::duration<double> parseTime = end - start;
+    double totalParseTime = parseTime.count();
+
+    std::cout << "\tParse Time: " << parseTime.count() << "\tTotal Parse Time: "
+              << totalParseTime << "s" << std::endl;
 
     while (page->next_sibling("page") != nullptr)
     {
@@ -38,12 +47,20 @@ void DocumentParser::readDocument(char* filename)
         text = revision->first_node("text");
         documentContents = text->value();
         documentNumber++;
-        //std::cout << "Document #: " << documentNumber << std::endl;
+        std::cout << "Document #: " << documentNumber;
 
+        start = std::chrono::system_clock::now();
         removeStopwords(documentContents, documentNumber);
+        end = std::chrono::system_clock::now();
+        parseTime = end - start;
+        totalParseTime += parseTime.count();
+
+        std::cout << "\tParse Time: " << parseTime.count() <<
+                     "\tTotal Parse Time: " << totalParseTime << std::endl;
     }
 
-    //std::cout << "\nDocument Number for File: " << documentNumber << std::endl;
+    std::cout << "\nDocument Number for File: " << documentNumber << "\t" <<
+                 "Total Parse Time: " << totalParseTime << "s" << std::endl;
 }
 
 void DocumentParser::removeStopwords(std::string& pageText, int docNumber)
@@ -267,12 +284,24 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
             }
         }
     }
-
-    //IndexHandler handler;
-    //handler.addWord(pageTermFrequency, pageNumber);
 }
 
 void DocumentParser::checkForDuplicateTerm(std::string &word,
+                                           std::map<std::string, int> &terms)
+{
+    std::map<std::string, int>::iterator duplicateItr = terms.find(word);
+
+    if (duplicateItr != terms.end())
+    {
+        int frequency = duplicateItr->second;
+        frequency++;
+        terms[word] = frequency;
+    }
+    else
+        terms.insert(std::pair<std::string, int>(word, 1));
+}
+
+/*void DocumentParser::checkForDuplicateTerm(std::string &word,
                                            std::map<std::string, int> &terms)
 {
     bool isDuplicate = false;
@@ -290,4 +319,4 @@ void DocumentParser::checkForDuplicateTerm(std::string &word,
 
     if (isDuplicate == false)
         terms.insert(std::pair<std::string, int>(word, 1));
-}
+}*/
