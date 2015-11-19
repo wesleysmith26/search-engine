@@ -19,4 +19,5 @@ HEADERS += \
     rapidxml/rapidxml_utils.hpp \
     documentparser.h \
     indexhandler.h \
-    avltree.h
+    avltree.h \
+    linkedlist.h
