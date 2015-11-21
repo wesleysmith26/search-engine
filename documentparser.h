@@ -4,9 +4,11 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
 
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_utils.hpp"
+#include "indexhandler.h"
 
 /*!
  * \brief Parses XML Document
@@ -16,10 +18,18 @@
 class DocumentParser
 {
 private:
+    //std::set<std::string> stopWords;
+    //IndexHandler myIndexHandler;
+    int stopWordsSize;
+    const std::string stopWords[636];
+    std::map<std::string, int> totalTermFrequency;
+    IndexHandler myIndexHandler;
+
     /*!
      * \brief removes stopwords from a string
      * \param pageText a string
      * \param docNumber an integer
+     * \param pageTitle a string
      */
     void removeStopwords(std::string& pageText, int docNumber,
                          std::string& pageTitle);
@@ -27,9 +37,9 @@ private:
     /*!
      * \brief splits a string into separate strings for each word
      * \param text a string
-     * \return a vector of strings
+     * \param pageText a vector of strings
      */
-    std::vector<std::string> splitString(std::string& text);
+    void splitString(std::string& text, std::vector<std::string>& pageText);
 
     /*!
      * \brief converts std::string to lowercase
@@ -56,6 +66,7 @@ private:
      * corpus
      * \param pageWords a vector of strings
      * \param pageNumber an integer
+     * \param docTitle a string
      */
     void calculateTermFrequency(std::vector<std::string>& terms,
                                 int& pageNumber, std::string& docTitle);

@@ -3,6 +3,8 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
+QMAKE_CXXFLAGS += -O3
+
 SOURCES += main.cpp \
     documentparser.cpp \
     indexhandler.cpp
