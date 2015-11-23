@@ -21,9 +21,9 @@ private:
     //std::set<std::string> stopWords;
     //IndexHandler myIndexHandler;
     int stopWordsSize;
-    const std::string stopWords[636];
+    const std::string stopWords[637];
     std::map<std::string, int> totalTermFrequency;
-    IndexHandler myIndexHandler;
+    IndexHandler* myIndexHandler;
 
     /*!
      * \brief removes stopwords from a string
@@ -84,9 +84,9 @@ private:
 
 public:
     /*!
-     * \brief DocumentParser default constructor
+     * \brief DocumentParser constructor
      */
-    DocumentParser();
+    DocumentParser(IndexHandler*& ih);
 
     /*!
      * \brief reads/parses the xml document

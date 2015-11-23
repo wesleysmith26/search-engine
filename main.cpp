@@ -7,8 +7,10 @@ int main(int argc, char* argv[])
     if (argc != 2)
         std::cerr << "Incorrect number of command line arguments" << std::endl;
 
-    DocumentParser parser;
-    parser.readDocument(argv[1]);
+    IndexHandler* myIndexHandler = new IndexHandler;
+    DocumentParser* parser = new DocumentParser(myIndexHandler);
+    parser->readDocument(argv[1]);
+    myIndexHandler->printSize();
 
     return 0;
 }

@@ -8,9 +8,10 @@
 #include "documentparser.h"
 #include "stemming/english_stem.h"
 
-DocumentParser::DocumentParser()
+DocumentParser::DocumentParser(IndexHandler*& ih)
 {
-    stopWordsSize = 636;
+    myIndexHandler = ih;
+    stopWordsSize = 637;
     const std::string stopWords[] = {"a", "able", "about", "above", "abroad",
     "according", "accordingly", "across", "actually", "adj", "after",
     "afterwards", "again", "against", "ago", "ahead", "ain't", "all", "allow",
@@ -43,7 +44,7 @@ DocumentParser::DocumentParser()
     "having", "he", "he'd", "he'll", "hello", "help", "hence", "her", "here",
     "hereafter", "hereby", "herein", "here's", "hereupon", "hers", "herself",
     "he's", "hi", "him", "himself", "his", "hither", "hopefully", "how",
-    "howbeit", "however", "hundred", "i'd", "ie", "if", "ignored", "i'll",
+    "howbeit", "however", "hundred", "i", "i'd", "ie", "if", "ignored", "i'll",
     "i'm", "immediate", "in", "inasmuch", "inc", "inc.", "indeed", "indicate",
     "indicated", "indicates", "inner", "inside", "insofar", "instead", "into",
     "inward", "is", "isn't", "it", "it'd", "it'll", "its", "it's", "itself",
@@ -305,7 +306,8 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
         }
     }
 
-    myIndexHandler.addWord(pageTermFrequency, pageNumber, docTitle);
+    std::cout << "page size: " << pageTermFrequency.size() << "\n";
+    myIndexHandler->addWord(pageTermFrequency, pageNumber, docTitle);
 }
 
 void DocumentParser::checkForDuplicateTerm(std::string& word,

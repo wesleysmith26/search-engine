@@ -1,4 +1,4 @@
-#ifndef LINKEDLIST
+﻿#ifndef LINKEDLIST
 #define LINKEDLIST
 #include <iostream>
 
@@ -112,6 +112,7 @@ public:
         return counter;
     }
 
+    
     void output()
     {
         if(empty())
