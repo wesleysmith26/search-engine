@@ -3,13 +3,6 @@
 IndexHandler::IndexHandler()
 {
     avl = new AvlTree();
-    hash = new HashTable();
-}
-
-IndexHandler::~IndexHandler()
-{
-    delete avl;
-    delete hash;
 }
 
 void IndexHandler::addWord(map<string, int>& table, int &pg, string &title)
@@ -18,8 +11,6 @@ void IndexHandler::addWord(map<string, int>& table, int &pg, string &title)
     {
         string word = it->first;
         double freq = it->second/table.size();
-        //avl->insert(word, pg, freq, title);
-        hash->insert(word, pg, freq, title);
+        avl->insert(word, pg, freq, title);
     }
 }
-

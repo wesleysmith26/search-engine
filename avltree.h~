@@ -30,40 +30,34 @@ private:
             if(left != nullptr)
             {
                 delete left;
-                left = nullptr;
             }
             if(right != nullptr)
             {
                 delete right;
-                right = nullptr;
             }
-            delete this->pageNumbers;
-            delete this->freqency;
-            delete this->title;
+            //what ever else you need to delete here
         }
     };
 
     AvlNode* root;
     AvlNode* error;
+    AvlNode* temp;
     int size;
 
 public:
     AvlTree()
     {
         root = nullptr;
+        temp = nullptr;
         error = new AvlNode();
         error->keyword = "error";
-        size = 0;
     }
 
     ~AvlTree()
     {
         delete root->left;
-        root->left = nullptr;
         delete root->right;
-        root->right = nullptr;
         delete root;
-        delete error;
     }
 
     AvlTree(const AvlTree&cp)
@@ -72,13 +66,9 @@ public:
         *this = cp;
     }
 
-    void clear()
+    void makeEmpty()
     {
-        delete root->left;
-        root->left = nullptr;
-        delete root->right;
-        root->right = nullptr;
-        delete root;
+        makeEmpty(root);
         root = nullptr;
     }
 
@@ -158,7 +148,6 @@ private:
         {
             t->pageNumbers->push_back(pg);
             t->freqency->push_back(freq);
-            t->title->push_back(header);
         }
 
         t->height = max(height(t->left), height(t->right)) + 1;
@@ -255,3 +244,4 @@ private:
     }
 };
 #endif // AVLTREE
+

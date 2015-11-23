@@ -22,4 +22,5 @@ HEADERS += \
     documentparser.h \
     indexhandler.h \
     avltree.h \
-    linkedlist.h
+    linkedlist.h \
+    hashtable.h
