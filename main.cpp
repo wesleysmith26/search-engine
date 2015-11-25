@@ -12,5 +12,8 @@ int main(int argc, char* argv[])
     parser->readDocument(argv[1]);
     myIndexHandler->printSize();
 
+    myIndexHandler = nullptr;
+    parser = nullptr;
+
     return 0;
 }

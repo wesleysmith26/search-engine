@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <set>
 
 #include "rapidxml/rapidxml.hpp"
 #include "rapidxml/rapidxml_utils.hpp"
@@ -18,10 +17,7 @@
 class DocumentParser
 {
 private:
-    //std::set<std::string> stopWords;
-    //IndexHandler myIndexHandler;
-    int stopWordsSize;
-    const std::string stopWords[637];
+    // figure out what to do w/ this
     std::map<std::string, int> totalTermFrequency;
     IndexHandler* myIndexHandler;
 
@@ -60,11 +56,9 @@ private:
      * \brief calculates how often a word appears
      *
      * calculates the number of times a word appears in a particular page and
-     * the entire corpus. Will pass a map of strings and an integer representing
-     * the page number to the index handler. The page number will be -1 to
-     * represent the map that has the term frequency for the entire
-     * corpus
-     * \param pageWords a vector of strings
+     * the entire corpus. Passes a map of strings and an integer representing
+     * the page number to the index handler.
+     * \param terms a vector of strings
      * \param pageNumber an integer
      * \param docTitle a string
      */
