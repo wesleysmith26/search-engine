@@ -7,7 +7,8 @@ QMAKE_CXXFLAGS += -O3
 
 SOURCES += main.cpp \
     documentparser.cpp \
-    indexhandler.cpp
+    indexhandler.cpp \
+    userinterface.cpp
 
 HEADERS += \
     indexing/common_lang_constants.h \
@@ -23,4 +24,5 @@ HEADERS += \
     indexhandler.h \
     avltree.h \
     linkedlist.h \
-    hashtable.h
+    hashtable.h \
+    userinterface.h

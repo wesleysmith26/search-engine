@@ -2,6 +2,7 @@
 #define INDEXHANDLER_H
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <map>
 #include "avltree.h"
 #include "hashtable.h"
@@ -15,6 +16,7 @@ private:
     HashTable* hash;
     string test = "veda";
     double freq = 0.0;
+    ofstream save;
 public:
     IndexHandler();
     ~IndexHandler();
