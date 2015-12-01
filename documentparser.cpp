@@ -6,7 +6,11 @@
 #include <iostream>
 
 #include "documentparser.h"
+#include "rapidxml/rapidxml.hpp"
+#include "rapidxml/rapidxml_utils.hpp"
 #include "stemming/english_stem.h"
+
+DocumentParser::DocumentParser() {}
 
 DocumentParser::DocumentParser(IndexHandler*& ih)
 {
@@ -22,43 +26,60 @@ void DocumentParser::readDocument(char* filename)
     rapidxml::xml_node<>* page = root->first_node("page");
     rapidxml::xml_node<>* title = page->first_node("title");
     rapidxml::xml_node<>* revision = page->first_node("revision");
+    rapidxml::xml_node<>* date = revision->first_node("timestamp");
+    rapidxml::xml_node<>* contributor = revision->first_node("contributor");
+    rapidxml::xml_node<>* username = contributor->first_node("username");
     rapidxml::xml_node<>* text = revision->first_node("text");
-    revision = page->first_node("revision");
-    text = revision->first_node("text");
 
     std::string documentTitle = title->value();
+    std::string documentDate = date->value();
+    std::string documentContributor = username->value();
     std::string documentContents = text->value();
     int documentNumber = 1;
-    std::cout << "Document #: " << documentNumber;
 
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
-    removeStopwords(documentContents, documentNumber, documentTitle);
+    removeStopwords(documentContents, documentNumber, documentTitle,
+                    documentDate, documentContributor);
     end = std::chrono::system_clock::now();
     std::chrono::duration<double> parseTime = end - start;
     double totalParseTime = parseTime.count();
 
-    std::cout << "\tTotal Parse Time: " << totalParseTime << "s" << std::endl;
+    std::cout << "Document #: " << documentNumber << "\tTotal Parse Time: " <<
+                 totalParseTime << "s" << std::endl;
 
     while (page->next_sibling("page") != nullptr)
     {
-        text = nullptr;
         page = page->next_sibling("page");
         title = page->first_node("title");
         revision = page->first_node("revision");
+        date = revision->first_node("timestamp");
+        contributor = revision->first_node("contributor");
+        username = contributor->first_node("username");
         text = revision->first_node("text");
+
         documentTitle = title->value();
+        documentDate = date->value();
+
+        // some documents don't have a contributor username
+        if (username == nullptr)
+            documentContributor = "N/A";
+        else
+            documentContributor = username->value();
+
         documentContents = text->value();
         documentNumber++;
         std::cout << "Document #: " << documentNumber;
 
         start = std::chrono::system_clock::now();
-        removeStopwords(documentContents, documentNumber, documentTitle);
+        removeStopwords(documentContents, documentNumber, documentTitle,
+                        documentDate, documentContributor);
         end = std::chrono::system_clock::now();
         parseTime = end - start;
         totalParseTime += parseTime.count();
 
-        std::cout << "\tTotal Parse Time: " << totalParseTime << std::endl;
+        std::cout << "\tParse Time: " << parseTime.count() <<
+                     " Total Parse Time: " << totalParseTime << std::endl;
     }
 
     std::cout << "\nDocument Number for File: " << documentNumber << "\t" <<
@@ -68,11 +89,16 @@ void DocumentParser::readDocument(char* filename)
     page = nullptr;
     title = nullptr;
     revision = nullptr;
+    date = nullptr;
+    contributor = nullptr;
+    username = nullptr;
     text = nullptr;
 }
 
 void DocumentParser::removeStopwords(std::string& pageText, int docNumber,
-                                     std::string& pageTitle)
+                                     std::string& pageTitle,
+                                     std::string& pageDate,
+                                     std::string& pageContributor)
 {
     static const std::string stopWords[] = {"a", "able", "about", "above",
     "abroad", "according", "accordingly", "across", "actually", "adj", "after",
@@ -189,11 +215,7 @@ void DocumentParser::splitString(std::string& text,
     {
         ss >> temp;
         if (ss)
-        {
-            // convert string to lowercase
-            std::transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
             pageWords.push_back(temp);
-        }
     }
 }
 
@@ -245,20 +267,7 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
             // page map is empty so no need to check for duplciates
             pageTermFrequency.insert(std::pair<std::string, int>
                                     (terms.at(0), 1));
-
-            // corpus map is empty on the first calculation for duplicates with
-            // the first term, so there isn't a need to check for duplicates
-            if (numberOfCalculations == 1)
-            {
-                totalTermFrequency.insert(std::pair<std::string, int>
-                                         (terms.at(0), 1));
-                termNumber++;
-            }
-            else
-            {
-                checkForDuplicateTerm(terms.at(0), totalTermFrequency);
-                termNumber++;
-            }
+            termNumber++;
 
             // only 1 word was in the document
             if (terms.size() == 1)
@@ -272,7 +281,6 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
             for (int i = 1; i < terms.size(); i++)
             {
                 checkForDuplicateTerm(terms.at(i), pageTermFrequency);
-                checkForDuplicateTerm(terms.at(i), totalTermFrequency);
 
                 // all terms have been added
                 if (i == terms.size() - 1)
@@ -284,7 +292,6 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
         }
     }
 
-    std::cout << "\tpage size: " << pageTermFrequency.size();
     myIndexHandler->addWord(pageTermFrequency, pageNumber, docTitle);
 }
 
