@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['backup_5fvariable',['backup_variable',['../classbackup__variable.html',1,'']]]
+  ['avltree',['AvlTree',['../class_avl_tree.html',1,'']]]
 ];

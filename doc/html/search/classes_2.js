@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['documentparser',['DocumentParser',['../class_document_parser.html',1,'']]],
-  ['double_5fless',['double_less',['../classdouble__less.html',1,'']]]
+  ['comparable_5ffirst_5fpair',['comparable_first_pair',['../classcomparable__first__pair.html',1,'']]]
 ];

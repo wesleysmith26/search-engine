@@ -103,32 +103,88 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser</a> ()</td></tr>
 <tr class="memdesc:a7a281448c94759450046ab2fb57e7aae"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_document_parser.html" title="Parses XML Document. ">DocumentParser</a> default constructor. <br/></td></tr>
 <tr class="separator:a7a281448c94759450046ab2fb57e7aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08f89dbb39ae984c30158a38ac70be17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a08f89dbb39ae984c30158a38ac70be17">readDocument</a> (char *filename)</td></tr>
-<tr class="memdesc:a08f89dbb39ae984c30158a38ac70be17"><td class="mdescLeft">&#160;</td><td class="mdescRight">reads/parses the xml document  <a href="#a08f89dbb39ae984c30158a38ac70be17">More...</a><br/></td></tr>
-<tr class="separator:a08f89dbb39ae984c30158a38ac70be17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4504346e766df5c146df081b2439911d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a4504346e766df5c146df081b2439911d">DocumentParser</a> (<a class="el" href="class_index_handler.html">IndexHandler</a> *&amp;ih)</td></tr>
+<tr class="memdesc:a4504346e766df5c146df081b2439911d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_document_parser.html" title="Parses XML Document. ">DocumentParser</a> overloaded constructor.  <a href="#a4504346e766df5c146df081b2439911d">More...</a><br/></td></tr>
+<tr class="separator:a4504346e766df5c146df081b2439911d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d995055d3e5cab74e47db8557ad022"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a81d995055d3e5cab74e47db8557ad022">readDocument</a> (char *&amp;filename)</td></tr>
+<tr class="memdesc:a81d995055d3e5cab74e47db8557ad022"><td class="mdescLeft">&#160;</td><td class="mdescRight">readDocument parses the xml file  <a href="#a81d995055d3e5cab74e47db8557ad022">More...</a><br/></td></tr>
+<tr class="separator:a81d995055d3e5cab74e47db8557ad022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d3e204701139484a63593dda11edac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a08d3e204701139484a63593dda11edac">getPageNumber</a> (char *&amp;file)</td></tr>
+<tr class="memdesc:a08d3e204701139484a63593dda11edac"><td class="mdescLeft">&#160;</td><td class="mdescRight">getPageNumber asks the user which page number they want to view the contents of from the search results.  <a href="#a08d3e204701139484a63593dda11edac">More...</a><br/></td></tr>
+<tr class="separator:a08d3e204701139484a63593dda11edac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parses XML Document. </p>
-<p>Parses the WikiBooks XML document using rapidxml libraries. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a08f89dbb39ae984c30158a38ac70be17"></a>
+<p>Parses the WikiBooks XML document using rapidxml libraries, collecting the document title, date, contributor's username, and contents. The document contents are then split up into individual strings for each word. Words that are stop words are removed, and the leftover words have their stems removed. Then frequency of duplicate words is calculated, and the document title, date, contributor's username, and words are sent to the Index Handler.</p>
+<p>Can also display the contents of a page in the xml file. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4504346e766df5c146df081b2439911d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DocumentParser::DocumentParser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_index_handler.html">IndexHandler</a> *&amp;&#160;</td>
+          <td class="paramname"><em>ih</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_document_parser.html" title="Parses XML Document. ">DocumentParser</a> overloaded constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ih</td><td>a pointer to an Index Handler object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a08d3e204701139484a63593dda11edac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DocumentParser::getPageNumber </td>
+          <td>(</td>
+          <td class="paramtype">char *&amp;&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getPageNumber asks the user which page number they want to view the contents of from the search results. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>a character pointer that contains the xml filename </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a81d995055d3e5cab74e47db8557ad022"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void DocumentParser::readDocument </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">char *&amp;&#160;</td>
           <td class="paramname"><em>filename</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>reads/parses the xml document </p>
+<p>readDocument parses the xml file </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">filename</td><td>a character pointer </td></tr>
+    <tr><td class="paramname">filename</td><td>a character pointer that contains the xml filename </td></tr>
   </table>
   </dd>
 </dl>
@@ -142,7 +198,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Nov 11 2015 12:41:16 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

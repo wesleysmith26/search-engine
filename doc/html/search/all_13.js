@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['xml_5fattribute',['xml_attribute',['../classrapidxml_1_1xml__attribute.html',1,'rapidxml']]],
-  ['xml_5fattribute',['xml_attribute',['../classrapidxml_1_1xml__attribute.html#a26be291103917d3e8de110d46dd83816',1,'rapidxml::xml_attribute']]],
-  ['xml_5fbase',['xml_base',['../classrapidxml_1_1xml__base.html',1,'rapidxml']]],
-  ['xml_5fdocument',['xml_document',['../classrapidxml_1_1xml__document.html#aae8841b15085ba8f32ff46587ace28f5',1,'rapidxml::xml_document']]],
-  ['xml_5fdocument',['xml_document',['../classrapidxml_1_1xml__document.html',1,'rapidxml']]],
-  ['xml_5fnode',['xml_node',['../classrapidxml_1_1xml__node.html',1,'rapidxml']]],
-  ['xml_5fnode',['xml_node',['../classrapidxml_1_1xml__node.html#a8bd9019960b90605a45998b661fb1b0e',1,'rapidxml::xml_node']]]
+  ['value',['value',['../classrapidxml_1_1xml__base.html#adcdaccff61c665f039d9344e447b7445',1,'rapidxml::xml_base::value() const '],['../classrapidxml_1_1xml__base.html#a3b183c2db7022a6d30494dd2f0ac11e9',1,'rapidxml::xml_base::value(const Ch *value, std::size_t size)'],['../classrapidxml_1_1xml__base.html#a81e63ec4bfd2d7ef0a6c2ed49be6e623',1,'rapidxml::xml_base::value(const Ch *value)']]],
+  ['value_5fsize',['value_size',['../classrapidxml_1_1xml__base.html#a9fcf201ed0915ac18dd43b0b5dcfaf32',1,'rapidxml::xml_base']]]
 ];

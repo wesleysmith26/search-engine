@@ -10,14 +10,17 @@
 #include "rapidxml/rapidxml_utils.hpp"
 #include "stemming/english_stem.h"
 
-DocumentParser::DocumentParser() {}
+DocumentParser::DocumentParser()
+{
+    myIndexHandler = nullptr;
+}
 
 DocumentParser::DocumentParser(IndexHandler*& ih)
 {
     myIndexHandler = ih;
 }
 
-void DocumentParser::readDocument(char* filename)
+void DocumentParser::readDocument(char*& filename)
 {
     rapidxml::file<> xmlFile(filename);
     rapidxml::xml_document<> doc;
@@ -41,12 +44,6 @@ void DocumentParser::readDocument(char* filename)
     start = std::chrono::system_clock::now();
     removeStopwords(documentContents, documentNumber, documentTitle,
                     documentDate, documentContributor);
-    end = std::chrono::system_clock::now();
-    std::chrono::duration<double> parseTime = end - start;
-    double totalParseTime = parseTime.count();
-
-    std::cout << "Document #: " << documentNumber << "\tTotal Parse Time: " <<
-                 totalParseTime << "s" << std::endl;
 
     while (page->next_sibling("page") != nullptr)
     {
@@ -69,21 +66,14 @@ void DocumentParser::readDocument(char* filename)
 
         documentContents = text->value();
         documentNumber++;
-        std::cout << "Document #: " << documentNumber;
 
-        start = std::chrono::system_clock::now();
         removeStopwords(documentContents, documentNumber, documentTitle,
                         documentDate, documentContributor);
-        end = std::chrono::system_clock::now();
-        parseTime = end - start;
-        totalParseTime += parseTime.count();
-
-        std::cout << "\tParse Time: " << parseTime.count() <<
-                     " Total Parse Time: " << totalParseTime << std::endl;
     }
 
-    std::cout << "\nDocument Number for File: " << documentNumber << "\t" <<
-                 "Total Parse Time: " << totalParseTime << "s" << std::endl;
+    end = std::chrono::system_clock::now();
+    std::chrono::duration<double> parseTime = end - start;
+    std::cout << "xml parse time: " << parseTime.count() << std::endl;
 
     root = nullptr;
     page = nullptr;
@@ -308,4 +298,52 @@ void DocumentParser::checkForDuplicateTerm(std::string& word,
     }
     else
         terms.insert(std::pair<std::string, int>(word, 1));
+}
+
+void DocumentParser::getPageNumber(char*& file)
+{
+    int pageToView = 0;
+    std::cout << "\nEnter the page number of the document you want to view? " <<
+                 "(enter -1 to exit): ";
+    cin >> pageToView;
+
+    if (pageToView == 0 || pageToView < -1)
+    {
+        std::cout << "Invalid page number. Please try again." << std::endl;
+        getPageNumber(file);
+    }
+    else if (pageToView > 0)
+    {
+        getDocumentContents(file, pageToView);
+        getPageNumber(file);
+    }
+}
+
+void DocumentParser::getDocumentContents(char*& docFilename,
+                                         int& documentNumber)
+{
+    rapidxml::file<> xmlFile(docFilename);
+    rapidxml::xml_document<> doc;
+    doc.parse<0>(xmlFile.data());
+    rapidxml::xml_node<>* root = doc.first_node("mediawiki");
+    rapidxml::xml_node<>* page = root->first_node("page");
+    rapidxml::xml_node<>* revision = page->first_node("revision");
+    rapidxml::xml_node<>* text = revision->first_node("text");
+    int pageNumber = 1;
+
+    while (pageNumber != documentNumber)
+    {
+        page = page->next_sibling("page");
+        revision = page->first_node("revision");
+        text = revision->first_node("text");
+        pageNumber++;
+    }
+
+    std::cout << "Document " << documentNumber << " Contents:\n" <<
+                    text->value() << std::endl;
+
+    root = nullptr;
+    page = nullptr;
+    revision = nullptr;
+    text = nullptr;
 }
