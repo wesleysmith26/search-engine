@@ -1,4 +1,4 @@
-#ifndef USERINTERFACE_H
+﻿#ifndef USERINTERFACE_H
 #define USERINTERFACE_H
 #include <iostream>
 #include <string>
@@ -11,8 +11,13 @@ private:
     int select;
     bool avlTree;
     string searchWords;
+    char* xmlFile;
+
+    void interactiveMode();
+
 public:
     UserInterface();
+    UserInterface(char*& xmlFilename);
     void startScreen();
     void maintenanceMode();
     void queryProcessor();

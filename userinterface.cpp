@@ -1,10 +1,22 @@
-#include "userinterface.h"
+﻿#include "userinterface.h"
+#include "queryprocessor.h"
+#include "documentparser.h"
+
 #include <sstream>
 UserInterface::UserInterface()
 {
     select = 0;
     avlTree = true;
     searchWords = " ";
+    xmlFile = nullptr;
+}
+
+UserInterface::UserInterface(char*& xmlFilename)
+{
+    select = 0;
+    avlTree = true;
+    searchWords = " ";
+    xmlFile = xmlFilename;
 }
 
 void UserInterface::startScreen()
@@ -13,6 +25,8 @@ void UserInterface::startScreen()
     cin>>select;
     if(select == 1)
         maintenanceMode();
+    else if (select == 2)
+        interactiveMode();
     else
         queryProcessor();
 }
@@ -27,6 +41,31 @@ void UserInterface::maintenanceMode()
         cout<<"clear"<<endl;
     else
         queryProcessor();
+}
+
+void UserInterface::interactiveMode()
+{
+    cout << "Please select one of the options:\n1) Load Index into AVL Tree\n"
+         << "2) Load Index into Hash Table\n3) Enter a Query" << endl;
+    cin >> select;
+    cin.ignore();
+
+    if (select == 3)
+    {
+        cout << "Please enter a properly formatted query: ";
+        getline(cin, searchWords);
+        QueryProcessor qp(searchWords);
+    }
+
+    string answer = "";
+    cout << "Do you want to view the contents of a page in the results? y/n? ";
+    cin >> answer;
+
+    if (answer == "y" || answer == "Y")
+    {
+        DocumentParser docParser;
+        docParser.getPageNumber(xmlFile);
+    }
 }
 
 void UserInterface::queryProcessor()
