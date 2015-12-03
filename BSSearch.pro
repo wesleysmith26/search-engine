@@ -27,4 +27,5 @@ HEADERS += \
     linkedlist.h \
     hashtable.h \
     userinterface.h \
-    queryprocessor.h
+    queryprocessor.h \
+    index.h

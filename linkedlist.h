@@ -1,13 +1,19 @@
 ﻿#ifndef LINKEDLIST
 #define LINKEDLIST
 #include <iostream>
+#include <string>
 
-template <typename T>
+using namespace std;
+
 class LinkedList
 {
     struct Node
     {
-        T data;
+        int pageNumber;
+        double freqency;
+        string title;
+        string date;
+        string user;
         Node *next;
     };
 
@@ -56,12 +62,16 @@ public:
             return true;
     }
 
-    void push_back(T newData)
+    void push_back(int pg, double freq, string docName, string dateMade, string userName)
     {
         if(empty())
         {
             head = new Node();
-            head->data = newData;
+            head->pageNumber = pg;
+            head->freqency = freq;
+            head->title = docName;
+            head->date = dateMade;
+            head->user = userName;
         }else
         {
             cur = head;
@@ -70,32 +80,119 @@ public:
                 cur = cur->next;
             }
             temp = new Node();
-            temp->data = newData;
+            temp->pageNumber = pg;
+            temp->freqency = freq;
+            temp->title = docName;
+            temp->date = dateMade;
+            temp->user = userName;
             cur->next = temp;
         }
     }
 
-    T& get_at(int index)
+    int& getPageNumber(int index)
     {
         if(0 > index || size()-1 < index)
         {
             std::cout<<"index is out of bounds"<<std::endl;
-            return cur->data;
+            return cur->pageNumber;
         }else
         {
             cur = head;
             for(int counter = 0; counter < index; counter++)
                 cur = cur->next;
-            return cur->data;
+            return cur->pageNumber;
         }
     }
 
-    void set_at(int index, T val)
+    double& getFrequency(int index)
+    {
+        if(0 > index || size()-1 < index)
+        {
+            std::cout<<"index is out of bounds"<<std::endl;
+            return cur->freqency;
+        }else
+        {
+            cur = head;
+            for(int counter = 0; counter < index; counter++)
+                cur = cur->next;
+            return cur->freqency;
+        }
+    }
+
+    string& getTitle(int index)
+    {
+        if(0 > index || size()-1 < index)
+        {
+            std::cout<<"index is out of bounds"<<std::endl;
+            return cur->title;
+        }else
+        {
+            cur = head;
+            for(int counter = 0; counter < index; counter++)
+                cur = cur->next;
+            return cur->title;
+        }
+    }
+
+    string& getDate(int index)
+    {
+        if(0 > index || size()-1 < index)
+        {
+            std::cout<<"index is out of bounds"<<std::endl;
+            return cur->date;
+        }else
+        {
+            cur = head;
+            for(int counter = 0; counter < index; counter++)
+                cur = cur->next;
+            return cur->date;
+        }
+    }
+
+    string& getUser(int index)
+    {
+        if(0 > index || size()-1 < index)
+        {
+            std::cout<<"index is out of bounds"<<std::endl;
+            return cur->user;
+        }else
+        {
+            cur = head;
+            for(int counter = 0; counter < index; counter++)
+                cur = cur->next;
+            return cur->user;
+        }
+    }
+
+    void set_at(int index, int pg, double freq, string docName, string dateMade, string userName)
     {
         cur = head;
         for(int counter = 0; counter < index; counter++)
             cur = cur->next;
-        cur->data = val;
+        cur->pageNumber = pg;
+        cur->freqency = freq;
+        cur->title = docName;
+        cur->date = dateMade;
+        cur->user = userName;
+    }
+
+    void deleteAt(int index)
+    {
+        if(index == 0)
+        {
+            temp = head->next;
+            delete head;
+            head = temp;
+        }
+        else
+        {
+            cur = head;
+            for(int counter = 0; counter < index-1; counter++)
+                cur = cur->next;
+            temp = cur->next->next;
+            delete cur->next;
+            cur->next = temp;
+        }
     }
 
     int size()
@@ -112,22 +209,22 @@ public:
         return counter;
     }
 
-    
+
     void output()
     {
         if(empty())
-            std::cout<<"Linked list is empty"<<std::endl;
+            cout<<"Linked list is empty"<<endl;
         else
         {
            cur = head;
            int counter = 0;
            while(cur->next != nullptr)
            {
-               std::cout<<"Index: "<<counter<<" Data: "<<cur->data<<std::endl;
+               cout<<"Index: "<<counter<<" Data: "<<cur->pageNumber<<", "<<cur->freqency<<", "<<cur->title<<", "<<cur->date<<", "<<cur->user<<endl;
                counter++;
                cur = cur->next;
            }
-           std::cout<<"Index: "<<counter<<" Data: "<<cur->data<<std::endl;
+           cout<<"Index: "<<counter<<" Data: "<<cur->pageNumber<<", "<<cur->freqency<<", "<<cur->title<<", "<<cur->date<<", "<<cur->user<<endl;
         }
     }
 

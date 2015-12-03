@@ -2,20 +2,19 @@
 #define AVLTREE
 #include <iostream>
 #include <string>
+#include "index.h"
 #include "linkedlist.h"
 
 using namespace std;
 
-class AvlTree
+class AvlTree: public Index
 {
 private:
     class AvlNode
     {
     public:
         string keyword;
-        LinkedList<int>* pageNumbers = new LinkedList<int>;
-        LinkedList<double>* freqency = new LinkedList<double>;
-        LinkedList<string>* title = new LinkedList<string>;
+        LinkedList* data = new LinkedList;
         AvlNode* left;
         AvlNode* right;
         int height;
@@ -37,33 +36,29 @@ private:
                 delete right;
                 right = nullptr;
             }
-            delete this->pageNumbers;
-            delete this->freqency;
-            delete this->title;
+            delete this->data;
         }
     };
-
-    AvlNode* root;
     AvlNode* error;
+    AvlNode* root;
     int size;
 
 public:
     AvlTree()
     {
-        root = nullptr;
         error = new AvlNode();
         error->keyword = "error";
+        root = nullptr;
         size = 0;
     }
 
-    ~AvlTree()
+    virtual ~AvlTree()
     {
         delete root->left;
         root->left = nullptr;
         delete root->right;
         root->right = nullptr;
         delete root;
-        delete error;
     }
 
     AvlTree(const AvlTree&cp)
@@ -82,9 +77,9 @@ public:
         root = nullptr;
     }
 
-    void insert(string& key, int& pg, double& freq, string& header)
+    void insert(string& key, int& pg, double& freq, string& header, string& date, string& user)
     {
-        insert(key, pg, freq, header,root);
+        insert(key, pg, freq, header, date, user, root);
     }
 
     string& findKeyword(string& key)
@@ -92,19 +87,9 @@ public:
         return findKeyword(key, root);
     }
 
-    LinkedList<int>*& findPageNumber(string& key)
+    LinkedList*& findData(string& key)
     {
-        return findPageNumber(key,root);
-    }
-
-    LinkedList<double>*& findFrequency(string& key)
-    {
-        return findFrequency(key, root);
-    }
-
-    LinkedList<string>*& findTitle(string& key)
-    {
-        return findTitle(key, root);
+        return findData(key,root);
     }
 
     int& getSize()
@@ -124,19 +109,17 @@ private:
         return lhs > rhs ? lhs : rhs;
     }
 
-    void insert(string& key, int& pg, double& freq, string& header, AvlNode*& t)
+    void insert(string& key, int& pg, double& freq, string& header, string& date, string& title, AvlNode*& t)
     {
         if(t == nullptr)
         {
             t = new AvlNode();
             t->keyword = key;
-            t->pageNumbers->push_back(pg);
-            t->freqency->push_back(freq);
-            t->title->push_back(header);
+            t->data->push_back(pg, freq, header, date, title);
             size++;
         } else if(key.compare(t->keyword) < 0) //insert left
         {
-            insert(key, pg, freq, header, t->left);
+            insert(key, pg, freq, header, date, title, t->left);
             if(height(t->left) - height(t->right) == 2)
             {
                 if(key.compare(t->left->keyword) < 0)
@@ -146,7 +129,7 @@ private:
             }
         } else if(key.compare(t->keyword) > 0) //insert right
         {
-            insert(key, pg, freq, header, t->right);
+            insert(key, pg, freq, header, date, title, t->right);
             if(height(t->right) - height(t->left) == 2)
             {
                 if(key.compare(t->right->keyword) > 0)
@@ -156,9 +139,8 @@ private:
             }
         } else
         {
-            t->pageNumbers->push_back(pg);
-            t->freqency->push_back(freq);
-            t->title->push_back(header);
+            t->keyword = key;
+            t->data->push_back(pg, freq, header, date, title);
         }
 
         t->height = max(height(t->left), height(t->right)) + 1;
@@ -218,40 +200,16 @@ private:
             return findKeyword(key, t->right);
     }
 
-    LinkedList<int>*& findPageNumber(string &key, AvlNode *&t)
+    LinkedList*& findData(string &key, AvlNode *&t)
     {
         if(t == nullptr)
-            return error->pageNumbers;
+            return error->data;
         if(key == t->keyword)
-            return t->pageNumbers;
+            return t->data;
         else if(key.compare(t->keyword) < 0)
-            return findPageNumber(key, t->left);
+            return findData(key, t->left);
         else
-            return findPageNumber(key, t->right);
-    }
-
-    LinkedList<double>*& findFrequency(string& key, AvlNode*& t)
-    {
-        if(t == nullptr)
-            return error->freqency;
-        else if(key == t->keyword)
-            return t->freqency;
-        else if(key.compare(t->keyword) < 0)
-            return findFrequency(key, t->left);
-        else
-            return findFrequency(key, t->right);
-    }
-
-    LinkedList<string>*& findTitle(string& key, AvlNode*& t)
-    {
-        if(t == nullptr)
-            return error->title;
-        else if(key == t->keyword)
-            return t->title;
-        else if(key.compare(t->keyword) < 0)
-            return findTitle(key, t->left);
-        else
-            return findTitle(key, t->right);
+            return findData(key, t->right);
     }
 };
 #endif // AVLTREE

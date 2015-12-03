@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class HashTable
+class HashTable:public Index
 {
 private:
     class HashNode
@@ -37,7 +37,7 @@ private:
 public:
     HashTable()
     {
-        tableSize = 7919;
+        tableSize = 13;
         hashValue = 0;
         size = 0;
         error = new AvlTree();
@@ -45,7 +45,7 @@ public:
         for(int i = 0; i < tableSize; i++)
             bucket[i] = nullptr;
     }
-    ~HashTable()
+    virtual ~HashTable()
     {
         for(int i = 0; i < tableSize; i++)
             delete bucket[i];
@@ -61,7 +61,7 @@ public:
         }
     }
 
-    void insert(string& keyword, int& pageNumber, double& freq, string& header)
+    void insert(string& keyword, int& pageNumber, double& freq, string& header, string& date, string& user)
     {
         setHashValue(keyword);
         if(bucket[hashValue] == nullptr)
@@ -69,7 +69,7 @@ public:
             bucket[hashValue] = new HashNode();
             load++;
         }
-        bucket[hashValue]->avl->insert(keyword, pageNumber, freq, header);
+        bucket[hashValue]->avl->insert(keyword, pageNumber, freq, header, date, user);
     }
 
     void setHashValue(string& keyword)
@@ -98,31 +98,13 @@ public:
             return bucket[hashValue]->avl->findKeyword(keyword);
     }
 
-    LinkedList<int>*& findPageNumber(string& keyword)
+    LinkedList*& findData(string& keyword)
     {
         setHashValue(keyword);
         if(bucket[hashValue] == nullptr)
-            return error->findPageNumber(keyword);
+            return error->findData(keyword);
         else
-            return bucket[hashValue]->avl->findPageNumber(keyword);
-    }
-
-    LinkedList<double>*& findFrequency(string& keyword)
-    {
-        setHashValue(keyword);
-        if(bucket[hashValue] == nullptr)
-            return error->findFrequency(keyword);
-        else
-            return bucket[hashValue]->avl->findFrequency(keyword);
-    }
-
-    LinkedList<string>*& findTitle(string& keyword)
-    {
-        setHashValue(keyword);
-        if(bucket[hashValue] == nullptr)
-            return error->findTitle(keyword);
-        else
-            return bucket[hashValue]->avl->findTitle(keyword);
+            return bucket[hashValue]->avl->findData(keyword);
     }
 
 };
