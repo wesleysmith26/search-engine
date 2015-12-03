@@ -192,7 +192,8 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber,
     }
 
     removeStems(docWords);
-    calculateTermFrequency(docWords, docNumber, pageTitle);
+    calculateTermFrequency(docWords, docNumber, pageTitle, pageDate,
+                           pageContributor);
 }
 
 void DocumentParser::splitString(std::string& text,
@@ -235,7 +236,9 @@ void DocumentParser::removeStems(std::vector<std::string>& words)
 
 void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
                                             int& pageNumber,
-                                            std::string& docTitle)
+                                            std::string& docTitle,
+                                            std::string& date,
+                                            std::string& contributor)
 {
     // the string represents the word and the int represents the number of
     // occurences on that page for the pageTermFrequency map
@@ -282,7 +285,8 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
         }
     }
 
-    myIndexHandler->addWord(pageTermFrequency, pageNumber, docTitle);
+    myIndexHandler->addWord(pageTermFrequency, pageNumber, docTitle, date,
+                            contributor);
 }
 
 void DocumentParser::checkForDuplicateTerm(std::string& word,

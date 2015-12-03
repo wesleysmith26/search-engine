@@ -79,9 +79,12 @@ private:
      * \param terms a vector of strings containing the words for the page
      * \param pageNumber an integer containing the page number of the document
      * \param docTitle a string containing the title of the page in the xml file
+     * \param date a string containing the article date
+     * \param contributor a string containing the article contributor's username
      */
     void calculateTermFrequency(std::vector<std::string>& terms,
-                                int& pageNumber, std::string& docTitle);
+                                int& pageNumber, std::string& docTitle,
+                                std::string& date, std::string& contributor);
 
     /*!
      * \brief checkForDuplicateTerm checks for duplicate terms in the map.
