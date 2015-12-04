@@ -265,43 +265,51 @@ public:
 
     void sort()
     {
-        cur = head;
-        temp = head->next;
+        if(size() > 1)
+        {
+            cur = head;
+            temp = head->next;
+            while(temp != nullptr)
+            {
+                while(cur != nullptr)
+                {
+                    if(cur->freqency < temp->freqency)
+                    {
+                        swap(cur, temp);
+                    }
+                    cur = cur->next;
+                }
+                cur = head;
+                temp = temp->next;
+            }
+        }
+    }
+
+    void swap(Node* a, Node* b)
+    {
         int pgTemp;
         double freqTemp;
         string titleTemp;
         string dateTemp;
         string userTemp;
-        for(int i = 1; i < size(); i++)
-        {
-            for(int j = 0; j < size()-1; j++)
-            {
-                if(cur->freqency < temp->freqency)
-                {
-                    pgTemp = cur->pageNumber;
-                    freqTemp = cur->freqency;
-                    titleTemp = cur->title;
-                    dateTemp = cur->date;
-                    userTemp = cur->user;
 
-                    cur->pageNumber = temp->pageNumber;
-                    cur->freqency = temp->freqency;
-                    cur->title = temp->title;
-                    cur->date = temp->date;
-                    cur->user = temp->user;
+        pgTemp = a->pageNumber;
+        freqTemp = a->freqency;
+        titleTemp = a->title;
+        dateTemp = a->date;
+        userTemp = a->user;
 
-                    temp->pageNumber = pgTemp;
-                    temp->freqency = freqTemp;
-                    temp->title = titleTemp;
-                    temp->date = dateTemp;
-                    temp->user = userTemp;
-                }
+        a->pageNumber = b->pageNumber;
+        a->freqency = b->freqency;
+        a->title = b->title;
+        a->date = b->date;
+        a->user = b->user;
 
-            }
-            cur = temp;
-            temp = cur->next;
-        }
-
+        b->pageNumber = pgTemp;
+        b->freqency = freqTemp;
+        b->title = titleTemp;
+        b->date = dateTemp;
+        b->user = userTemp;
     }
 
     void output()
