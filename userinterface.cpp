@@ -1,10 +1,11 @@
 ﻿#include "userinterface.h"
 #include "queryprocessor.h"
-#include "documentparser.h"
 
 #include <sstream>
 UserInterface::UserInterface()
 {
+    docParser = nullptr;
+    ih = nullptr;
     select = 0;
     avlTree = true;
     searchWords = " ";
@@ -13,10 +14,13 @@ UserInterface::UserInterface()
 
 UserInterface::UserInterface(char*& xmlFilename)
 {
+    ih = new IndexHandler;
+    docParser = new DocumentParser(ih);
     select = 0;
     avlTree = true;
     searchWords = " ";
     xmlFile = xmlFilename;
+    docParser->readDocument(xmlFile);
 }
 
 void UserInterface::startScreen()
@@ -27,8 +31,6 @@ void UserInterface::startScreen()
         maintenanceMode();
     else if (select == 2)
         interactiveMode();
-    else
-        queryProcessor();
 }
 
 void UserInterface::maintenanceMode()
@@ -36,11 +38,11 @@ void UserInterface::maintenanceMode()
     cout<<"Please select the one of options:\n1) Add Document\n2) Clear Indexs\n3) Exit Maintence Mode"<<endl;
     cin>>select;
     if(select == 1)
-        cout<<"add doc"<<endl;
+        docParser->readDocument(xmlFile);
     else if(select == 2)
         cout<<"clear"<<endl;
-    else
-        queryProcessor();
+
+    startScreen();
 }
 
 void UserInterface::interactiveMode()
@@ -54,7 +56,7 @@ void UserInterface::interactiveMode()
     {
         cout << "Please enter a properly formatted query: ";
         getline(cin, searchWords);
-        QueryProcessor qp(searchWords);
+        QueryProcessor qp(ih, searchWords, avlTree);
     }
 
     string answer = "";
@@ -66,19 +68,4 @@ void UserInterface::interactiveMode()
         DocumentParser docParser;
         docParser.getPageNumber(xmlFile);
     }
-}
-
-void UserInterface::queryProcessor()
-{
-    cout<<"Please select the index you would like to use:\n1) Avl Tree\n2) Hash Table"<<endl;
-    cin>>select;
-    if(select == 2)
-        avlTree = false;
-    else
-        avlTree = true;
-
-    cout<<"Please enter the words you would like to search for:"<<endl;
-    //cin>>getline(searchWords);
-
-    cout<<searchWords;
 }

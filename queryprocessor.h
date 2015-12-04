@@ -4,10 +4,16 @@
 #include <string>
 #include <vector>
 
+#include "indexhandler.h"
+
 class QueryProcessor
 {
 private:
+    IndexHandler* myIndexHandler;
     std::string queryWords;
+    bool useAvl;
+    Index* index;
+    //std::string temp;
 
     /*!
      * \brief toLower converts query keywords to lowercase.
@@ -52,9 +58,10 @@ public:
 
     /*!
      * \brief QueryProcessor overloaded constructor.
+     * \param ih an IndexHandler object.
      * \param searchText a string containing the user's query.
      */
-    QueryProcessor(std::string& searchText);
+    QueryProcessor(IndexHandler*& ih ,std::string& searchText, bool& avlTree);
 
 };
 

@@ -7,12 +7,21 @@
 
 QueryProcessor::QueryProcessor()
 {
+    myIndexHandler = nullptr;
     queryWords = "";
+    useAvl = false;
+    index = nullptr;
+    //temp = "veda";
 }
 
-QueryProcessor::QueryProcessor(std::string& searchText)
+QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText,
+                               bool& avlTree)
 {
+    myIndexHandler = ih;
     queryWords = searchText;
+    useAvl = avlTree;
+    index = nullptr;
+    //temp = "veda";
     toLower();
 }
 
@@ -101,12 +110,27 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
 
     removeStopWords(keywords);
     removeStems(keywords);
-    //@TODO send to IndexHandler from here I think.
+
+    if (useAvl == true)
+        index = myIndexHandler->searchHash(keywords);
+    else
+        index = myIndexHandler->searchHash(keywords);
+
+    LinkedList* ll;
+    std::string word = "boston";
+    ll = index->findData(word);
+    ll->sort();
+    ll->output();
+    std::cout<<std::endl;
+    word = "veda";
+    ll = index->findData(word);
+    ll->sort();
+    ll->output();
+
 }
 
 void QueryProcessor::removeParenthesesFromWord(std::string& word)
 {
-    std::cout << "begin word: " << word << "\t";
     std::size_t bracePosition = word.find(")");
 
     if (bracePosition != std::string::npos)

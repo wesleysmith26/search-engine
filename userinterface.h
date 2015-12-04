@@ -3,11 +3,16 @@
 #include <iostream>
 #include <string>
 
+#include "documentparser.h"
+#include "indexhandler.h"
+
 using namespace std;
 
 class UserInterface
 {
 private:
+    DocumentParser* docParser;
+    IndexHandler* ih;
     int select;
     bool avlTree;
     string searchWords;
@@ -20,7 +25,6 @@ public:
     UserInterface(char*& xmlFilename);
     void startScreen();
     void maintenanceMode();
-    void queryProcessor();
     void boolExpression();
 
 };

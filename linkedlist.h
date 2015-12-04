@@ -272,9 +272,9 @@ public:
         string titleTemp;
         string dateTemp;
         string userTemp;
-        for(int i = 1; i < size; i++)
+        for(int i = 1; i < size(); i++)
         {
-            for(int j = 0; j < size-1; j++)
+            for(int j = 0; j < size()-1; j++)
             {
                 if(cur->freqency < temp->freqency)
                 {

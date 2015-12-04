@@ -24,7 +24,7 @@ void IndexHandler::addWord(map<string, int>& table, int &pg, string &title, stri
     {
         string word = it->first;
         freq = (double)it->second/(double)table.size();
-        avl->insert(word, pg, freq, title, date, user);
+        hash->insert(word, pg, freq, title, date, user);
         //hash->insert(word, pg, freq, title);
     }
 }
@@ -55,7 +55,7 @@ Index*& IndexHandler::searchHash(vector<string> &searchWords)
     LinkedList* ll;
     for(vector<string>::iterator it = searchWords.begin(); it != searchWords.end(); it++)
     {
-        temp = avl->findKeyword(*it);
+        temp = hash->findKeyword(*it);
         if(temp != error)
         {
             temp = *it;
@@ -74,13 +74,13 @@ void IndexHandler::clear()
 
 void IndexHandler::printSize()
 {
-    LinkedList* ll;
-    save.close();
-    cout<<avl->getSize()<<endl;
-    cout<<avl->findKeyword(test)<<endl;
-    ll = avl->findData(test);
-    ll->sort();
-    ll->output();
+//    LinkedList* ll;
+//    save.close();
+//    cout<<avl->getSize()<<endl;
+//    cout<<avl->findKeyword(test)<<endl;
+//    ll = avl->findData(test);
+//    ll->sort();
+//    ll->output();
 
 }
 

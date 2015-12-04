@@ -22,8 +22,8 @@ int main(int argc, char* argv[])
     //std::string searchPhrase = "AND computer Boston (NOT Seattle)";
     //QueryProcessor myQueryProcessor(argv[1], searchPhrase);
 
-    UserInterface ui;
-    ui.startScreen();
+    UserInterface* ui = new UserInterface(argv[1]);
+    ui->startScreen();
 
     //DocumentParser parser;
     //parser.getPageNumber(argv[1]);
