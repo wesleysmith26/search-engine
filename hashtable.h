@@ -37,7 +37,7 @@ private:
 public:
     HashTable()
     {
-        tableSize = 13;
+        tableSize = 500009;
         hashValue = 0;
         size = 0;
         error = new AvlTree();
@@ -45,6 +45,35 @@ public:
         for(int i = 0; i < tableSize; i++)
             bucket[i] = nullptr;
     }
+
+    HashTable(const HashTable &cp)
+    {
+        tableSize = cp.tableSize;
+        hashValue = cp.hashValue;
+        size = cp.size;
+        error = new AvlTree();
+        error = cp.error;
+        bucket = new HashNode*[tableSize];
+        bucket = cp.bucket;
+        for(int i = 0; i < tableSize; i++)
+            bucket[i] = cp.bucket[i];
+    }
+
+    HashTable& operator=(const HashTable &cp)
+    {
+        if(this == &cp)
+            return *this;
+
+        tableSize = cp.tableSize;
+        hashValue = cp.hashValue;
+        size = cp.size;
+        error = cp.error;
+        bucket = cp.bucket;
+        for(int i = 0; i < tableSize; i++)
+            bucket[i] = cp.bucket[i];
+
+    }
+
     virtual ~HashTable()
     {
         for(int i = 0; i < tableSize; i++)
@@ -70,6 +99,17 @@ public:
             load++;
         }
         bucket[hashValue]->avl->insert(keyword, pageNumber, freq, header, date, user);
+    }
+
+    void insertLL(string& keyword, LinkedList*& ll)
+    {
+        setHashValue(keyword);
+        if(bucket[hashValue] == nullptr)
+        {
+            bucket[hashValue] = new HashNode();
+            load++;
+        }
+        bucket[hashValue]->avl->insertLL(keyword, ll);
     }
 
     void setHashValue(string& keyword)

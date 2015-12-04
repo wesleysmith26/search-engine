@@ -61,10 +61,36 @@ public:
         delete root;
     }
 
-    AvlTree(const AvlTree&cp)
+    AvlTree(const AvlTree &cp)
     {
-        root = nullptr;
-        *this = cp;
+        error = new AvlNode();
+        error = cp.error;
+        if(cp.root == nullptr)
+        {
+            root = nullptr;
+        } else
+        {
+            root = new AvlNode();
+            root = cp.root;
+        }
+        size = cp.size;
+    }
+
+    AvlTree& operator=(const AvlTree &cp)
+    {
+        if(this == &cp)
+            return *this;
+
+        error = cp.error;
+
+        if(cp.root == nullptr)
+            root = nullptr;
+        else
+            root = cp.root;
+
+        size = cp.size;
+
+        return *this;
     }
 
     void clear()
@@ -80,6 +106,11 @@ public:
     void insert(string& key, int& pg, double& freq, string& header, string& date, string& user)
     {
         insert(key, pg, freq, header, date, user, root);
+    }
+
+    void insertLL(string& key, LinkedList*& ll)
+    {
+        insertLL(key, ll, root);
     }
 
     string& findKeyword(string& key)
@@ -142,6 +173,39 @@ private:
             t->keyword = key;
             t->data->push_back(pg, freq, header, date, title);
         }
+
+        t->height = max(height(t->left), height(t->right)) + 1;
+    }
+
+    void insertLL(string& key, LinkedList*& ll, AvlNode*& t)
+    {
+        if(t == nullptr)
+        {
+            t = new AvlNode();
+            t->keyword = key;
+            t->data = ll;
+            size++;
+        } else if(key.compare(t->keyword) < 0) //insert left
+        {
+            insertLL(key, ll, t->left);
+            if(height(t->left) - height(t->right) == 2)
+            {
+                if(key.compare(t->left->keyword) < 0)
+                    rotateWithLeftChild(t); // case 1
+                else
+                    doubleWithLeftChild(t); // case 2
+            }
+        } else if(key.compare(t->keyword) > 0) //insert right
+        {
+            insertLL(key, ll, t->right);
+            if(height(t->right) - height(t->left) == 2)
+            {
+                if(key.compare(t->right->keyword) > 0)
+                    rotateWithRightChild(t); // case 4
+                else
+                    doubleWithRightChild(t);  // case 3
+            }
+        } else { }
 
         t->height = max(height(t->left), height(t->right)) + 1;
     }
