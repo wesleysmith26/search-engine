@@ -13,6 +13,7 @@ private:
     std::string queryWords;
     bool useAvl;
     Index* index;
+    LinkedList* outputLL;
     //std::string temp;
 
     /*!

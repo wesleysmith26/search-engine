@@ -11,6 +11,7 @@ QueryProcessor::QueryProcessor()
     queryWords = "";
     useAvl = false;
     index = nullptr;
+    outputLL = new LinkedList();
     //temp = "veda";
 }
 
@@ -116,17 +117,14 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
     else
         index = myIndexHandler->searchHash(keywords);
 
-    LinkedList* ll;
-    std::string word = "boston";
-    ll = index->findData(word);
-    ll->sort();
-    ll->output();
-    std::cout<<std::endl;
-    word = "veda";
-    ll = index->findData(word);
-    ll->sort();
-    ll->output();
-
+    for(int i = 0; i < keywords.size(); i++)
+    {
+        LinkedList* ll;
+        ll = index->findData(keywords[i]);
+        ll->sort();
+        ll->output();
+        std::cout<<std::endl;
+    }
 }
 
 void QueryProcessor::removeParenthesesFromWord(std::string& word)

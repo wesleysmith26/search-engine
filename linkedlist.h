@@ -320,13 +320,13 @@ public:
         {
            cur = head;
            int counter = 0;
-           while(cur->next != nullptr)
+           while(cur != nullptr && counter < 16)
            {
                cout<<"Index: "<<counter<<" Data: "<<cur->pageNumber<<", "<<cur->freqency<<", "<<cur->title<<", "<<cur->date<<", "<<cur->user<<endl;
                counter++;
                cur = cur->next;
            }
-           cout<<"Index: "<<counter<<" Data: "<<cur->pageNumber<<", "<<cur->freqency<<", "<<cur->title<<", "<<cur->date<<", "<<cur->user<<endl;
+           cout<<"Total Number of Indexs: "<<size()<<endl;
         }
     }
 
