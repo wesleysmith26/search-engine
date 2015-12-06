@@ -93,6 +93,21 @@ public:
         }
     }
 
+    void clear()
+    {
+        if(head != nullptr)
+        {
+            while(head->next != nullptr)
+            {
+                temp = head->next;
+                delete head;
+                head = temp;
+            }
+            delete head;
+            head = nullptr;
+        }
+    }
+
     /*!
      * \brief overloaded assignment operator
      * \param cp a constant LinkedList object
