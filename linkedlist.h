@@ -1,10 +1,19 @@
-﻿#ifndef LINKEDLIST
+﻿// Owner: Charlie
+// file history:
+// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/linkedlist.h
+
+#ifndef LINKEDLIST
 #define LINKEDLIST
 #include <iostream>
 #include <string>
 
 using namespace std;
 
+/*!
+ * \class The LinkedList class
+ * \brief Singly linked list that has nodes that contain the page number,
+ * term frequency, document title, document date, and contributor's username.
+ */
 class LinkedList
 {
     struct Node
@@ -23,6 +32,9 @@ private:
     Node* temp;
     bool contain;
 public:
+    /*!
+     * \brief LinkedList default constructor
+     */
     LinkedList()
     {
         head = nullptr;
@@ -30,6 +42,9 @@ public:
         temp = nullptr;
     }
 
+    /*!
+     * \brief LinkedList destructor
+     */
     ~LinkedList()
     {
         if(head != nullptr)
@@ -44,6 +59,10 @@ public:
         }
     }
 
+    /*!
+     * \brief LinkedList copy constructor
+     * \param cp a constant LinkedList object
+     */
     LinkedList(const LinkedList &cp)
     {
         if(cp.head == nullptr)
@@ -74,6 +93,11 @@ public:
         }
     }
 
+    /*!
+     * \brief overloaded assignment operator
+     * \param cp a constant LinkedList object
+     * \return a LinkedList object
+     */
     LinkedList& operator=(const LinkedList &cp)
     {
         if(this == &cp)
@@ -98,6 +122,10 @@ public:
 
     }
 
+    /*!
+     * \brief empty checks if the linked list is empty.
+     * \return true if the linked list is empty and false if it is not empty
+     */
     bool empty()
     {
         if(head == nullptr)
@@ -106,6 +134,12 @@ public:
             return false;
     }
 
+
+    /*!
+     * \brief checkNext checks if the next node is a nullptr.
+     * \param index an integer representing the node number
+     * \return true if next node isn't a nullptr and true if it is a nullptr
+     */
     bool checkNext(int index)
     {
         cur = head;
@@ -117,6 +151,14 @@ public:
             return true;
     }
 
+    /*!
+     * \brief push_back adds a node to the end of the linked list.
+     * \param pg an integer containing the page number in the xml file
+     * \param freq a double containing the term frequency for the document
+     * \param docName a string containing the title of the page
+     * \param dateMade a string containing the timestamp of the page
+     * \param userName a string containing the page contributor's username
+     */
     void push_back(int pg, double freq, string docName, string dateMade, string userName)
     {
         if(empty())
@@ -144,6 +186,11 @@ public:
         }
     }
 
+    /*!
+     * \brief getPageNumber gets the page number from a node in the linked list.
+     * \param index an integer representing the node number in the linked list
+     * \return an integer representing the page number from the specified node
+     */
     int& getPageNumber(int index)
     {
         if(0 > index || size()-1 < index)
@@ -159,6 +206,12 @@ public:
         }
     }
 
+    /*!
+     * \brief getFrequency gets the term frequency from a node in the linked
+     * list.
+     * \param index an integer representing the node number in the linked list
+     * \return a double representing the term frequency from the specified node
+     */
     double& getFrequency(int index)
     {
         if(0 > index || size()-1 < index)
@@ -174,6 +227,11 @@ public:
         }
     }
 
+    /*!
+     * \brief getTitle gets the page title from a node in the linked list.
+     * \param index an integer representing the node number in the linked list
+     * \return  a string representing the page title from the specified node
+     */
     string& getTitle(int index)
     {
         if(0 > index || size()-1 < index)
@@ -189,6 +247,11 @@ public:
         }
     }
 
+    /*!
+     * \brief getDate gets the page date from a node in the linked list.
+     * \param index an integer representing the node number in the linked list
+     * \return a string representing the page date from the specified node
+     */
     string& getDate(int index)
     {
         if(0 > index || size()-1 < index)
@@ -204,6 +267,13 @@ public:
         }
     }
 
+    /*!
+     * \brief getUser gets the contributor's username from a node in the linked
+     * list.
+     * \param index an integer representing the node number in the linked list
+     * \return a string representing the contributor's username from the
+     * specified node.
+     */
     string& getUser(int index)
     {
         if(0 > index || size()-1 < index)
@@ -235,6 +305,11 @@ public:
         cur->freqency += freq;
     }
 
+    /*!
+     * \brief deleteAt deletes a specified node in the linked list.
+     * \param index index an integer representing the node number in the linked
+     * list
+     */
     void deleteAt(int index)
     {
         if(index == 0)
@@ -254,6 +329,10 @@ public:
         }
     }
 
+    /*!
+     * \brief size gets the size of the linked list.
+     * \return an integer representing the size of the linked list
+     */
     int size()
     {
         if(empty())
@@ -268,6 +347,9 @@ public:
         return counter;
     }
 
+    /*!
+     * \brief sort sorts the linked list by term frequency in descending order.
+     */
     void sort()
     {
         if(size() > 1)
@@ -363,4 +445,3 @@ public:
 
 };
 #endif // LINKEDLIST
-
