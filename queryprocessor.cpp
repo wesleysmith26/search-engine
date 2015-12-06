@@ -96,6 +96,7 @@ void QueryProcessor::toLower()
 
 void QueryProcessor::separateKeywords(std::string& searchQuery)
 {
+    cout<<searchQuery<<endl;
     std::vector<std::string> keywords = {};
     std::stringstream ss(searchQuery);
     std::string temp = "";
@@ -110,6 +111,7 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
         else if (ss)
         {
             removeParenthesesFromWord(temp);
+            cout<<temp<<endl;
             keywords.push_back(temp);
         }
     }
@@ -405,6 +407,7 @@ void QueryProcessor::removeStems(std::vector<std::string>& queryKeywords)
 void QueryProcessor::noNest(std::vector<string> &phrase)
 {
     LinkedList* temp;
+    LinkedList* tempOutput = new LinkedList();
     int it;
 
     if(phrase[0] == "AND")
@@ -438,12 +441,14 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
                     if(temp->contains(outputLL->getPageNumber(i)))
                     {
                         it = temp->findIterator(outputLL->getPageNumber(i));
-                        outputLL->set_at(i, temp->getFrequency(it));
-                    } else
-                    {
-                        outputLL->deleteAt(i);
+                        outputLL->findSet(outputLL->getPageNumber(i), temp->getFrequency(it));
+                        tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
                     }
                 }
+                outputLL->clear();
+                for(int i = 0; i < tempOutput->size(); i++)
+                    outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                tempOutput->clear();
             }
         }
     } else if(phrase[0] == "OR")
@@ -489,27 +494,15 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
             phrase.erase(phrase.begin());
             for(int i = 0; i < temp->size(); i++)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
-
         } else
         {
-            temp = index->findData(phrase[0]);
-            phrase.erase(phrase.begin());
-            for(int i = 0; i < temp->size(); i++)
-                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
-            phrase.erase(phrase.begin());
-            temp = index->findData(phrase[0]);
-            phrase.erase(phrase.begin());
-            for(int i = 0; i < temp->size(); i++)
-            {
-                if(outputLL->contains(temp->getPageNumber(i)))
-                    outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
-            }
 
         }
     }
-    outputLL->sort();
+    //outputLL->sort();
     outputLL->output();
     cout<<endl;
+    delete tempOutput;
 }
 
 void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<string> &nestPhrase)
