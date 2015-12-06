@@ -12,6 +12,8 @@ QueryProcessor::QueryProcessor()
     useAvl = false;
     index = nullptr;
     outputLL = new LinkedList();
+    parentheses = "";
+    nestCounter = 0;
     //temp = "veda";
 }
 
@@ -22,6 +24,9 @@ QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText,
     queryWords = searchText;
     useAvl = avlTree;
     index = nullptr;
+    outputLL = new LinkedList();
+    parentheses = "";
+    nestCounter = 0;
     //temp = "veda";
     toLower();
 }
@@ -117,14 +122,154 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
     else
         index = myIndexHandler->searchHash(keywords);
 
+    separateKeywordsBool(queryWords);
+}
+
+void QueryProcessor::separateKeywordsBool(string &searchQuery)
+{
+    std::vector<std::string> keywords = {};
+    std::vector<std::string> nestVector = {};
+    std::stringstream ss(searchQuery);
+    std::string temp = "";
+    int closeCounter = 0;
+
+    while (ss)
+    {
+        ss >> temp;
+        seperateParenthesesFromWord(temp);
+        if(parentheses == "(")
+            keywords.push_back(parentheses);
+        keywords.push_back(temp);
+        if(parentheses == ")")
+            keywords.push_back(parentheses);
+    }
+    keywords.pop_back();
+    removeStems(keywords);
+    removeStopWords(keywords);
+
+    //changes duplicate to )
+    int del1 = keywords.size()-3;
+    int del2 = keywords.size()-1;
+    if(keywords.size() > 3 && keywords[del1] == keywords[del2])
+        keywords[del2] = ")";
+
+    //adds ) if needed
     for(int i = 0; i < keywords.size(); i++)
     {
-        LinkedList* ll;
-        ll = index->findData(keywords[i]);
-        ll->sort();
-        ll->output();
-        std::cout<<std::endl;
+        //std::cout<<keywords[i]<<endl;
+        if(keywords[i] == "(")
+            nestCounter++;
+        if(keywords[i] == ")")
+            closeCounter++;
     }
+    if(closeCounter != nestCounter)
+    {
+        int count = 0;
+        for(vector<string>::iterator it = keywords.begin(); it != keywords.end(); it++)
+        {
+            if(*it == ")")
+                count++;
+            if(count == 1)
+                keywords.insert(it, ")");
+        }
+    }
+
+
+    if(nestCounter == 0)
+    {
+        noNest(keywords);
+    }
+    if(nestCounter == 1)
+    {
+        int parenthesesCount = 0;
+        vector<string>::iterator first;
+        vector<string>::iterator last;
+        for(vector<string>::iterator it = keywords.begin(); it != keywords.end(); it++)
+        {
+            if(*it == "(")
+                parenthesesCount++;
+            if(parenthesesCount == 1)
+            {
+                 if(*it == "(")
+                     first = it;
+                 else if(*it == ")")
+                 {
+                     last = it;
+                     parenthesesCount = 0;
+                 }
+                 else
+                     nestVector.push_back(*it);
+            }
+        }
+        keywords.erase(first, last+1);
+        singleNest(keywords, nestVector);
+    }
+    if(nestCounter == 2)
+    {
+        int parenthesesCount = 0;
+        vector<string>::iterator first;
+        vector<string>::iterator last;
+        for(vector<string>::iterator it = keywords.begin(); it != keywords.end(); it++)
+        {
+            if(*it == "(")
+                parenthesesCount++;
+            if(parenthesesCount == 2)
+            {
+                 if(*it == "(")
+                     first = it;
+                 else if(*it == ")")
+                 {
+                     last = it;
+                     parenthesesCount = 0;
+                 }
+                 else
+                     nestVector.push_back(*it);
+            }
+        }
+        keywords.erase(first, last+1);
+        doubleNest(keywords, nestVector);
+    }
+
+//    cout<<endl;
+
+//    for(int i = 0; i < keywords.size(); i++)
+//    {
+//        std::cout<<keywords[i]<<endl;
+//        if(keywords[i] == "(")
+//            nestCounter++;
+//    }
+
+//    cout<<endl;
+
+//    for(int i = 0; i < nestVector.size(); i++)
+//    {
+//        std::cout<<nestVector[i]<<endl;
+//    }
+}
+
+void QueryProcessor::seperateParenthesesFromWord(string &word)
+{
+    bool hasParentheses = false;
+    std::size_t bracePosition = word.find(")");
+
+    if (bracePosition != std::string::npos)
+    {
+        word.erase(word.end() - 1);
+        parentheses = ")";
+        hasParentheses = true;
+    }
+
+    bracePosition = word.find("(");
+
+    if (bracePosition != std::string::npos)
+    {
+        word.erase(word.begin());
+        parentheses = "(";
+        hasParentheses = true;
+    }
+
+    if(!hasParentheses)
+        parentheses = "none";
 }
 
 void QueryProcessor::removeParenthesesFromWord(std::string& word)
@@ -255,4 +400,316 @@ void QueryProcessor::removeStems(std::vector<std::string>& queryKeywords)
         stemmer(temp);
         queryKeywords.at(i).assign(temp.begin(), temp.end());
     }
+}
+
+void QueryProcessor::noNest(std::vector<string> &phrase)
+{
+    LinkedList* temp;
+    int it;
+
+    if(phrase[0] == "AND")
+    {
+        phrase.erase(phrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!phrase.empty())
+        {
+            if(phrase[0] == "NOT")
+            {
+                phrase.erase(phrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < outputLL->size(); i++)
+                {
+                    if(temp->contains(outputLL->getPageNumber(i)))
+                    {
+                        it = temp->findIterator(outputLL->getPageNumber(i));
+                        outputLL->set_at(i, temp->getFrequency(it));
+                    } else
+                    {
+                        outputLL->deleteAt(i);
+                    }
+                }
+            }
+        }
+    } else if(phrase[0] == "OR")
+    {
+        phrase.erase(phrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!phrase.empty())
+        {
+            if(phrase[0] == "NOT")
+            {
+                phrase.erase(phrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->findSet(temp->getPageNumber(i), temp->getFrequency(i));
+                    else
+                        outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+                }
+            }
+        }
+    } else
+    {
+        if(phrase.size() == 1 && outputLL->empty())
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+
+        } else
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+            phrase.erase(phrase.begin());
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+            {
+                if(outputLL->contains(temp->getPageNumber(i)))
+                    outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+            }
+
+        }
+    }
+    outputLL->sort();
+    outputLL->output();
+    cout<<endl;
+}
+
+void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<string> &nestPhrase)
+{
+    LinkedList* temp;
+    int it;
+
+    if(nestPhrase[0] == "AND")
+    {
+        nestPhrase.erase(nestPhrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(nestPhrase[0]);
+            nestPhrase.erase(nestPhrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!nestPhrase.empty())
+        {
+            if(nestPhrase[0] == "NOT")
+            {
+                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < outputLL->size(); i++)
+                {
+                    if(temp->contains(outputLL->getPageNumber(i)))
+                    {
+                        it = temp->findIterator(outputLL->getPageNumber(i));
+                        outputLL->set_at(i, temp->getFrequency(it));
+                    } else
+                    {
+                        outputLL->deleteAt(i);
+                    }
+                }
+            }
+        }
+    }
+
+    if(nestPhrase[0] == "OR")
+    {
+        nestPhrase.erase(nestPhrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(nestPhrase[0]);
+            nestPhrase.erase(nestPhrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!nestPhrase.empty())
+        {
+            if(nestPhrase[0] == "NOT")
+            {
+                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->findSet(temp->getPageNumber(i), temp->getFrequency(i));
+                    else
+                        outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+                }
+            }
+        }
+    }
+
+//    outputLL->sort();
+//    outputLL->output();
+//    cout<<endl;
+
+    noNest(restOfPhrase);
+
+}
+
+void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<string> &nestPhrase)
+{
+    LinkedList* temp;
+    int it;
+
+    if(nestPhrase[0] == "AND")
+    {
+        nestPhrase.erase(nestPhrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(nestPhrase[0]);
+            nestPhrase.erase(nestPhrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!nestPhrase.empty())
+        {
+            if(nestPhrase[0] == "NOT")
+            {
+                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < outputLL->size(); i++)
+                {
+                    if(temp->contains(outputLL->getPageNumber(i)))
+                    {
+                        it = temp->findIterator(outputLL->getPageNumber(i));
+                        outputLL->set_at(i, temp->getFrequency(it));
+                    } else
+                    {
+                        outputLL->deleteAt(i);
+                    }
+                }
+            }
+        }
+    }
+
+    if(nestPhrase[0] == "OR")
+    {
+        nestPhrase.erase(nestPhrase.begin());
+        if(outputLL->empty())
+        {
+            temp = index->findData(nestPhrase[0]);
+            nestPhrase.erase(nestPhrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        }
+        while(!nestPhrase.empty())
+        {
+            if(nestPhrase[0] == "NOT")
+            {
+                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                }
+            } else
+            {
+                temp = index->findData(nestPhrase[0]);
+                nestPhrase.erase(nestPhrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                {
+                    if(outputLL->contains(temp->getPageNumber(i)))
+                        outputLL->findSet(temp->getPageNumber(i), temp->getFrequency(i));
+                    else
+                        outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+                }
+            }
+        }
+    }
+
+//    outputLL->sort();
+//    outputLL->output();
+//    cout<<endl;
+
+    int parenthesesCount = 0;
+    vector<string>::iterator first;
+    vector<string>::iterator last;
+    for(vector<string>::iterator it = restOfPhrase.begin(); it != restOfPhrase.end(); it++)
+    {
+        if(*it == "(")
+            parenthesesCount++;
+        if(parenthesesCount == 1)
+        {
+             if(*it == "(")
+                 first = it;
+             else if(*it == ")")
+             {
+                 last = it;
+                 parenthesesCount = 0;
+             }
+             else
+                 nestPhrase.push_back(*it);
+        }
+    }
+    restOfPhrase.erase(first, last+1);
+    singleNest(restOfPhrase, nestPhrase);
 }

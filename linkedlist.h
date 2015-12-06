@@ -21,6 +21,7 @@ private:
     Node* head;
     Node* cur;
     Node* temp;
+    bool contain;
 public:
     LinkedList()
     {
@@ -218,16 +219,20 @@ public:
         }
     }
 
-    void set_at(int index, int pg, double freq, string docName, string dateMade, string userName)
+    void set_at(int index, double freq)
     {
         cur = head;
         for(int counter = 0; counter < index; counter++)
             cur = cur->next;
-        cur->pageNumber = pg;
-        cur->freqency = freq;
-        cur->title = docName;
-        cur->date = dateMade;
-        cur->user = userName;
+        cur->freqency += freq;
+    }
+
+    void findSet(int pg, double freq)
+    {
+        cur = head;
+        while(cur->pageNumber != pg)
+            cur = cur->next;
+        cur->freqency += freq;
     }
 
     void deleteAt(int index)
@@ -310,6 +315,32 @@ public:
         b->title = titleTemp;
         b->date = dateTemp;
         b->user = userTemp;
+    }
+
+    bool contains(int& pg)
+    {
+        cur = head;
+        while(cur != nullptr)
+        {
+            if(cur->pageNumber == pg)
+                return true;
+            cur = cur->next;
+        }
+        return false;
+    }
+
+    int findIterator(int& pg)
+    {
+        cur = head;
+        int it = 0;
+        while(cur != nullptr)
+        {
+            if(cur->pageNumber == pg)
+                return it;
+            cur = cur->next;
+            it++;
+        }
+        return 0;
     }
 
     void output()

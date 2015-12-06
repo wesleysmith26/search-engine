@@ -14,6 +14,8 @@ private:
     bool useAvl;
     Index* index;
     LinkedList* outputLL;
+    std::string parentheses;
+    int nestCounter;
     //std::string temp;
 
     /*!
@@ -27,12 +29,16 @@ private:
      */
     void separateKeywords(std::string& searchQuery);
 
+    void separateKeywordsBool(std::string& searchQuery);
+
     /*!
      * \brief removeBraceFromWord removes parentheses from the beginning or end
      * of keywords.
      * \param word a string containing a keyword from the user's query.
      */
     void removeParenthesesFromWord(std::string& word);
+
+    void seperateParenthesesFromWord(std::string& word);
 
     /*!
      * \brief removeStopWords removes stopwords from the user's query.
@@ -50,6 +56,12 @@ private:
      * query.
      */
     void removeStems(std::vector<std::string>& queryKeywords);
+
+    void noNest(std::vector<std::string>& phrase);
+
+    void singleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& nestPhrase);
+
+    void doubleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& nestPhrase);
 
 public:
     /*!
