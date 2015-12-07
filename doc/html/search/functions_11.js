@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['xml_5fattribute',['xml_attribute',['../classrapidxml_1_1xml__attribute.html#a26be291103917d3e8de110d46dd83816',1,'rapidxml::xml_attribute']]],
-  ['xml_5fdocument',['xml_document',['../classrapidxml_1_1xml__document.html#aae8841b15085ba8f32ff46587ace28f5',1,'rapidxml::xml_document']]],
-  ['xml_5fnode',['xml_node',['../classrapidxml_1_1xml__node.html#a8bd9019960b90605a45998b661fb1b0e',1,'rapidxml::xml_node']]]
+  ['userinterface',['UserInterface',['../class_user_interface.html#ae6fb70370701b3bd6120e923df9705b0',1,'UserInterface::UserInterface()'],['../class_user_interface.html#a2d478bf174c5a898320fbdd05de75a71',1,'UserInterface::UserInterface(char *&amp;xmlFilename)']]]
 ];

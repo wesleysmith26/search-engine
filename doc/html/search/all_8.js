@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['indexhandler',['IndexHandler',['../class_index_handler.html',1,'']]],
+  ['index',['Index',['../class_index.html',1,'']]],
+  ['indexhandler',['IndexHandler',['../class_index_handler.html',1,'IndexHandler'],['../class_index_handler.html#a27748387661142a2eb545be6f0499996',1,'IndexHandler::IndexHandler()']]],
   ['indexing',['Indexing',['../group___indexing.html',1,'']]],
+  ['insert',['insert',['../class_avl_tree.html#a9305ea46f35f021ddf30bbc87c071f30',1,'AvlTree::insert()'],['../class_hash_table.html#a3a194bb56855eb892b24455094a1edbb',1,'HashTable::insert()'],['../class_index.html#ad44792ad4f81ef1e17a0c6cb6f57167c',1,'Index::insert()']]],
   ['insert_5fattribute',['insert_attribute',['../classrapidxml_1_1xml__node.html#a9fe659cdf4a5b3bbf5e8ffc98db5a84f',1,'rapidxml::xml_node']]],
   ['insert_5fnode',['insert_node',['../classrapidxml_1_1xml__node.html#a666880f42a7e486d78cc45ed51c7c46d',1,'rapidxml::xml_node']]],
+  ['insertll',['insertLL',['../class_avl_tree.html#a82a02d204f4067ff89e0fb6925d58893',1,'AvlTree::insertLL()'],['../class_hash_table.html#a096c63eedf8e85a5523d59929f7a7cb3',1,'HashTable::insertLL()'],['../class_index.html#a423c014174a0257d27b7e5c5834f92ed',1,'Index::insertLL()']]],
   ['int_5fto_5fbool',['int_to_bool',['../group___mathematics.html#gad1be2b3af9940c545752e8e39b2749a3',1,'safe_math.h']]],
   ['is_5fapostrophe',['is_apostrophe',['../group___stemming.html#ga0b423c8a1a53ec586da4613472d61e34',1,'stemming::stem']]],
   ['is_5fhex_5fdigit',['is_hex_digit',['../namespacestring__util.html#af8c723187df1b5450e8c106ecb04a10a',1,'string_util']]],

@@ -91,16 +91,149 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">IndexHandler Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Adds information from the document parser to the avl tree or hash table, searches the avl tree or hash table for query keywords from the query processor, and prints the number of words indexed.  
+ <a href="class_index_handler.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="indexhandler_8h_source.html">indexhandler.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7f3eda612351700964bbf29dfb090ac4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f3eda612351700964bbf29dfb090ac4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addWord</b> (map&lt; string, int &gt; &amp;table, int &amp;pg, string &amp;title)</td></tr>
-<tr class="separator:a7f3eda612351700964bbf29dfb090ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27748387661142a2eb545be6f0499996"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27748387661142a2eb545be6f0499996"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#a27748387661142a2eb545be6f0499996">IndexHandler</a> ()</td></tr>
+<tr class="memdesc:a27748387661142a2eb545be6f0499996"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_index_handler.html" title="Adds information from the document parser to the avl tree or hash table, searches the avl tree or has...">IndexHandler</a> default constructor. <br/></td></tr>
+<tr class="separator:a27748387661142a2eb545be6f0499996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad787ca8cf83345ecfe332d2c3b8f8009"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad787ca8cf83345ecfe332d2c3b8f8009"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#ad787ca8cf83345ecfe332d2c3b8f8009">~IndexHandler</a> ()</td></tr>
+<tr class="memdesc:ad787ca8cf83345ecfe332d2c3b8f8009"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_index_handler.html" title="Adds information from the document parser to the avl tree or hash table, searches the avl tree or has...">IndexHandler</a> destructor. <br/></td></tr>
+<tr class="separator:ad787ca8cf83345ecfe332d2c3b8f8009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbad99b5b0887fe776981d85529844d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#acbad99b5b0887fe776981d85529844d6">addWord</a> (map&lt; string, int &gt; &amp;table, int &amp;pg, string &amp;title, string &amp;date, string &amp;user)</td></tr>
+<tr class="memdesc:acbad99b5b0887fe776981d85529844d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">addWord adds a word to the index.  <a href="#acbad99b5b0887fe776981d85529844d6">More...</a><br/></td></tr>
+<tr class="separator:acbad99b5b0887fe776981d85529844d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e010188cadc61017f9ada638842257f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_index.html">Index</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#a0e010188cadc61017f9ada638842257f">searchAvl</a> (vector&lt; string &gt; &amp;searchWords)</td></tr>
+<tr class="memdesc:a0e010188cadc61017f9ada638842257f"><td class="mdescLeft">&#160;</td><td class="mdescRight">searchAvl searches the avl tree for the query keywords.  <a href="#a0e010188cadc61017f9ada638842257f">More...</a><br/></td></tr>
+<tr class="separator:a0e010188cadc61017f9ada638842257f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9549ae56231952fb0ff5883734e6f013"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_index.html">Index</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#a9549ae56231952fb0ff5883734e6f013">searchHash</a> (vector&lt; string &gt; &amp;searchWords)</td></tr>
+<tr class="memdesc:a9549ae56231952fb0ff5883734e6f013"><td class="mdescLeft">&#160;</td><td class="mdescRight">searchHash searches the hash table for the query keywords.  <a href="#a9549ae56231952fb0ff5883734e6f013">More...</a><br/></td></tr>
+<tr class="separator:a9549ae56231952fb0ff5883734e6f013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdb58399788cff4a00ef065b805952a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cdb58399788cff4a00ef065b805952a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#a4cdb58399788cff4a00ef065b805952a">clear</a> ()</td></tr>
+<tr class="memdesc:a4cdb58399788cff4a00ef065b805952a"><td class="mdescLeft">&#160;</td><td class="mdescRight">clear clears the index structure. <br/></td></tr>
+<tr class="separator:a4cdb58399788cff4a00ef065b805952a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a287d4c40860b634cec7917c4f0ee6337"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a287d4c40860b634cec7917c4f0ee6337"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>printSize</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_index_handler.html#a287d4c40860b634cec7917c4f0ee6337">printSize</a> ()</td></tr>
+<tr class="memdesc:a287d4c40860b634cec7917c4f0ee6337"><td class="mdescLeft">&#160;</td><td class="mdescRight">printSize prints the number of words indexed. <br/></td></tr>
 <tr class="separator:a287d4c40860b634cec7917c4f0ee6337"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Adds information from the document parser to the avl tree or hash table, searches the avl tree or hash table for query keywords from the query processor, and prints the number of words indexed. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="acbad99b5b0887fe776981d85529844d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IndexHandler::addWord </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>pg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>date</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>addWord adds a word to the index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>a map with string keys and int values containg words and their frequency from the parsed page </td></tr>
+    <tr><td class="paramname">pg</td><td>an integer containing the page number parsed </td></tr>
+    <tr><td class="paramname">title</td><td>a string containing the title of the parsed page </td></tr>
+    <tr><td class="paramname">date</td><td>a string containing the date of the parsed page </td></tr>
+    <tr><td class="paramname">user</td><td>a string containing the contributor's username of the parsed page </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0e010188cadc61017f9ada638842257f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_index.html">Index</a> *&amp; IndexHandler::searchAvl </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>searchWords</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>searchAvl searches the avl tree for the query keywords. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchWords</td><td>a vector of strings containing the query keywords </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to an <a class="el" href="class_index.html" title="an interface used for the AVL Tree and Hash Table ">Index</a> pointer </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9549ae56231952fb0ff5883734e6f013"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_index.html">Index</a> *&amp; IndexHandler::searchHash </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>searchWords</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>searchHash searches the hash table for the query keywords. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">searchWords</td><td>a vector of strings containing the query keywords </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to an <a class="el" href="class_index.html" title="an interface used for the AVL Tree and Hash Table ">Index</a> pointer </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="indexhandler_8h_source.html">indexhandler.h</a></li>
 <li>indexhandler.cpp</li>
@@ -108,7 +241,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printSize</b> ()</td>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:50 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

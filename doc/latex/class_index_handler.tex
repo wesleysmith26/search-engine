@@ -1,0 +1,111 @@
+\hypertarget{class_index_handler}{\section{Index\-Handler Class Reference}
+\label{class_index_handler}\index{Index\-Handler@{Index\-Handler}}
+}
+
+
+Adds information from the document parser to the avl tree or hash table, searches the avl tree or hash table for query keywords from the query processor, and prints the number of words indexed.  
+
+
+
+
+{\ttfamily \#include $<$indexhandler.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_index_handler_a27748387661142a2eb545be6f0499996}{\hyperlink{class_index_handler_a27748387661142a2eb545be6f0499996}{Index\-Handler} ()}\label{class_index_handler_a27748387661142a2eb545be6f0499996}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_index_handler}{Index\-Handler} default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_index_handler_ad787ca8cf83345ecfe332d2c3b8f8009}{\hyperlink{class_index_handler_ad787ca8cf83345ecfe332d2c3b8f8009}{$\sim$\-Index\-Handler} ()}\label{class_index_handler_ad787ca8cf83345ecfe332d2c3b8f8009}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_index_handler}{Index\-Handler} destructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_index_handler_acbad99b5b0887fe776981d85529844d6}{add\-Word} (map$<$ string, int $>$ \&table, int \&pg, string \&title, string \&date, string \&user)
+\begin{DoxyCompactList}\small\item\em add\-Word adds a word to the index. \end{DoxyCompactList}\item 
+\hyperlink{class_index}{Index} $\ast$\& \hyperlink{class_index_handler_a0e010188cadc61017f9ada638842257f}{search\-Avl} (vector$<$ string $>$ \&search\-Words)
+\begin{DoxyCompactList}\small\item\em search\-Avl searches the avl tree for the query keywords. \end{DoxyCompactList}\item 
+\hyperlink{class_index}{Index} $\ast$\& \hyperlink{class_index_handler_a9549ae56231952fb0ff5883734e6f013}{search\-Hash} (vector$<$ string $>$ \&search\-Words)
+\begin{DoxyCompactList}\small\item\em search\-Hash searches the hash table for the query keywords. \end{DoxyCompactList}\item 
+\hypertarget{class_index_handler_a4cdb58399788cff4a00ef065b805952a}{void \hyperlink{class_index_handler_a4cdb58399788cff4a00ef065b805952a}{clear} ()}\label{class_index_handler_a4cdb58399788cff4a00ef065b805952a}
+
+\begin{DoxyCompactList}\small\item\em clear clears the index structure. \end{DoxyCompactList}\item 
+\hypertarget{class_index_handler_a287d4c40860b634cec7917c4f0ee6337}{void \hyperlink{class_index_handler_a287d4c40860b634cec7917c4f0ee6337}{print\-Size} ()}\label{class_index_handler_a287d4c40860b634cec7917c4f0ee6337}
+
+\begin{DoxyCompactList}\small\item\em print\-Size prints the number of words indexed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Adds information from the document parser to the avl tree or hash table, searches the avl tree or hash table for query keywords from the query processor, and prints the number of words indexed. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_index_handler_acbad99b5b0887fe776981d85529844d6}{\index{Index\-Handler@{Index\-Handler}!add\-Word@{add\-Word}}
+\index{add\-Word@{add\-Word}!IndexHandler@{Index\-Handler}}
+\subsubsection[{add\-Word}]{\setlength{\rightskip}{0pt plus 5cm}void Index\-Handler\-::add\-Word (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$ \&}]{table, }
+\item[{int \&}]{pg, }
+\item[{string \&}]{title, }
+\item[{string \&}]{date, }
+\item[{string \&}]{user}
+\end{DoxyParamCaption}
+)}}\label{class_index_handler_acbad99b5b0887fe776981d85529844d6}
+
+
+add\-Word adds a word to the index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em table} & a map with string keys and int values containg words and their frequency from the parsed page \\
+\hline
+{\em pg} & an integer containing the page number parsed \\
+\hline
+{\em title} & a string containing the title of the parsed page \\
+\hline
+{\em date} & a string containing the date of the parsed page \\
+\hline
+{\em user} & a string containing the contributor's username of the parsed page \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_index_handler_a0e010188cadc61017f9ada638842257f}{\index{Index\-Handler@{Index\-Handler}!search\-Avl@{search\-Avl}}
+\index{search\-Avl@{search\-Avl}!IndexHandler@{Index\-Handler}}
+\subsubsection[{search\-Avl}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} $\ast$\& Index\-Handler\-::search\-Avl (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$ \&}]{search\-Words}
+\end{DoxyParamCaption}
+)}}\label{class_index_handler_a0e010188cadc61017f9ada638842257f}
+
+
+search\-Avl searches the avl tree for the query keywords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\-Words} & a vector of strings containing the query keywords \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to an \hyperlink{class_index}{Index} pointer 
+\end{DoxyReturn}
+\hypertarget{class_index_handler_a9549ae56231952fb0ff5883734e6f013}{\index{Index\-Handler@{Index\-Handler}!search\-Hash@{search\-Hash}}
+\index{search\-Hash@{search\-Hash}!IndexHandler@{Index\-Handler}}
+\subsubsection[{search\-Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} $\ast$\& Index\-Handler\-::search\-Hash (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$ \&}]{search\-Words}
+\end{DoxyParamCaption}
+)}}\label{class_index_handler_a9549ae56231952fb0ff5883734e6f013}
+
+
+search\-Hash searches the hash table for the query keywords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\-Words} & a vector of strings containing the query keywords \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to an \hyperlink{class_index}{Index} pointer 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+indexhandler.\-h\item 
+indexhandler.\-cpp\end{DoxyCompactItemize}

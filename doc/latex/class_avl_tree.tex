@@ -1,0 +1,213 @@
+\hypertarget{class_avl_tree}{\section{Avl\-Tree Class Reference}
+\label{class_avl_tree}\index{Avl\-Tree@{Avl\-Tree}}
+}
+
+
+An Avl Tree with nodes that contain a word, page number, page title, page date, page contributor's username, and a pointer to the next node.  
+
+
+Inheritance diagram for Avl\-Tree\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_avl_tree}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_avl_tree_a16ffec16dffe9da5c7b7b0faab5b0620}{\hyperlink{class_avl_tree_a16ffec16dffe9da5c7b7b0faab5b0620}{Avl\-Tree} ()}\label{class_avl_tree_a16ffec16dffe9da5c7b7b0faab5b0620}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_avl_tree}{Avl\-Tree} default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_avl_tree_a3c8a14fc5a22671202082edb7999926d}{virtual \hyperlink{class_avl_tree_a3c8a14fc5a22671202082edb7999926d}{$\sim$\-Avl\-Tree} ()}\label{class_avl_tree_a3c8a14fc5a22671202082edb7999926d}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\-Avl\-Tree virtual destructor \end{DoxyCompactList}\item 
+\hyperlink{class_avl_tree_a53dc67ed47b09f8d646cc2693b5c9c04}{Avl\-Tree} (const \hyperlink{class_avl_tree}{Avl\-Tree} \&cp)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_avl_tree}{Avl\-Tree} copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_avl_tree}{Avl\-Tree} \& \hyperlink{class_avl_tree_a1850c4de3588a85f6dfd887b5286527c}{operator=} (const \hyperlink{class_avl_tree}{Avl\-Tree} \&cp)
+\begin{DoxyCompactList}\small\item\em operator = overloaded assignment operator. \end{DoxyCompactList}\item 
+\hypertarget{class_avl_tree_a63143b0d8570b80dd7290e8280906233}{void \hyperlink{class_avl_tree_a63143b0d8570b80dd7290e8280906233}{clear} ()}\label{class_avl_tree_a63143b0d8570b80dd7290e8280906233}
+
+\begin{DoxyCompactList}\small\item\em clear clears the avl tree. \end{DoxyCompactList}\item 
+void \hyperlink{class_avl_tree_a9305ea46f35f021ddf30bbc87c071f30}{insert} (string \&key, int \&pg, double \&freq, string \&header, string \&date, string \&user)
+\begin{DoxyCompactList}\small\item\em insert inserts a node into the tree. \end{DoxyCompactList}\item 
+void \hyperlink{class_avl_tree_a82a02d204f4067ff89e0fb6925d58893}{insert\-L\-L} (string \&key, \hyperlink{class_linked_list}{Linked\-List} $\ast$\&ll)
+\begin{DoxyCompactList}\small\item\em insert\-L\-L inserts a word and linked list into a linked list. \end{DoxyCompactList}\item 
+string \& \hyperlink{class_avl_tree_ad2eb1d8582a66fd6fe3af126466aff19}{find\-Keyword} (string \&key)
+\begin{DoxyCompactList}\small\item\em find\-Keyword finds a keyword in the tree. \end{DoxyCompactList}\item 
+\hyperlink{class_linked_list}{Linked\-List} $\ast$\& \hyperlink{class_avl_tree_a60f76637184e51d2e78c8935ef14aea7}{find\-Data} (string \&key)
+\begin{DoxyCompactList}\small\item\em find\-Data finds the data associated with a keyword in the linked list. \end{DoxyCompactList}\item 
+int \& \hyperlink{class_avl_tree_a1821114e5e9ef3a482d601d11561853c}{get\-Size} ()
+\begin{DoxyCompactList}\small\item\em get\-Size returns the size of the tree. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An Avl Tree with nodes that contain a word, page number, page title, page date, page contributor's username, and a pointer to the next node. 
+
+subclass 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_avl_tree_a53dc67ed47b09f8d646cc2693b5c9c04}{\index{Avl\-Tree@{Avl\-Tree}!Avl\-Tree@{Avl\-Tree}}
+\index{Avl\-Tree@{Avl\-Tree}!AvlTree@{Avl\-Tree}}
+\subsubsection[{Avl\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}Avl\-Tree\-::\-Avl\-Tree (
+\begin{DoxyParamCaption}
+\item[{const {\bf Avl\-Tree} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_avl_tree_a53dc67ed47b09f8d646cc2693b5c9c04}
+
+
+\hyperlink{class_avl_tree}{Avl\-Tree} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_avl_tree}{Avl\-Tree} object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_avl_tree_a60f76637184e51d2e78c8935ef14aea7}{\index{Avl\-Tree@{Avl\-Tree}!find\-Data@{find\-Data}}
+\index{find\-Data@{find\-Data}!AvlTree@{Avl\-Tree}}
+\subsubsection[{find\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Linked\-List}$\ast$\& Avl\-Tree\-::find\-Data (
+\begin{DoxyParamCaption}
+\item[{string \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_avl_tree_a60f76637184e51d2e78c8935ef14aea7}
+
+
+find\-Data finds the data associated with a keyword in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & a string containing a keyword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to a linked list pointer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a72c1cd00b6fce902a5d08e9278954913}{Index}.
+
+\hypertarget{class_avl_tree_ad2eb1d8582a66fd6fe3af126466aff19}{\index{Avl\-Tree@{Avl\-Tree}!find\-Keyword@{find\-Keyword}}
+\index{find\-Keyword@{find\-Keyword}!AvlTree@{Avl\-Tree}}
+\subsubsection[{find\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}string\& Avl\-Tree\-::find\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_avl_tree_ad2eb1d8582a66fd6fe3af126466aff19}
+
+
+find\-Keyword finds a keyword in the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & a string containing a keyword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to a string 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a8ee654f84f96668a451afcf39fe2cc69}{Index}.
+
+\hypertarget{class_avl_tree_a1821114e5e9ef3a482d601d11561853c}{\index{Avl\-Tree@{Avl\-Tree}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!AvlTree@{Avl\-Tree}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int\& Avl\-Tree\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_avl_tree_a1821114e5e9ef3a482d601d11561853c}
+
+
+get\-Size returns the size of the tree. 
+
+\begin{DoxyReturn}{Returns}
+a reference to an integer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a0eccb696eb6548d60df4a4bce323191b}{Index}.
+
+\hypertarget{class_avl_tree_a9305ea46f35f021ddf30bbc87c071f30}{\index{Avl\-Tree@{Avl\-Tree}!insert@{insert}}
+\index{insert@{insert}!AvlTree@{Avl\-Tree}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Avl\-Tree\-::insert (
+\begin{DoxyParamCaption}
+\item[{string \&}]{key, }
+\item[{int \&}]{pg, }
+\item[{double \&}]{freq, }
+\item[{string \&}]{header, }
+\item[{string \&}]{date, }
+\item[{string \&}]{user}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_avl_tree_a9305ea46f35f021ddf30bbc87c071f30}
+
+
+insert inserts a node into the tree. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & a string containing a word from the page \\
+\hline
+{\em pg} & an integer containing the page number \\
+\hline
+{\em freq} & an integer containing the word frequency \\
+\hline
+{\em header} & a string containing the page title \\
+\hline
+{\em date} & a string containing the page date \\
+\hline
+{\em user} & a string containing the page contributor's username \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_index_ad44792ad4f81ef1e17a0c6cb6f57167c}{Index}.
+
+\hypertarget{class_avl_tree_a82a02d204f4067ff89e0fb6925d58893}{\index{Avl\-Tree@{Avl\-Tree}!insert\-L\-L@{insert\-L\-L}}
+\index{insert\-L\-L@{insert\-L\-L}!AvlTree@{Avl\-Tree}}
+\subsubsection[{insert\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}void Avl\-Tree\-::insert\-L\-L (
+\begin{DoxyParamCaption}
+\item[{string \&}]{key, }
+\item[{{\bf Linked\-List} $\ast$\&}]{ll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_avl_tree_a82a02d204f4067ff89e0fb6925d58893}
+
+
+insert\-L\-L inserts a word and linked list into a linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & a string containing a word \\
+\hline
+{\em ll} & a linked list pointer containing the page number, frequency, page title, page date, and page contributor's username for the word \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_index_a423c014174a0257d27b7e5c5834f92ed}{Index}.
+
+\hypertarget{class_avl_tree_a1850c4de3588a85f6dfd887b5286527c}{\index{Avl\-Tree@{Avl\-Tree}!operator=@{operator=}}
+\index{operator=@{operator=}!AvlTree@{Avl\-Tree}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Avl\-Tree}\& Avl\-Tree\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Avl\-Tree} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_avl_tree_a1850c4de3588a85f6dfd887b5286527c}
+
+
+operator = overloaded assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_avl_tree}{Avl\-Tree} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an \hyperlink{class_avl_tree}{Avl\-Tree} reference 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+avltree.\-h\end{DoxyCompactItemize}

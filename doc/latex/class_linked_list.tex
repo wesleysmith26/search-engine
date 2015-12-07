@@ -1,0 +1,428 @@
+\hypertarget{class_linked_list}{\section{Linked\-List Class Reference}
+\label{class_linked_list}\index{Linked\-List@{Linked\-List}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_linked_list_afe7f78983e173f8018927cf2ad11a5aa}{\hyperlink{class_linked_list_afe7f78983e173f8018927cf2ad11a5aa}{Linked\-List} ()}\label{class_linked_list_afe7f78983e173f8018927cf2ad11a5aa}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_linked_list}{Linked\-List} default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_linked_list_a35811ed58ff0d8d9cc9b309b8d8f5111}{\hyperlink{class_linked_list_a35811ed58ff0d8d9cc9b309b8d8f5111}{$\sim$\-Linked\-List} ()}\label{class_linked_list_a35811ed58ff0d8d9cc9b309b8d8f5111}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_linked_list}{Linked\-List} destructor. \end{DoxyCompactList}\item 
+\hyperlink{class_linked_list_ab34de0df2c51416dc15596f45809842b}{Linked\-List} (const \hyperlink{class_linked_list}{Linked\-List} \&cp)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_linked_list}{Linked\-List} copy constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_linked_list_a261977565e78dd74f288d47ba5865242}{void \hyperlink{class_linked_list_a261977565e78dd74f288d47ba5865242}{clear} ()}\label{class_linked_list_a261977565e78dd74f288d47ba5865242}
+
+\begin{DoxyCompactList}\small\item\em clear clears the linked list. \end{DoxyCompactList}\item 
+\hyperlink{class_linked_list}{Linked\-List} \& \hyperlink{class_linked_list_a522a87f8da5057b0e0bb4565bb348ec3}{operator=} (const \hyperlink{class_linked_list}{Linked\-List} \&cp)
+\begin{DoxyCompactList}\small\item\em overloaded assignment operator \end{DoxyCompactList}\item 
+bool \hyperlink{class_linked_list_a22987b83cc33313bb594a2d67aa9f289}{empty} ()
+\begin{DoxyCompactList}\small\item\em empty checks if the linked list is empty. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_abf524a3e1cd90e8374fa5c24f64dfd18}{push\-\_\-back} (int pg, double freq, string doc\-Name, string date\-Made, string user\-Name)
+\begin{DoxyCompactList}\small\item\em push\-\_\-back adds a node to the end of the linked list. \end{DoxyCompactList}\item 
+int \& \hyperlink{class_linked_list_a0428164a801662e4908f87ce826cedbf}{get\-Page\-Number} (int index)
+\begin{DoxyCompactList}\small\item\em get\-Page\-Number gets the page number from a node in the linked list. \end{DoxyCompactList}\item 
+double \& \hyperlink{class_linked_list_a36b29b42c7e4316a4a1663cbc60804a7}{get\-Frequency} (int index)
+\begin{DoxyCompactList}\small\item\em get\-Frequency gets the term frequency from a node in the linked list. \end{DoxyCompactList}\item 
+string \& \hyperlink{class_linked_list_ab1605d5e12f51dd7f00d042415b80232}{get\-Title} (int index)
+\begin{DoxyCompactList}\small\item\em get\-Title gets the page title from a node in the linked list. \end{DoxyCompactList}\item 
+string \& \hyperlink{class_linked_list_a49761c9b8dd1dc1df7a56b0a3536a15d}{get\-Date} (int index)
+\begin{DoxyCompactList}\small\item\em get\-Date gets the page date from a node in the linked list. \end{DoxyCompactList}\item 
+string \& \hyperlink{class_linked_list_ad88d540fff6aea9502372fc21035e404}{get\-User} (int index)
+\begin{DoxyCompactList}\small\item\em get\-User gets the contributor's username from a node in the linked list. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_a7bfa0c7ef3608c772d8837226fa0baca}{set\-\_\-at} (int index, double freq)
+\begin{DoxyCompactList}\small\item\em set\-\_\-at updates the frequency of a word at a specified node. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_a1d13e00736ede314d40f26a64769cc35}{set\-\_\-at} (int index, int pg, double freq, string doc\-Name, string date\-Made, string user\-Name)
+\begin{DoxyCompactList}\small\item\em set\-\_\-at updates the page number, frequency, page title, page date, and contributor's username at a specified index. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_aed2890ca9479d953248e024babee04f3}{find\-Set} (int pg, double freq)
+\begin{DoxyCompactList}\small\item\em find\-Set updates the word frequency for the page \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_a3429db79356a0203d8c50057cb76a03b}{delete\-At} (int index)
+\begin{DoxyCompactList}\small\item\em delete\-At deletes a specified node in the linked list. \end{DoxyCompactList}\item 
+int \hyperlink{class_linked_list_a4224bd8bf5f18b7b6f9fa66ee2c35702}{size} ()
+\begin{DoxyCompactList}\small\item\em size gets the size of the linked list. \end{DoxyCompactList}\item 
+\hypertarget{class_linked_list_ad6fdfc5ff2d9b4209ac3104402676574}{void \hyperlink{class_linked_list_ad6fdfc5ff2d9b4209ac3104402676574}{sort} (int start, int end)}\label{class_linked_list_ad6fdfc5ff2d9b4209ac3104402676574}
+
+\begin{DoxyCompactList}\small\item\em sort sorts the linked list by term frequency in descending order. \end{DoxyCompactList}\item 
+int \hyperlink{class_linked_list_aabad92ed4258e22f8f25ef4db83ace63}{partition} (int low, int high)
+\begin{DoxyCompactList}\small\item\em partition recursive function that sorts the linked list. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_a6328a045297f16d1ae2f3964126f1d3e}{swap} (int a, int b)
+\begin{DoxyCompactList}\small\item\em swap swaps the contents of a node in the linked list. \end{DoxyCompactList}\item 
+bool \hyperlink{class_linked_list_a9ccb3e8a33f1f6a12884782b93a837ae}{contains} (int \&pg)
+\begin{DoxyCompactList}\small\item\em contains checks if the linked list contains a page number \end{DoxyCompactList}\item 
+int \hyperlink{class_linked_list_ae43a82e40aaf7709c34cf989a2905750}{find\-Iterator} (int \&pg)
+\begin{DoxyCompactList}\small\item\em find\-Iterator returns an integer representing the index number of a node containing a specific page number. \end{DoxyCompactList}\item 
+void \hyperlink{class_linked_list_a420d35a949ef7acbb5cd13a2900fe813}{output} ()
+\begin{DoxyCompactList}\small\item\em output prints the contents of the nodes in the linked list for the first 15 nodes and the number of nodes for the particular word searched for. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_linked_list_ab34de0df2c51416dc15596f45809842b}{\index{Linked\-List@{Linked\-List}!Linked\-List@{Linked\-List}}
+\index{Linked\-List@{Linked\-List}!LinkedList@{Linked\-List}}
+\subsubsection[{Linked\-List}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List\-::\-Linked\-List (
+\begin{DoxyParamCaption}
+\item[{const {\bf Linked\-List} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_ab34de0df2c51416dc15596f45809842b}
+
+
+\hyperlink{class_linked_list}{Linked\-List} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_linked_list}{Linked\-List} object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_linked_list_a9ccb3e8a33f1f6a12884782b93a837ae}{\index{Linked\-List@{Linked\-List}!contains@{contains}}
+\index{contains@{contains}!LinkedList@{Linked\-List}}
+\subsubsection[{contains}]{\setlength{\rightskip}{0pt plus 5cm}bool Linked\-List\-::contains (
+\begin{DoxyParamCaption}
+\item[{int \&}]{pg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a9ccb3e8a33f1f6a12884782b93a837ae}
+
+
+contains checks if the linked list contains a page number 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pg} & an integer containing a page number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the page is in the linked list, false if it isn't 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a3429db79356a0203d8c50057cb76a03b}{\index{Linked\-List@{Linked\-List}!delete\-At@{delete\-At}}
+\index{delete\-At@{delete\-At}!LinkedList@{Linked\-List}}
+\subsubsection[{delete\-At}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::delete\-At (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a3429db79356a0203d8c50057cb76a03b}
+
+
+delete\-At deletes a specified node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & index an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_linked_list_a22987b83cc33313bb594a2d67aa9f289}{\index{Linked\-List@{Linked\-List}!empty@{empty}}
+\index{empty@{empty}!LinkedList@{Linked\-List}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}bool Linked\-List\-::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a22987b83cc33313bb594a2d67aa9f289}
+
+
+empty checks if the linked list is empty. 
+
+\begin{DoxyReturn}{Returns}
+true if the linked list is empty and false if it is not empty 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_ae43a82e40aaf7709c34cf989a2905750}{\index{Linked\-List@{Linked\-List}!find\-Iterator@{find\-Iterator}}
+\index{find\-Iterator@{find\-Iterator}!LinkedList@{Linked\-List}}
+\subsubsection[{find\-Iterator}]{\setlength{\rightskip}{0pt plus 5cm}int Linked\-List\-::find\-Iterator (
+\begin{DoxyParamCaption}
+\item[{int \&}]{pg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_ae43a82e40aaf7709c34cf989a2905750}
+
+
+find\-Iterator returns an integer representing the index number of a node containing a specific page number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pg} & an integer containing a page number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_linked_list_aed2890ca9479d953248e024babee04f3}{\index{Linked\-List@{Linked\-List}!find\-Set@{find\-Set}}
+\index{find\-Set@{find\-Set}!LinkedList@{Linked\-List}}
+\subsubsection[{find\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::find\-Set (
+\begin{DoxyParamCaption}
+\item[{int}]{pg, }
+\item[{double}]{freq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_aed2890ca9479d953248e024babee04f3}
+
+
+find\-Set updates the word frequency for the page 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pg} & an integer containing a page number \\
+\hline
+{\em freq} & an integer containing the word frequency \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_linked_list_a49761c9b8dd1dc1df7a56b0a3536a15d}{\index{Linked\-List@{Linked\-List}!get\-Date@{get\-Date}}
+\index{get\-Date@{get\-Date}!LinkedList@{Linked\-List}}
+\subsubsection[{get\-Date}]{\setlength{\rightskip}{0pt plus 5cm}string\& Linked\-List\-::get\-Date (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a49761c9b8dd1dc1df7a56b0a3536a15d}
+
+
+get\-Date gets the page date from a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the page date from the specified node 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a36b29b42c7e4316a4a1663cbc60804a7}{\index{Linked\-List@{Linked\-List}!get\-Frequency@{get\-Frequency}}
+\index{get\-Frequency@{get\-Frequency}!LinkedList@{Linked\-List}}
+\subsubsection[{get\-Frequency}]{\setlength{\rightskip}{0pt plus 5cm}double\& Linked\-List\-::get\-Frequency (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a36b29b42c7e4316a4a1663cbc60804a7}
+
+
+get\-Frequency gets the term frequency from a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a double representing the term frequency from the specified node 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a0428164a801662e4908f87ce826cedbf}{\index{Linked\-List@{Linked\-List}!get\-Page\-Number@{get\-Page\-Number}}
+\index{get\-Page\-Number@{get\-Page\-Number}!LinkedList@{Linked\-List}}
+\subsubsection[{get\-Page\-Number}]{\setlength{\rightskip}{0pt plus 5cm}int\& Linked\-List\-::get\-Page\-Number (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a0428164a801662e4908f87ce826cedbf}
+
+
+get\-Page\-Number gets the page number from a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an integer representing the page number from the specified node 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_ab1605d5e12f51dd7f00d042415b80232}{\index{Linked\-List@{Linked\-List}!get\-Title@{get\-Title}}
+\index{get\-Title@{get\-Title}!LinkedList@{Linked\-List}}
+\subsubsection[{get\-Title}]{\setlength{\rightskip}{0pt plus 5cm}string\& Linked\-List\-::get\-Title (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_ab1605d5e12f51dd7f00d042415b80232}
+
+
+get\-Title gets the page title from a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the page title from the specified node 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_ad88d540fff6aea9502372fc21035e404}{\index{Linked\-List@{Linked\-List}!get\-User@{get\-User}}
+\index{get\-User@{get\-User}!LinkedList@{Linked\-List}}
+\subsubsection[{get\-User}]{\setlength{\rightskip}{0pt plus 5cm}string\& Linked\-List\-::get\-User (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_ad88d540fff6aea9502372fc21035e404}
+
+
+get\-User gets the contributor's username from a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer representing the node number in the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a string representing the contributor's username from the specified node. 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a522a87f8da5057b0e0bb4565bb348ec3}{\index{Linked\-List@{Linked\-List}!operator=@{operator=}}
+\index{operator=@{operator=}!LinkedList@{Linked\-List}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Linked\-List}\& Linked\-List\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Linked\-List} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a522a87f8da5057b0e0bb4565bb348ec3}
+
+
+overloaded assignment operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_linked_list}{Linked\-List} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a \hyperlink{class_linked_list}{Linked\-List} object 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a420d35a949ef7acbb5cd13a2900fe813}{\index{Linked\-List@{Linked\-List}!output@{output}}
+\index{output@{output}!LinkedList@{Linked\-List}}
+\subsubsection[{output}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::output (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a420d35a949ef7acbb5cd13a2900fe813}
+
+
+output prints the contents of the nodes in the linked list for the first 15 nodes and the number of nodes for the particular word searched for. 
+
+Prints 15 because the output only requires 15 pages to be printed. \hypertarget{class_linked_list_aabad92ed4258e22f8f25ef4db83ace63}{\index{Linked\-List@{Linked\-List}!partition@{partition}}
+\index{partition@{partition}!LinkedList@{Linked\-List}}
+\subsubsection[{partition}]{\setlength{\rightskip}{0pt plus 5cm}int Linked\-List\-::partition (
+\begin{DoxyParamCaption}
+\item[{int}]{low, }
+\item[{int}]{high}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_aabad92ed4258e22f8f25ef4db83ace63}
+
+
+partition recursive function that sorts the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em low} & an integer containing the size of first half of the linked list \\
+\hline
+{\em high} & an integer containing the size of the second half of the linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_linked_list_abf524a3e1cd90e8374fa5c24f64dfd18}{\index{Linked\-List@{Linked\-List}!push\-\_\-back@{push\-\_\-back}}
+\index{push\-\_\-back@{push\-\_\-back}!LinkedList@{Linked\-List}}
+\subsubsection[{push\-\_\-back}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::push\-\_\-back (
+\begin{DoxyParamCaption}
+\item[{int}]{pg, }
+\item[{double}]{freq, }
+\item[{string}]{doc\-Name, }
+\item[{string}]{date\-Made, }
+\item[{string}]{user\-Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_abf524a3e1cd90e8374fa5c24f64dfd18}
+
+
+push\-\_\-back adds a node to the end of the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pg} & an integer containing the page number in the xml file \\
+\hline
+{\em freq} & a double containing the term frequency for the document \\
+\hline
+{\em doc\-Name} & a string containing the title of the page \\
+\hline
+{\em date\-Made} & a string containing the timestamp of the page \\
+\hline
+{\em user\-Name} & a string containing the page contributor's username \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_linked_list_a7bfa0c7ef3608c772d8837226fa0baca}{\index{Linked\-List@{Linked\-List}!set\-\_\-at@{set\-\_\-at}}
+\index{set\-\_\-at@{set\-\_\-at}!LinkedList@{Linked\-List}}
+\subsubsection[{set\-\_\-at}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::set\-\_\-at (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{double}]{freq}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a7bfa0c7ef3608c772d8837226fa0baca}
+
+
+set\-\_\-at updates the frequency of a word at a specified node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer containing an index number \\
+\hline
+{\em freq} & a double containing the word frequency \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_linked_list_a1d13e00736ede314d40f26a64769cc35}{\index{Linked\-List@{Linked\-List}!set\-\_\-at@{set\-\_\-at}}
+\index{set\-\_\-at@{set\-\_\-at}!LinkedList@{Linked\-List}}
+\subsubsection[{set\-\_\-at}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::set\-\_\-at (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{int}]{pg, }
+\item[{double}]{freq, }
+\item[{string}]{doc\-Name, }
+\item[{string}]{date\-Made, }
+\item[{string}]{user\-Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a1d13e00736ede314d40f26a64769cc35}
+
+
+set\-\_\-at updates the page number, frequency, page title, page date, and contributor's username at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & an integer containing an index number \\
+\hline
+{\em pg} & an integer containing the page number \\
+\hline
+{\em freq} & a double containing the word frequency \\
+\hline
+{\em doc\-Name} & a string containing the page title \\
+\hline
+{\em date\-Made} & a string containing the page date \\
+\hline
+{\em user\-Name} & a string containing the page contributor's username \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_linked_list_a4224bd8bf5f18b7b6f9fa66ee2c35702}{\index{Linked\-List@{Linked\-List}!size@{size}}
+\index{size@{size}!LinkedList@{Linked\-List}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int Linked\-List\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a4224bd8bf5f18b7b6f9fa66ee2c35702}
+
+
+size gets the size of the linked list. 
+
+\begin{DoxyReturn}{Returns}
+an integer representing the size of the linked list 
+\end{DoxyReturn}
+\hypertarget{class_linked_list_a6328a045297f16d1ae2f3964126f1d3e}{\index{Linked\-List@{Linked\-List}!swap@{swap}}
+\index{swap@{swap}!LinkedList@{Linked\-List}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}void Linked\-List\-::swap (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_linked_list_a6328a045297f16d1ae2f3964126f1d3e}
+
+
+swap swaps the contents of a node in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & an integer containing a node number in the linked list \\
+\hline
+{\em b} & an integer containing a node number in the linked list \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+linkedlist.\-h\end{DoxyCompactItemize}

@@ -2,8 +2,14 @@ var searchData=
 [
   ['safe_5fdivide',['safe_divide',['../group___mathematics.html#ga59fed2e2713556d98a699dfe8a912124',1,'safe_math.h']]],
   ['safe_5fmodulus',['safe_modulus',['../group___mathematics.html#ga3bdfe9dcca3b6f83b6b362f30639e68e',1,'safe_math.h']]],
+  ['searchavl',['searchAvl',['../class_index_handler.html#a0e010188cadc61017f9ada638842257f',1,'IndexHandler']]],
+  ['searchhash',['searchHash',['../class_index_handler.html#a9549ae56231952fb0ff5883734e6f013',1,'IndexHandler']]],
   ['set_5fallocator',['set_allocator',['../classrapidxml_1_1memory__pool.html#a84d3d8d2cdfc00501e1dcf26d889ae03',1,'rapidxml::memory_pool']]],
-  ['size',['size',['../classrapidxml_1_1file.html#a20191d167c6e00a88a44ca9a3a54e1c5',1,'rapidxml::file']]],
+  ['set_5fat',['set_at',['../class_linked_list.html#a7bfa0c7ef3608c772d8837226fa0baca',1,'LinkedList::set_at(int index, double freq)'],['../class_linked_list.html#a1d13e00736ede314d40f26a64769cc35',1,'LinkedList::set_at(int index, int pg, double freq, string docName, string dateMade, string userName)']]],
+  ['sethashvalue',['setHashValue',['../class_hash_table.html#afc9f7516810e364c4a8ebed516cd6406',1,'HashTable']]],
+  ['size',['size',['../class_linked_list.html#a4224bd8bf5f18b7b6f9fa66ee2c35702',1,'LinkedList::size()'],['../classrapidxml_1_1file.html#a20191d167c6e00a88a44ca9a3a54e1c5',1,'rapidxml::file::size()']]],
+  ['sort',['sort',['../class_linked_list.html#ad6fdfc5ff2d9b4209ac3104402676574',1,'LinkedList']]],
+  ['startscreen',['startScreen',['../class_user_interface.html#af0a5c73ee606a90f23f2c733b3b13415',1,'UserInterface']]],
   ['stem',['stem',['../classstemming_1_1stem.html',1,'stemming']]],
   ['stemming',['stemming',['../namespacestemming.html',1,'stemming'],['../group___stemming.html',1,'(Global Namespace)']]],
   ['strchr',['strchr',['../namespacestring__util.html#aa88a0930241b7add7546b649ebec855d',1,'string_util']]],
@@ -11,8 +17,8 @@ var searchData=
   ['strcspn',['strcspn',['../namespacestring__util.html#a9d8e7142b076ef57e4dc89f329c828fe',1,'string_util']]],
   ['strcspn_5fpointer',['strcspn_pointer',['../namespacestring__util.html#aa04954fbf48eee3f46463fd14e4a7d1a',1,'string_util']]],
   ['stricmp',['stricmp',['../namespacestring__util.html#a11e8f2f285edc9abd73199db60dc589a',1,'string_util']]],
-  ['string_5ftokenize',['string_tokenize',['../classstring__util_1_1string__tokenize.html#a9fa8071705dcc90643f09e06a9477c84',1,'string_util::string_tokenize']]],
   ['string_5ftokenize',['string_tokenize',['../classstring__util_1_1string__tokenize.html',1,'string_util']]],
+  ['string_5ftokenize',['string_tokenize',['../classstring__util_1_1string__tokenize.html#a9fa8071705dcc90643f09e06a9477c84',1,'string_util::string_tokenize']]],
   ['string_5ftrim',['string_trim',['../classstring__util_1_1string__trim.html',1,'string_util']]],
   ['string_5futil',['string_util',['../namespacestring__util.html',1,'']]],
   ['stringoperations',['StringOperations',['../group___string_operations.html',1,'']]],
@@ -31,5 +37,6 @@ var searchData=
   ['strstr',['strstr',['../namespacestring__util.html#a38b1bffbbcea43e28d6f821a69f89a4b',1,'string_util']]],
   ['strtod',['strtod',['../namespacestring__util.html#a563de3552dde86286bcff20cfaac49a9',1,'string_util']]],
   ['strtod_5fex',['strtod_ex',['../namespacestring__util.html#ad14cb6f2828d7c49aee300734c38239c',1,'string_util']]],
-  ['strtol',['strtol',['../namespacestring__util.html#a27a24858b465560e8f0b083d2fa80ce4',1,'string_util']]]
+  ['strtol',['strtol',['../namespacestring__util.html#a27a24858b465560e8f0b083d2fa80ce4',1,'string_util']]],
+  ['swap',['swap',['../class_linked_list.html#a6328a045297f16d1ae2f3964126f1d3e',1,'LinkedList']]]
 ];

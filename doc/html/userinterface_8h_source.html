@@ -85,39 +85,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">userinterface.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef USERINTERFACE_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USERINTERFACE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_user_interface.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_user_interface.html">UserInterface</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">int</span> select;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">bool</span> avlTree;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">string</span> searchWords;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">char</span>* xmlFile;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> interactiveMode();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_user_interface.html">UserInterface</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_user_interface.html">UserInterface</a>(<span class="keywordtype">char</span>*&amp; xmlFilename);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> startScreen();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> maintenanceMode();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> queryProcessor();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> boolExpression();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif // USERINTERFACE_H</span></div>
-<div class="ttc" id="class_user_interface_html"><div class="ttname"><a href="class_user_interface.html">UserInterface</a></div><div class="ttdef"><b>Definition:</b> userinterface.h:8</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Owners: Wesley and Charlie</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// file history:</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/userinterface.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef USERINTERFACE_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define USERINTERFACE_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;documentparser.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;indexhandler.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_user_interface.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_user_interface.html">UserInterface</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_document_parser.html">DocumentParser</a>* docParser;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_index_handler.html">IndexHandler</a>* ih;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> select;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::string searchWords;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">char</span>* xmlFile;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> interactiveMode();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> maintenanceMode();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="class_user_interface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="class_user_interface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface</a>(<span class="keywordtype">char</span>*&amp; xmlFilename);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="class_user_interface.html#ae588b2ff1711a016dd4c6fc5002c0841">~UserInterface</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_user_interface.html#af0a5c73ee606a90f23f2c733b3b13415">startScreen</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // USERINTERFACE_H</span></div>
+<div class="ttc" id="class_user_interface_html"><div class="ttname"><a href="class_user_interface.html">UserInterface</a></div><div class="ttdef"><b>Definition:</b> userinterface.h:26</div></div>
+<div class="ttc" id="class_user_interface_html_ae588b2ff1711a016dd4c6fc5002c0841"><div class="ttname"><a href="class_user_interface.html#ae588b2ff1711a016dd4c6fc5002c0841">UserInterface::~UserInterface</a></div><div class="ttdeci">~UserInterface()</div><div class="ttdoc">UserInterface destructor. </div><div class="ttdef"><b>Definition:</b> userinterface.cpp:31</div></div>
+<div class="ttc" id="class_user_interface_html_ae6fb70370701b3bd6120e923df9705b0"><div class="ttname"><a href="class_user_interface.html#ae6fb70370701b3bd6120e923df9705b0">UserInterface::UserInterface</a></div><div class="ttdeci">UserInterface()</div><div class="ttdoc">UserInterface default constructor. </div><div class="ttdef"><b>Definition:</b> userinterface.cpp:12</div></div>
+<div class="ttc" id="class_index_handler_html"><div class="ttname"><a href="class_index_handler.html">IndexHandler</a></div><div class="ttdoc">Adds information from the document parser to the avl tree or hash table, searches the avl tree or has...</div><div class="ttdef"><b>Definition:</b> indexhandler.h:24</div></div>
+<div class="ttc" id="class_user_interface_html_af0a5c73ee606a90f23f2c733b3b13415"><div class="ttname"><a href="class_user_interface.html#af0a5c73ee606a90f23f2c733b3b13415">UserInterface::startScreen</a></div><div class="ttdeci">void startScreen()</div><div class="ttdoc">startScreen asks the user if they want to enter Maintenance Mode, Interactive Mode, or exit the program. </div><div class="ttdef"><b>Definition:</b> userinterface.cpp:43</div></div>
+<div class="ttc" id="class_document_parser_html"><div class="ttname"><a href="class_document_parser.html">DocumentParser</a></div><div class="ttdoc">Parses XML Document. </div><div class="ttdef"><b>Definition:</b> documentparser.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

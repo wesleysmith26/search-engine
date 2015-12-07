@@ -85,37 +85,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">queryprocessor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef QUERYPROCESSOR_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define QUERYPROCESSOR_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_query_processor.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_query_processor.html">QueryProcessor</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    std::string queryWords;</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Owners: Charlie, Wesley, Zach</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// File History:</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/queryprocessor.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef QUERYPROCESSOR_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define QUERYPROCESSOR_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> removeStopWords();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;indexhandler.h&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> toLower();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">void</span> separateKeywords(std::string&amp; searchQuery, <span class="keywordtype">int</span>&amp; numOfKeywords);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> removeStems(std::string&amp; word);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_query_processor.html">QueryProcessor</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_query_processor.html">QueryProcessor</a>(std::string&amp; searchText);</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_query_processor.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_query_processor.html">QueryProcessor</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_index_handler.html">IndexHandler</a>* myIndexHandler;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif // QUERYPROCESSOR_H</span></div>
-<div class="ttc" id="class_query_processor_html"><div class="ttname"><a href="class_query_processor.html">QueryProcessor</a></div><div class="ttdef"><b>Definition:</b> queryprocessor.h:6</div></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::string queryWords;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_index.html">Index</a>* index;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_linked_list.html">LinkedList</a>* outputLL;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::string parentheses;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> nestCounter;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> toLower();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> separateKeywords(std::string&amp; searchQuery);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> separateKeywordsBool(std::string&amp; searchQuery);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> removeParenthesesFromWord(std::string&amp; word);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> seperateParenthesesFromWord(std::string&amp; word);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">void</span> removeStopWords(std::vector&lt;std::string&gt;&amp; words);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> removeStems(std::vector&lt;std::string&gt;&amp; queryKeywords);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">void</span> noNest(std::vector&lt;std::string&gt;&amp; phrase);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">void</span> singleNest(std::vector&lt;std::string&gt;&amp; restOfPhrase, std::vector&lt;std::string&gt;&amp; phrase);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordtype">void</span> doubleNest(std::vector&lt;std::string&gt;&amp; restOfPhrase, std::vector&lt;std::string&gt;&amp; phrase);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="class_query_processor.html#a32a6760ff0aab51b38fb8eb236e2e140">QueryProcessor</a>();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="class_query_processor.html#a32a6760ff0aab51b38fb8eb236e2e140">QueryProcessor</a>(<a class="code" href="class_index_handler.html">IndexHandler</a>*&amp; ih ,std::string&amp; searchText);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;};</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif // QUERYPROCESSOR_H</span></div>
+<div class="ttc" id="class_index_html"><div class="ttname"><a href="class_index.html">Index</a></div><div class="ttdoc">an interface used for the AVL Tree and Hash Table </div><div class="ttdef"><b>Definition:</b> index.h:16</div></div>
+<div class="ttc" id="class_query_processor_html_a32a6760ff0aab51b38fb8eb236e2e140"><div class="ttname"><a href="class_query_processor.html#a32a6760ff0aab51b38fb8eb236e2e140">QueryProcessor::QueryProcessor</a></div><div class="ttdeci">QueryProcessor()</div><div class="ttdoc">QueryProcessor default constructor. </div><div class="ttdef"><b>Definition:</b> queryprocessor.cpp:12</div></div>
+<div class="ttc" id="class_query_processor_html"><div class="ttname"><a href="class_query_processor.html">QueryProcessor</a></div><div class="ttdoc">QueryProcessor processes search queries entered by the user. </div><div class="ttdef"><b>Definition:</b> queryprocessor.h:16</div></div>
+<div class="ttc" id="class_linked_list_html"><div class="ttname"><a href="class_linked_list.html">LinkedList</a></div><div class="ttdef"><b>Definition:</b> linkedlist.h:17</div></div>
+<div class="ttc" id="class_index_handler_html"><div class="ttname"><a href="class_index_handler.html">IndexHandler</a></div><div class="ttdoc">Adds information from the document parser to the avl tree or hash table, searches the avl tree or has...</div><div class="ttdef"><b>Definition:</b> indexhandler.h:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

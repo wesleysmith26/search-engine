@@ -85,147 +85,417 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">linkedlist.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LINKEDLIST</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LINKEDLIST</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Owner: Charlie</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// file history:</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/linkedlist.h</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_linked_list.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_linked_list.html">LinkedList</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">struct </span>Node</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        T data;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        Node *next;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    };</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Node* head;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    Node* cur;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Node* temp;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_linked_list.html">LinkedList</a>()</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LINKEDLIST</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define LINKEDLIST</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_linked_list.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_linked_list.html">LinkedList</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">struct </span>Node</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        head = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        cur = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        temp = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    ~<a class="code" href="class_linked_list.html">LinkedList</a>()</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span>(head != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">while</span>(head-&gt;next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                temp = head-&gt;next;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keyword">delete</span> head;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                head = temp;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">delete</span> head;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">bool</span> empty()</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span>(head == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">bool</span> checkNext(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">int</span> pageNumber;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">double</span> freqency;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">string</span> title;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">string</span> date;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">string</span> user;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        Node *next;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    Node* head;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    Node* cur;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    Node* temp;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> contain;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_linked_list.html#afe7f78983e173f8018927cf2ad11a5aa">   38</a></span>&#160;    <a class="code" href="class_linked_list.html#afe7f78983e173f8018927cf2ad11a5aa">LinkedList</a>()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        head = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        cur = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        temp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_linked_list.html#a35811ed58ff0d8d9cc9b309b8d8f5111">   48</a></span>&#160;    <a class="code" href="class_linked_list.html#a35811ed58ff0d8d9cc9b309b8d8f5111">~LinkedList</a>()</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        cur = head;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            cur = cur-&gt;next;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span>(cur-&gt;next == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> push_back(T newData)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            head = <span class="keyword">new</span> Node();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            head-&gt;data = newData;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }<span class="keywordflow">else</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            cur = head;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">while</span>(cur-&gt;next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                cur = cur-&gt;next;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            temp = <span class="keyword">new</span> Node();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            temp-&gt;data = newData;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            cur-&gt;next = temp;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">if</span>(head != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">while</span>(head-&gt;next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                temp = head-&gt;next;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keyword">delete</span> head;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                head = temp;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">delete</span> head;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_linked_list.html#ab34de0df2c51416dc15596f45809842b">   66</a></span>&#160;    <a class="code" href="class_linked_list.html#ab34de0df2c51416dc15596f45809842b">LinkedList</a>(<span class="keyword">const</span> <a class="code" href="class_linked_list.html">LinkedList</a> &amp;cp)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span>(cp.head == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            head = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            head = <span class="keyword">new</span> Node();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            head = cp.head;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    T&amp; get_at(<span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">if</span>(cp.cur == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            cur = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        } <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> cur-&gt;data;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }<span class="keywordflow">else</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            cur = head;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                cur = cur-&gt;next;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> cur-&gt;data;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> set_at(<span class="keywordtype">int</span> index, T val)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        cur = head;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            cur = cur-&gt;next;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        cur-&gt;data = val;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">int</span> size()</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        temp = head;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordtype">int</span> counter = 1;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">while</span>(temp-&gt;next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            temp = temp-&gt;next;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            counter++;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            cur = <span class="keyword">new</span> Node();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            cur = cp.cur;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span>(cp.temp == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            temp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        } <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            temp = <span class="keyword">new</span> Node();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            temp = cp.temp;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_linked_list.html#a261977565e78dd74f288d47ba5865242">   99</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a261977565e78dd74f288d47ba5865242">clear</a>()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">if</span>(head != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">while</span>(head-&gt;next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                temp = head-&gt;next;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keyword">delete</span> head;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                head = temp;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keyword">delete</span> head;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            head = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> counter;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">void</span> output()</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    {</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;Linked list is empty&quot;</span>&lt;&lt;std::endl;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;           cur = head;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;           <span class="keywordtype">int</span> counter = 0;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;           <span class="keywordflow">while</span>(cur-&gt;next != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;           {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;               std::cout&lt;&lt;<span class="stringliteral">&quot;Index: &quot;</span>&lt;&lt;counter&lt;&lt;<span class="stringliteral">&quot; Data: &quot;</span>&lt;&lt;cur-&gt;data&lt;&lt;std::endl;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;               counter++;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;               cur = cur-&gt;next;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;           }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;           std::cout&lt;&lt;<span class="stringliteral">&quot;Index: &quot;</span>&lt;&lt;counter&lt;&lt;<span class="stringliteral">&quot; Data: &quot;</span>&lt;&lt;cur-&gt;data&lt;&lt;std::endl;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_linked_list.html#a522a87f8da5057b0e0bb4565bb348ec3">  119</a></span>&#160;    <a class="code" href="class_linked_list.html">LinkedList</a>&amp; <a class="code" href="class_linked_list.html#a522a87f8da5057b0e0bb4565bb348ec3">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_linked_list.html">LinkedList</a> &amp;cp)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">this</span> == &amp;cp)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span>(cp.head == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            head = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            head = cp.head;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span>(cp.cur == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            cur = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            cur = cp.cur;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;};</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif // LINKEDLIST</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor"></span></div>
-<div class="ttc" id="class_linked_list_html"><div class="ttname"><a href="class_linked_list.html">LinkedList</a></div><div class="ttdef"><b>Definition:</b> linkedlist.h:6</div></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span>(cp.temp == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            temp = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            temp = cp.temp;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_linked_list.html#a22987b83cc33313bb594a2d67aa9f289">  147</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_linked_list.html#a22987b83cc33313bb594a2d67aa9f289">empty</a>()</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span>(head == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_linked_list.html#abf524a3e1cd90e8374fa5c24f64dfd18">  163</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#abf524a3e1cd90e8374fa5c24f64dfd18">push_back</a>(<span class="keywordtype">int</span> pg, <span class="keywordtype">double</span> freq, <span class="keywordtype">string</span> docName, <span class="keywordtype">string</span> dateMade, <span class="keywordtype">string</span> userName)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            head = <span class="keyword">new</span> Node();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            head-&gt;pageNumber = pg;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            head-&gt;freqency = freq;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            head-&gt;title = docName;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            head-&gt;date = dateMade;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            head-&gt;user = userName;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">while</span>(cur-&gt;next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            temp = <span class="keyword">new</span> Node();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            temp-&gt;pageNumber = pg;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            temp-&gt;freqency = freq;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            temp-&gt;title = docName;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            temp-&gt;date = dateMade;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            temp-&gt;user = userName;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            cur-&gt;next = temp;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_linked_list.html#a0428164a801662e4908f87ce826cedbf">  195</a></span>&#160;    <span class="keywordtype">int</span>&amp; <a class="code" href="class_linked_list.html#a0428164a801662e4908f87ce826cedbf">getPageNumber</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> cur-&gt;pageNumber;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">return</span> cur-&gt;pageNumber;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="class_linked_list.html#a36b29b42c7e4316a4a1663cbc60804a7">  216</a></span>&#160;    <span class="keywordtype">double</span>&amp; <a class="code" href="class_linked_list.html#a36b29b42c7e4316a4a1663cbc60804a7">getFrequency</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> cur-&gt;freqency;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">return</span> cur-&gt;freqency;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="class_linked_list.html#ab1605d5e12f51dd7f00d042415b80232">  236</a></span>&#160;    <span class="keywordtype">string</span>&amp; <a class="code" href="class_linked_list.html#ab1605d5e12f51dd7f00d042415b80232">getTitle</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">return</span> cur-&gt;title;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">return</span> cur-&gt;title;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="class_linked_list.html#a49761c9b8dd1dc1df7a56b0a3536a15d">  256</a></span>&#160;    <span class="keywordtype">string</span>&amp; <a class="code" href="class_linked_list.html#a49761c9b8dd1dc1df7a56b0a3536a15d">getDate</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">return</span> cur-&gt;date;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">return</span> cur-&gt;date;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="class_linked_list.html#ad88d540fff6aea9502372fc21035e404">  278</a></span>&#160;    <span class="keywordtype">string</span>&amp; <a class="code" href="class_linked_list.html#ad88d540fff6aea9502372fc21035e404">getUser</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">if</span>(0 &gt; index || size()-1 &lt; index)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            std::cout&lt;&lt;<span class="stringliteral">&quot;index is out of bounds&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">return</span> cur-&gt;user;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }<span class="keywordflow">else</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">return</span> cur-&gt;user;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="class_linked_list.html#a7bfa0c7ef3608c772d8837226fa0baca">  298</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a7bfa0c7ef3608c772d8837226fa0baca">set_at</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> freq)</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        cur = head;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            cur = cur-&gt;next;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        cur-&gt;freqency += freq;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;</div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_linked_list.html#a1d13e00736ede314d40f26a64769cc35">  316</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a1d13e00736ede314d40f26a64769cc35">set_at</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">int</span> pg ,<span class="keywordtype">double</span> freq, <span class="keywordtype">string</span> docName, <span class="keywordtype">string</span> dateMade, <span class="keywordtype">string</span> userName)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        cur = head;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index; counter++)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            cur = cur-&gt;next;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        cur-&gt;pageNumber = pg;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        cur-&gt;freqency = freq;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        cur-&gt;title = docName;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        cur-&gt;date = dateMade;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        cur-&gt;user = userName;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="class_linked_list.html#aed2890ca9479d953248e024babee04f3">  333</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#aed2890ca9479d953248e024babee04f3">findSet</a>(<span class="keywordtype">int</span> pg, <span class="keywordtype">double</span> freq)</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        cur = head;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordflow">while</span>(cur-&gt;pageNumber != pg)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            cur = cur-&gt;next;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        cur-&gt;freqency += freq;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    }</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="class_linked_list.html#a3429db79356a0203d8c50057cb76a03b">  346</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a3429db79356a0203d8c50057cb76a03b">deleteAt</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">if</span>(index == 0)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            temp = head-&gt;next;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keyword">delete</span> head;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            head = temp;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            cur = head;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> counter = 0; counter &lt; index-1; counter++)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                cur = cur-&gt;next;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            temp = cur-&gt;next-&gt;next;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keyword">delete</span> cur-&gt;next;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            cur-&gt;next = temp;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00369"></a><span class="lineno"><a class="line" href="class_linked_list.html#a4224bd8bf5f18b7b6f9fa66ee2c35702">  369</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_linked_list.html#a4224bd8bf5f18b7b6f9fa66ee2c35702">size</a>()</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        temp = head;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordtype">int</span> counter = 1;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">while</span>(temp-&gt;next != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            temp = temp-&gt;next;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            counter++;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">return</span> counter;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="class_linked_list.html#ad6fdfc5ff2d9b4209ac3104402676574">  386</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#ad6fdfc5ff2d9b4209ac3104402676574">sort</a>(<span class="keywordtype">int</span> start, <span class="keywordtype">int</span> end)</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">if</span>(start &lt; end)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <span class="keywordtype">int</span> p = partition(start, end);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            sort(start, p-1);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            sort(p+1, end);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
+<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="class_linked_list.html#aabad92ed4258e22f8f25ef4db83ace63">  403</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_linked_list.html#aabad92ed4258e22f8f25ef4db83ace63">partition</a>(<span class="keywordtype">int</span> low, <span class="keywordtype">int</span> high)</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <span class="keywordtype">double</span> pivot = getFrequency(high);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordtype">int</span> left = low-1;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> right = low; right &lt; high; right++)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <span class="keywordflow">if</span>(getFrequency(right) &gt; pivot)</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                left++;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                swap(left, right);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        }</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        swap(left+1, high);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keywordflow">return</span> left+1;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
+<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="class_linked_list.html#a6328a045297f16d1ae2f3964126f1d3e">  427</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a6328a045297f16d1ae2f3964126f1d3e">swap</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b)</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="keywordtype">int</span> pgTemp;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordtype">double</span> freqTemp;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordtype">string</span> titleTemp;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="keywordtype">string</span> dateTemp;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="keywordtype">string</span> userTemp;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        pgTemp = getPageNumber(a);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        freqTemp = getFrequency(a);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        titleTemp = getTitle(a);</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        dateTemp = getDate(a);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        userTemp = getUser(a);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        set_at(a, getPageNumber(b), getFrequency(b), getTitle(b), getDate(b), getUser(b));</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        set_at(b, pgTemp, freqTemp, titleTemp, dateTemp, userTemp);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
+<div class="line"><a name="l00450"></a><span class="lineno"><a class="line" href="class_linked_list.html#a9ccb3e8a33f1f6a12884782b93a837ae">  450</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_linked_list.html#a9ccb3e8a33f1f6a12884782b93a837ae">contains</a>(<span class="keywordtype">int</span>&amp; pg)</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        cur = head;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">while</span>(cur != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            <span class="keywordflow">if</span>(cur-&gt;pageNumber == pg)</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            cur = cur-&gt;next;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        }</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="class_linked_list.html#ae43a82e40aaf7709c34cf989a2905750">  468</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_linked_list.html#ae43a82e40aaf7709c34cf989a2905750">findIterator</a>(<span class="keywordtype">int</span>&amp; pg)</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        cur = head;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        <span class="keywordtype">int</span> it = 0;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        <span class="keywordflow">while</span>(cur != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">if</span>(cur-&gt;pageNumber == pg)</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                <span class="keywordflow">return</span> it;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            cur = cur-&gt;next;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            it++;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    }</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
+<div class="line"><a name="l00489"></a><span class="lineno"><a class="line" href="class_linked_list.html#a420d35a949ef7acbb5cd13a2900fe813">  489</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a420d35a949ef7acbb5cd13a2900fe813">output</a>()</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        <span class="keywordflow">if</span>(empty())</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            cout&lt;&lt;<span class="stringliteral">&quot;Linked list is empty&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;           cur = head;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;           <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;           <span class="keywordflow">while</span>(cur != <span class="keyword">nullptr</span> &amp;&amp; counter &lt; 16)</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;           {</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;               cout&lt;&lt;<span class="stringliteral">&quot;Index: &quot;</span>&lt;&lt;counter&lt;&lt;<span class="stringliteral">&quot; Data: &quot;</span>&lt;&lt;cur-&gt;pageNumber&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;cur-&gt;freqency&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;cur-&gt;title&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;cur-&gt;date&lt;&lt;<span class="stringliteral">&quot;, &quot;</span>&lt;&lt;cur-&gt;user&lt;&lt;endl;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;               counter++;</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;               cur = cur-&gt;next;</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;           }</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;           cout&lt;&lt;<span class="stringliteral">&quot;Total Number of Indexs: &quot;</span>&lt;&lt;size()&lt;&lt;endl;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;};</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="preprocessor">#endif // LINKEDLIST</span></div>
+<div class="ttc" id="class_linked_list_html_a49761c9b8dd1dc1df7a56b0a3536a15d"><div class="ttname"><a href="class_linked_list.html#a49761c9b8dd1dc1df7a56b0a3536a15d">LinkedList::getDate</a></div><div class="ttdeci">string &amp; getDate(int index)</div><div class="ttdoc">getDate gets the page date from a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:256</div></div>
+<div class="ttc" id="class_linked_list_html_a22987b83cc33313bb594a2d67aa9f289"><div class="ttname"><a href="class_linked_list.html#a22987b83cc33313bb594a2d67aa9f289">LinkedList::empty</a></div><div class="ttdeci">bool empty()</div><div class="ttdoc">empty checks if the linked list is empty. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:147</div></div>
+<div class="ttc" id="class_linked_list_html_afe7f78983e173f8018927cf2ad11a5aa"><div class="ttname"><a href="class_linked_list.html#afe7f78983e173f8018927cf2ad11a5aa">LinkedList::LinkedList</a></div><div class="ttdeci">LinkedList()</div><div class="ttdoc">LinkedList default constructor. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:38</div></div>
+<div class="ttc" id="class_linked_list_html_aed2890ca9479d953248e024babee04f3"><div class="ttname"><a href="class_linked_list.html#aed2890ca9479d953248e024babee04f3">LinkedList::findSet</a></div><div class="ttdeci">void findSet(int pg, double freq)</div><div class="ttdoc">findSet updates the word frequency for the page </div><div class="ttdef"><b>Definition:</b> linkedlist.h:333</div></div>
+<div class="ttc" id="class_linked_list_html_ad88d540fff6aea9502372fc21035e404"><div class="ttname"><a href="class_linked_list.html#ad88d540fff6aea9502372fc21035e404">LinkedList::getUser</a></div><div class="ttdeci">string &amp; getUser(int index)</div><div class="ttdoc">getUser gets the contributor&#39;s username from a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:278</div></div>
+<div class="ttc" id="class_linked_list_html_ab1605d5e12f51dd7f00d042415b80232"><div class="ttname"><a href="class_linked_list.html#ab1605d5e12f51dd7f00d042415b80232">LinkedList::getTitle</a></div><div class="ttdeci">string &amp; getTitle(int index)</div><div class="ttdoc">getTitle gets the page title from a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:236</div></div>
+<div class="ttc" id="class_linked_list_html_a4224bd8bf5f18b7b6f9fa66ee2c35702"><div class="ttname"><a href="class_linked_list.html#a4224bd8bf5f18b7b6f9fa66ee2c35702">LinkedList::size</a></div><div class="ttdeci">int size()</div><div class="ttdoc">size gets the size of the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:369</div></div>
+<div class="ttc" id="class_linked_list_html_abf524a3e1cd90e8374fa5c24f64dfd18"><div class="ttname"><a href="class_linked_list.html#abf524a3e1cd90e8374fa5c24f64dfd18">LinkedList::push_back</a></div><div class="ttdeci">void push_back(int pg, double freq, string docName, string dateMade, string userName)</div><div class="ttdoc">push_back adds a node to the end of the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:163</div></div>
+<div class="ttc" id="class_linked_list_html_aabad92ed4258e22f8f25ef4db83ace63"><div class="ttname"><a href="class_linked_list.html#aabad92ed4258e22f8f25ef4db83ace63">LinkedList::partition</a></div><div class="ttdeci">int partition(int low, int high)</div><div class="ttdoc">partition recursive function that sorts the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:403</div></div>
+<div class="ttc" id="class_linked_list_html_a261977565e78dd74f288d47ba5865242"><div class="ttname"><a href="class_linked_list.html#a261977565e78dd74f288d47ba5865242">LinkedList::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">clear clears the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:99</div></div>
+<div class="ttc" id="class_linked_list_html_a522a87f8da5057b0e0bb4565bb348ec3"><div class="ttname"><a href="class_linked_list.html#a522a87f8da5057b0e0bb4565bb348ec3">LinkedList::operator=</a></div><div class="ttdeci">LinkedList &amp; operator=(const LinkedList &amp;cp)</div><div class="ttdoc">overloaded assignment operator </div><div class="ttdef"><b>Definition:</b> linkedlist.h:119</div></div>
+<div class="ttc" id="class_linked_list_html_ab34de0df2c51416dc15596f45809842b"><div class="ttname"><a href="class_linked_list.html#ab34de0df2c51416dc15596f45809842b">LinkedList::LinkedList</a></div><div class="ttdeci">LinkedList(const LinkedList &amp;cp)</div><div class="ttdoc">LinkedList copy constructor. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:66</div></div>
+<div class="ttc" id="class_linked_list_html_a7bfa0c7ef3608c772d8837226fa0baca"><div class="ttname"><a href="class_linked_list.html#a7bfa0c7ef3608c772d8837226fa0baca">LinkedList::set_at</a></div><div class="ttdeci">void set_at(int index, double freq)</div><div class="ttdoc">set_at updates the frequency of a word at a specified node. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:298</div></div>
+<div class="ttc" id="class_linked_list_html_a1d13e00736ede314d40f26a64769cc35"><div class="ttname"><a href="class_linked_list.html#a1d13e00736ede314d40f26a64769cc35">LinkedList::set_at</a></div><div class="ttdeci">void set_at(int index, int pg, double freq, string docName, string dateMade, string userName)</div><div class="ttdoc">set_at updates the page number, frequency, page title, page date, and contributor&#39;s username at a spe...</div><div class="ttdef"><b>Definition:</b> linkedlist.h:316</div></div>
+<div class="ttc" id="class_linked_list_html_a6328a045297f16d1ae2f3964126f1d3e"><div class="ttname"><a href="class_linked_list.html#a6328a045297f16d1ae2f3964126f1d3e">LinkedList::swap</a></div><div class="ttdeci">void swap(int a, int b)</div><div class="ttdoc">swap swaps the contents of a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:427</div></div>
+<div class="ttc" id="class_linked_list_html_a36b29b42c7e4316a4a1663cbc60804a7"><div class="ttname"><a href="class_linked_list.html#a36b29b42c7e4316a4a1663cbc60804a7">LinkedList::getFrequency</a></div><div class="ttdeci">double &amp; getFrequency(int index)</div><div class="ttdoc">getFrequency gets the term frequency from a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:216</div></div>
+<div class="ttc" id="class_linked_list_html_a35811ed58ff0d8d9cc9b309b8d8f5111"><div class="ttname"><a href="class_linked_list.html#a35811ed58ff0d8d9cc9b309b8d8f5111">LinkedList::~LinkedList</a></div><div class="ttdeci">~LinkedList()</div><div class="ttdoc">LinkedList destructor. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:48</div></div>
+<div class="ttc" id="class_linked_list_html_a9ccb3e8a33f1f6a12884782b93a837ae"><div class="ttname"><a href="class_linked_list.html#a9ccb3e8a33f1f6a12884782b93a837ae">LinkedList::contains</a></div><div class="ttdeci">bool contains(int &amp;pg)</div><div class="ttdoc">contains checks if the linked list contains a page number </div><div class="ttdef"><b>Definition:</b> linkedlist.h:450</div></div>
+<div class="ttc" id="class_linked_list_html"><div class="ttname"><a href="class_linked_list.html">LinkedList</a></div><div class="ttdef"><b>Definition:</b> linkedlist.h:17</div></div>
+<div class="ttc" id="class_linked_list_html_ad6fdfc5ff2d9b4209ac3104402676574"><div class="ttname"><a href="class_linked_list.html#ad6fdfc5ff2d9b4209ac3104402676574">LinkedList::sort</a></div><div class="ttdeci">void sort(int start, int end)</div><div class="ttdoc">sort sorts the linked list by term frequency in descending order. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:386</div></div>
+<div class="ttc" id="class_linked_list_html_a3429db79356a0203d8c50057cb76a03b"><div class="ttname"><a href="class_linked_list.html#a3429db79356a0203d8c50057cb76a03b">LinkedList::deleteAt</a></div><div class="ttdeci">void deleteAt(int index)</div><div class="ttdoc">deleteAt deletes a specified node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:346</div></div>
+<div class="ttc" id="class_linked_list_html_a420d35a949ef7acbb5cd13a2900fe813"><div class="ttname"><a href="class_linked_list.html#a420d35a949ef7acbb5cd13a2900fe813">LinkedList::output</a></div><div class="ttdeci">void output()</div><div class="ttdoc">output prints the contents of the nodes in the linked list for the first 15 nodes and the number of n...</div><div class="ttdef"><b>Definition:</b> linkedlist.h:489</div></div>
+<div class="ttc" id="class_linked_list_html_ae43a82e40aaf7709c34cf989a2905750"><div class="ttname"><a href="class_linked_list.html#ae43a82e40aaf7709c34cf989a2905750">LinkedList::findIterator</a></div><div class="ttdeci">int findIterator(int &amp;pg)</div><div class="ttdoc">findIterator returns an integer representing the index number of a node containing a specific page nu...</div><div class="ttdef"><b>Definition:</b> linkedlist.h:468</div></div>
+<div class="ttc" id="class_linked_list_html_a0428164a801662e4908f87ce826cedbf"><div class="ttname"><a href="class_linked_list.html#a0428164a801662e4908f87ce826cedbf">LinkedList::getPageNumber</a></div><div class="ttdeci">int &amp; getPageNumber(int index)</div><div class="ttdoc">getPageNumber gets the page number from a node in the linked list. </div><div class="ttdef"><b>Definition:</b> linkedlist.h:195</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

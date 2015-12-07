@@ -85,58 +85,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">documentparser.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DOCUMENTPARSER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DOCUMENTPARSER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;indexhandler.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_document_parser.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_document_parser.html">DocumentParser</a></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_index_handler.html">IndexHandler</a>* myIndexHandler;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> removeStopwords(std::string&amp; pageText, <span class="keywordtype">int</span> docNumber,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                         std::string&amp; pageTitle, std::string&amp; pageDate,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                         std::string&amp; pageContributor);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> splitString(std::string&amp; text, std::vector&lt;std::string&gt;&amp; pageText);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> toLower(std::vector&lt;std::string&gt;&amp; pageWords);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> removeStems(std::vector&lt;std::string&gt;&amp; words);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> calculateTermFrequency(std::vector&lt;std::string&gt;&amp; terms,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                <span class="keywordtype">int</span>&amp; pageNumber, std::string&amp; docTitle);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span> checkForDuplicateTerm(std::string&amp; word, std::map&lt;std::string,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                               <span class="keywordtype">int</span>&gt;&amp; terms);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span> getDocumentContents(<span class="keywordtype">char</span>*&amp; docFilename, <span class="keywordtype">int</span>&amp; documentNumber);</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Owner: Wesley</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// File History:</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/documentparser.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef DOCUMENTPARSER_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DOCUMENTPARSER_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;indexhandler.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_document_parser.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_document_parser.html">DocumentParser</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="class_index_handler.html">IndexHandler</a>* myIndexHandler;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span> documentNumber;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> removeStopwords(std::string&amp; pageText, std::string&amp; pageTitle,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                         std::string&amp; pageDate, std::string&amp; pageContributor);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> splitString(std::string&amp; text, std::vector&lt;std::string&gt;&amp; pageText);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> toLower(std::vector&lt;std::string&gt;&amp; pageWords);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> removeStems(std::vector&lt;std::string&gt;&amp; words);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> calculateTermFrequency(std::vector&lt;std::string&gt;&amp; terms,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                std::string&amp; docTitle, std::string&amp; date,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                std::string&amp; contributor);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> checkForDuplicateTerm(std::string&amp; word, std::map&lt;std::string,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                               <span class="keywordtype">int</span>&gt;&amp; terms);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser</a>();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser</a>(<a class="code" href="class_index_handler.html">IndexHandler</a>*&amp; ih);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_document_parser.html#a81d995055d3e5cab74e47db8557ad022">readDocument</a>(<span class="keywordtype">char</span>*&amp; filename);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_document_parser.html#a08d3e204701139484a63593dda11edac">getPageNumber</a>(<span class="keywordtype">char</span>*&amp; file);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;};</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif // DOCUMENTPARSER_H</span></div>
-<div class="ttc" id="class_document_parser_html_a81d995055d3e5cab74e47db8557ad022"><div class="ttname"><a href="class_document_parser.html#a81d995055d3e5cab74e47db8557ad022">DocumentParser::readDocument</a></div><div class="ttdeci">void readDocument(char *&amp;filename)</div><div class="ttdoc">readDocument parses the xml file </div><div class="ttdef"><b>Definition:</b> documentparser.cpp:23</div></div>
-<div class="ttc" id="class_document_parser_html_a08d3e204701139484a63593dda11edac"><div class="ttname"><a href="class_document_parser.html#a08d3e204701139484a63593dda11edac">DocumentParser::getPageNumber</a></div><div class="ttdeci">void getPageNumber(char *&amp;file)</div><div class="ttdoc">getPageNumber asks the user which page number they want to view the contents of from the search resul...</div><div class="ttdef"><b>Definition:</b> documentparser.cpp:303</div></div>
-<div class="ttc" id="class_index_handler_html"><div class="ttname"><a href="class_index_handler.html">IndexHandler</a></div><div class="ttdef"><b>Definition:</b> indexhandler.h:12</div></div>
-<div class="ttc" id="class_document_parser_html_a7a281448c94759450046ab2fb57e7aae"><div class="ttname"><a href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser::DocumentParser</a></div><div class="ttdeci">DocumentParser()</div><div class="ttdoc">DocumentParser default constructor. </div><div class="ttdef"><b>Definition:</b> documentparser.cpp:13</div></div>
-<div class="ttc" id="class_document_parser_html"><div class="ttname"><a href="class_document_parser.html">DocumentParser</a></div><div class="ttdoc">Parses XML Document. </div><div class="ttdef"><b>Definition:</b> documentparser.h:23</div></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">void</span> getDocumentContents(<span class="keywordtype">char</span>*&amp; docFilename, <span class="keywordtype">int</span>&amp; docNum);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser</a>(<a class="code" href="class_index_handler.html">IndexHandler</a>*&amp; ih);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_document_parser.html#a81d995055d3e5cab74e47db8557ad022">readDocument</a>(<span class="keywordtype">char</span>*&amp; filename);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_document_parser.html#a08d3e204701139484a63593dda11edac">getPageNumber</a>(<span class="keywordtype">char</span>*&amp; file);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_document_parser.html#a2f6591a1cef19ab16b4901208d1a5495">printNumberOfPagesIndexed</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#endif // DOCUMENTPARSER_H</span></div>
+<div class="ttc" id="class_document_parser_html_a81d995055d3e5cab74e47db8557ad022"><div class="ttname"><a href="class_document_parser.html#a81d995055d3e5cab74e47db8557ad022">DocumentParser::readDocument</a></div><div class="ttdeci">void readDocument(char *&amp;filename)</div><div class="ttdoc">readDocument parses the xml file </div><div class="ttdef"><b>Definition:</b> documentparser.cpp:29</div></div>
+<div class="ttc" id="class_document_parser_html_a2f6591a1cef19ab16b4901208d1a5495"><div class="ttname"><a href="class_document_parser.html#a2f6591a1cef19ab16b4901208d1a5495">DocumentParser::printNumberOfPagesIndexed</a></div><div class="ttdeci">void printNumberOfPagesIndexed()</div><div class="ttdoc">printNumberOfPagesIndexed prints the number of pages indexed by the index handler. </div><div class="ttdef"><b>Definition:</b> documentparser.cpp:365</div></div>
+<div class="ttc" id="class_document_parser_html_a08d3e204701139484a63593dda11edac"><div class="ttname"><a href="class_document_parser.html#a08d3e204701139484a63593dda11edac">DocumentParser::getPageNumber</a></div><div class="ttdeci">void getPageNumber(char *&amp;file)</div><div class="ttdoc">getPageNumber asks the user which page number they want to view the contents of from the search resul...</div><div class="ttdef"><b>Definition:</b> documentparser.cpp:318</div></div>
+<div class="ttc" id="class_index_handler_html"><div class="ttname"><a href="class_index_handler.html">IndexHandler</a></div><div class="ttdoc">Adds information from the document parser to the avl tree or hash table, searches the avl tree or has...</div><div class="ttdef"><b>Definition:</b> indexhandler.h:24</div></div>
+<div class="ttc" id="class_document_parser_html_a7a281448c94759450046ab2fb57e7aae"><div class="ttname"><a href="class_document_parser.html#a7a281448c94759450046ab2fb57e7aae">DocumentParser::DocumentParser</a></div><div class="ttdeci">DocumentParser()</div><div class="ttdoc">DocumentParser default constructor. </div><div class="ttdef"><b>Definition:</b> documentparser.cpp:17</div></div>
+<div class="ttc" id="class_document_parser_html"><div class="ttname"><a href="class_document_parser.html">DocumentParser</a></div><div class="ttdoc">Parses XML Document. </div><div class="ttdef"><b>Definition:</b> documentparser.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

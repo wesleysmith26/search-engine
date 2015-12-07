@@ -112,10 +112,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08d3e204701139484a63593dda11edac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a08d3e204701139484a63593dda11edac">getPageNumber</a> (char *&amp;file)</td></tr>
 <tr class="memdesc:a08d3e204701139484a63593dda11edac"><td class="mdescLeft">&#160;</td><td class="mdescRight">getPageNumber asks the user which page number they want to view the contents of from the search results.  <a href="#a08d3e204701139484a63593dda11edac">More...</a><br/></td></tr>
 <tr class="separator:a08d3e204701139484a63593dda11edac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f6591a1cef19ab16b4901208d1a5495"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f6591a1cef19ab16b4901208d1a5495"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_document_parser.html#a2f6591a1cef19ab16b4901208d1a5495">printNumberOfPagesIndexed</a> ()</td></tr>
+<tr class="memdesc:a2f6591a1cef19ab16b4901208d1a5495"><td class="mdescLeft">&#160;</td><td class="mdescRight">printNumberOfPagesIndexed prints the number of pages indexed by the index handler. <br/></td></tr>
+<tr class="separator:a2f6591a1cef19ab16b4901208d1a5495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parses XML Document. </p>
-<p>Parses the WikiBooks XML document using rapidxml libraries, collecting the document title, date, contributor's username, and contents. The document contents are then split up into individual strings for each word. Words that are stop words are removed, and the leftover words have their stems removed. Then frequency of duplicate words is calculated, and the document title, date, contributor's username, and words are sent to the Index Handler.</p>
+<p>Parses the WikiBooks XML document using rapidxml libraries, collecting the document title, date, contributor's username, and contents. <a class="el" href="class_the.html" title="Singly linked list that has nodes that contain the page number, term frequency, document title...">The</a> document contents are then split up into individual strings for each word. Words that are stop words are removed, and the leftover words have their stems removed. Then frequency of duplicate words is calculated, and the document title, date, contributor's username, and words are sent to the <a class="el" href="class_index.html" title="an interface used for the AVL Tree and Hash Table ">Index</a> Handler.</p>
 <p>Can also display the contents of a page in the xml file. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4504346e766df5c146df081b2439911d"></a>
@@ -135,7 +139,7 @@ Public Member Functions</h2></td></tr>
 <p><a class="el" href="class_document_parser.html" title="Parses XML Document. ">DocumentParser</a> overloaded constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ih</td><td>a pointer to an Index Handler object </td></tr>
+    <tr><td class="paramname">ih</td><td>a pointer to an <a class="el" href="class_index.html" title="an interface used for the AVL Tree and Hash Table ">Index</a> Handler object </td></tr>
   </table>
   </dd>
 </dl>
@@ -198,7 +202,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

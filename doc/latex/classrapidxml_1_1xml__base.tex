@@ -91,7 +91,7 @@ Name of node, or empty string if node has no name.
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrapidxml_1_1xml__base_ae55060ae958c6e6465d6c8db852ec6ce}
 Sets name of node to a non zero-\/terminated string. See ownership\-\_\-of\-\_\-strings. \par
 \par
- Note that node does not own its name or value, it only stores a pointer to it. It will not delete or otherwise free the pointer on destruction. It is reponsibility of the user to properly manage lifetime of the string. The easiest way to achieve it is to use \hyperlink{classrapidxml_1_1memory__pool}{memory\-\_\-pool} of the document to allocate the string -\/ on destruction of the document the string will be automatically freed. \par
+ Note that node does not own its name or value, it only stores a pointer to it. It will not delete or otherwise free the pointer on destruction. It is reponsibility of the user to properly manage lifetime of the string. \hyperlink{class_the}{The} easiest way to achieve it is to use \hyperlink{classrapidxml_1_1memory__pool}{memory\-\_\-pool} of the document to allocate the string -\/ on destruction of the document the string will be automatically freed. \par
 \par
  Size of name must be specified separately, because name does not have to be zero terminated. Use \hyperlink{classrapidxml_1_1xml__base_a4611ddc82ac83a527c65606600eb2a0d}{name(const Ch $\ast$)} function to have the length automatically calculated (string must be zero terminated). 
 \begin{DoxyParams}{Parameters}
@@ -154,7 +154,7 @@ Value of node, or empty string if node has no value.
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrapidxml_1_1xml__base_a3b183c2db7022a6d30494dd2f0ac11e9}
 Sets value of node to a non zero-\/terminated string. See ownership\-\_\-of\-\_\-strings. \par
 \par
- Note that node does not own its name or value, it only stores a pointer to it. It will not delete or otherwise free the pointer on destruction. It is reponsibility of the user to properly manage lifetime of the string. The easiest way to achieve it is to use \hyperlink{classrapidxml_1_1memory__pool}{memory\-\_\-pool} of the document to allocate the string -\/ on destruction of the document the string will be automatically freed. \par
+ Note that node does not own its name or value, it only stores a pointer to it. It will not delete or otherwise free the pointer on destruction. It is reponsibility of the user to properly manage lifetime of the string. \hyperlink{class_the}{The} easiest way to achieve it is to use \hyperlink{classrapidxml_1_1memory__pool}{memory\-\_\-pool} of the document to allocate the string -\/ on destruction of the document the string will be automatically freed. \par
 \par
  Size of value must be specified separately, because it does not have to be zero terminated. Use \hyperlink{classrapidxml_1_1xml__base_a81e63ec4bfd2d7ef0a6c2ed49be6e623}{value(const Ch $\ast$)} function to have the length automatically calculated (string must be zero terminated). \par
 \par

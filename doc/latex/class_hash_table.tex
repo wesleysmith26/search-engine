@@ -1,0 +1,231 @@
+\hypertarget{class_hash_table}{\section{Hash\-Table Class Reference}
+\label{class_hash_table}\index{Hash\-Table@{Hash\-Table}}
+}
+
+
+contains contain a word, page number, page title, page date, and page contributor's username for each page.  
+
+
+Inheritance diagram for Hash\-Table\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_hash_table}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_hash_table_adc3bf2b214c572819ba957ad314d7db3}{\hyperlink{class_hash_table_adc3bf2b214c572819ba957ad314d7db3}{Hash\-Table} ()}\label{class_hash_table_adc3bf2b214c572819ba957ad314d7db3}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_hash_table}{Hash\-Table} default constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_hash_table_ac756b78d1ca5e613d68800b76c9bc55c}{Hash\-Table} (const \hyperlink{class_hash_table}{Hash\-Table} \&cp)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_hash_table}{Hash\-Table} copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_hash_table}{Hash\-Table} \& \hyperlink{class_hash_table_aa8ac131a52516b8cb16530584bdfb021}{operator=} (const \hyperlink{class_hash_table}{Hash\-Table} \&cp)
+\begin{DoxyCompactList}\small\item\em operator = overloaded assignment operator \end{DoxyCompactList}\item 
+\hypertarget{class_hash_table_adc1d238b66fad676ed683172d8967f46}{virtual \hyperlink{class_hash_table_adc1d238b66fad676ed683172d8967f46}{$\sim$\-Hash\-Table} ()}\label{class_hash_table_adc1d238b66fad676ed683172d8967f46}
+
+\begin{DoxyCompactList}\small\item\em $\sim$\-Hash\-Table \hyperlink{class_hash_table}{Hash\-Table} virtual destructor \end{DoxyCompactList}\item 
+\hypertarget{class_hash_table_a94a35e0cf2ce6fa291d48138f58635ed}{void \hyperlink{class_hash_table_a94a35e0cf2ce6fa291d48138f58635ed}{clear} ()}\label{class_hash_table_a94a35e0cf2ce6fa291d48138f58635ed}
+
+\begin{DoxyCompactList}\small\item\em clear clears all the buckets in the hash table. \end{DoxyCompactList}\item 
+void \hyperlink{class_hash_table_a3a194bb56855eb892b24455094a1edbb}{insert} (string \&keyword, int \&page\-Number, double \&freq, string \&header, string \&date, string \&user)
+\begin{DoxyCompactList}\small\item\em insert all the information into a node. \end{DoxyCompactList}\item 
+void \hyperlink{class_hash_table_a096c63eedf8e85a5523d59929f7a7cb3}{insert\-L\-L} (string \&keyword, \hyperlink{class_linked_list}{Linked\-List} $\ast$\&ll)
+\begin{DoxyCompactList}\small\item\em insert\-L\-L inserts a word and linked list into a linked list. \end{DoxyCompactList}\item 
+void \hyperlink{class_hash_table_afc9f7516810e364c4a8ebed516cd6406}{set\-Hash\-Value} (string \&keyword)
+\begin{DoxyCompactList}\small\item\em set\-Hash\-Value sets a hash value for a word used to insert into a bucket. \end{DoxyCompactList}\item 
+int \& \hyperlink{class_hash_table_a1968cb702792b31d8b259ce4b945543f}{get\-Size} ()
+\begin{DoxyCompactList}\small\item\em get\-Size returns the size of the hash table \end{DoxyCompactList}\item 
+string \& \hyperlink{class_hash_table_ab7d96c3bdf0871e7aec5c3fa71a6455c}{find\-Keyword} (string \&keyword)
+\begin{DoxyCompactList}\small\item\em find\-Keyword finds a keyword in a node in the hash table. \end{DoxyCompactList}\item 
+\hyperlink{class_linked_list}{Linked\-List} $\ast$\& \hyperlink{class_hash_table_a416e1aae0ecadc989c72d0e6b340a8a8}{find\-Data} (string \&keyword)
+\begin{DoxyCompactList}\small\item\em find\-Data finds the data associated with a keyword in the linked list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+contains contain a word, page number, page title, page date, and page contributor's username for each page. 
+
+subclass 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hash_table_ac756b78d1ca5e613d68800b76c9bc55c}{\index{Hash\-Table@{Hash\-Table}!Hash\-Table@{Hash\-Table}}
+\index{Hash\-Table@{Hash\-Table}!HashTable@{Hash\-Table}}
+\subsubsection[{Hash\-Table}]{\setlength{\rightskip}{0pt plus 5cm}Hash\-Table\-::\-Hash\-Table (
+\begin{DoxyParamCaption}
+\item[{const {\bf Hash\-Table} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_hash_table_ac756b78d1ca5e613d68800b76c9bc55c}
+
+
+\hyperlink{class_hash_table}{Hash\-Table} copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_hash_table}{Hash\-Table} object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_table_a416e1aae0ecadc989c72d0e6b340a8a8}{\index{Hash\-Table@{Hash\-Table}!find\-Data@{find\-Data}}
+\index{find\-Data@{find\-Data}!HashTable@{Hash\-Table}}
+\subsubsection[{find\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Linked\-List}$\ast$\& Hash\-Table\-::find\-Data (
+\begin{DoxyParamCaption}
+\item[{string \&}]{keyword}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_hash_table_a416e1aae0ecadc989c72d0e6b340a8a8}
+
+
+find\-Data finds the data associated with a keyword in the linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & a string containing a keyword \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to a linked list pointer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a72c1cd00b6fce902a5d08e9278954913}{Index}.
+
+\hypertarget{class_hash_table_ab7d96c3bdf0871e7aec5c3fa71a6455c}{\index{Hash\-Table@{Hash\-Table}!find\-Keyword@{find\-Keyword}}
+\index{find\-Keyword@{find\-Keyword}!HashTable@{Hash\-Table}}
+\subsubsection[{find\-Keyword}]{\setlength{\rightskip}{0pt plus 5cm}string\& Hash\-Table\-::find\-Keyword (
+\begin{DoxyParamCaption}
+\item[{string \&}]{keyword}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_hash_table_ab7d96c3bdf0871e7aec5c3fa71a6455c}
+
+
+find\-Keyword finds a keyword in a node in the hash table. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & a string containing a word \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a8ee654f84f96668a451afcf39fe2cc69}{Index}.
+
+\hypertarget{class_hash_table_a1968cb702792b31d8b259ce4b945543f}{\index{Hash\-Table@{Hash\-Table}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!HashTable@{Hash\-Table}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}int\& Hash\-Table\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_hash_table_a1968cb702792b31d8b259ce4b945543f}
+
+
+get\-Size returns the size of the hash table 
+
+\begin{DoxyReturn}{Returns}
+an integer reference 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_index_a0eccb696eb6548d60df4a4bce323191b}{Index}.
+
+\hypertarget{class_hash_table_a3a194bb56855eb892b24455094a1edbb}{\index{Hash\-Table@{Hash\-Table}!insert@{insert}}
+\index{insert@{insert}!HashTable@{Hash\-Table}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}void Hash\-Table\-::insert (
+\begin{DoxyParamCaption}
+\item[{string \&}]{keyword, }
+\item[{int \&}]{page\-Number, }
+\item[{double \&}]{freq, }
+\item[{string \&}]{header, }
+\item[{string \&}]{date, }
+\item[{string \&}]{user}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_hash_table_a3a194bb56855eb892b24455094a1edbb}
+
+
+insert all the information into a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & a string containing a keyword \\
+\hline
+{\em page\-Number} & an integer containing a page number \\
+\hline
+{\em freq} & a double containing the frequency of a word \\
+\hline
+{\em header} & a string containing the page number \\
+\hline
+{\em date} & a string containing the page date \\
+\hline
+{\em user} & a string containing the page contributor's username \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_index_ad44792ad4f81ef1e17a0c6cb6f57167c}{Index}.
+
+\hypertarget{class_hash_table_a096c63eedf8e85a5523d59929f7a7cb3}{\index{Hash\-Table@{Hash\-Table}!insert\-L\-L@{insert\-L\-L}}
+\index{insert\-L\-L@{insert\-L\-L}!HashTable@{Hash\-Table}}
+\subsubsection[{insert\-L\-L}]{\setlength{\rightskip}{0pt plus 5cm}void Hash\-Table\-::insert\-L\-L (
+\begin{DoxyParamCaption}
+\item[{string \&}]{keyword, }
+\item[{{\bf Linked\-List} $\ast$\&}]{ll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_hash_table_a096c63eedf8e85a5523d59929f7a7cb3}
+
+
+insert\-L\-L inserts a word and linked list into a linked list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & a string containing a word \\
+\hline
+{\em ll} & a linked list pointer containing the page number, frequency, page title, page date, and page contributor's username for the word \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_index_a423c014174a0257d27b7e5c5834f92ed}{Index}.
+
+\hypertarget{class_hash_table_aa8ac131a52516b8cb16530584bdfb021}{\index{Hash\-Table@{Hash\-Table}!operator=@{operator=}}
+\index{operator=@{operator=}!HashTable@{Hash\-Table}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Hash\-Table}\& Hash\-Table\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Hash\-Table} \&}]{cp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_hash_table_aa8ac131a52516b8cb16530584bdfb021}
+
+
+operator = overloaded assignment operator 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cp} & a constant \hyperlink{class_hash_table}{Hash\-Table} object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a reference to a \hyperlink{class_hash_table}{Hash\-Table} object 
+\end{DoxyReturn}
+\hypertarget{class_hash_table_afc9f7516810e364c4a8ebed516cd6406}{\index{Hash\-Table@{Hash\-Table}!set\-Hash\-Value@{set\-Hash\-Value}}
+\index{set\-Hash\-Value@{set\-Hash\-Value}!HashTable@{Hash\-Table}}
+\subsubsection[{set\-Hash\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void Hash\-Table\-::set\-Hash\-Value (
+\begin{DoxyParamCaption}
+\item[{string \&}]{keyword}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_hash_table_afc9f7516810e364c4a8ebed516cd6406}
+
+
+set\-Hash\-Value sets a hash value for a word used to insert into a bucket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & a string containing a word \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+hashtable.\-h\end{DoxyCompactItemize}

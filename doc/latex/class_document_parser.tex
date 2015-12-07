@@ -16,30 +16,74 @@ Parses X\-M\-L Document.
 \hypertarget{class_document_parser_a7a281448c94759450046ab2fb57e7aae}{\hyperlink{class_document_parser_a7a281448c94759450046ab2fb57e7aae}{Document\-Parser} ()}\label{class_document_parser_a7a281448c94759450046ab2fb57e7aae}
 
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_document_parser}{Document\-Parser} default constructor. \end{DoxyCompactList}\item 
-void \hyperlink{class_document_parser_a08f89dbb39ae984c30158a38ac70be17}{read\-Document} (char $\ast$filename)
-\begin{DoxyCompactList}\small\item\em reads/parses the xml document \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{class_document_parser_a4504346e766df5c146df081b2439911d}{Document\-Parser} (\hyperlink{class_index_handler}{Index\-Handler} $\ast$\&ih)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_document_parser}{Document\-Parser} overloaded constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_document_parser_a81d995055d3e5cab74e47db8557ad022}{read\-Document} (char $\ast$\&filename)
+\begin{DoxyCompactList}\small\item\em read\-Document parses the xml file \end{DoxyCompactList}\item 
+void \hyperlink{class_document_parser_a08d3e204701139484a63593dda11edac}{get\-Page\-Number} (char $\ast$\&file)
+\begin{DoxyCompactList}\small\item\em get\-Page\-Number asks the user which page number they want to view the contents of from the search results. \end{DoxyCompactList}\item 
+\hypertarget{class_document_parser_a2f6591a1cef19ab16b4901208d1a5495}{void \hyperlink{class_document_parser_a2f6591a1cef19ab16b4901208d1a5495}{print\-Number\-Of\-Pages\-Indexed} ()}\label{class_document_parser_a2f6591a1cef19ab16b4901208d1a5495}
+
+\begin{DoxyCompactList}\small\item\em print\-Number\-Of\-Pages\-Indexed prints the number of pages indexed by the index handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Parses X\-M\-L Document. 
 
-Parses the Wiki\-Books X\-M\-L document using rapidxml libraries. 
+Parses the Wiki\-Books X\-M\-L document using rapidxml libraries, collecting the document title, date, contributor's username, and contents. \hyperlink{class_the}{The} document contents are then split up into individual strings for each word. Words that are stop words are removed, and the leftover words have their stems removed. Then frequency of duplicate words is calculated, and the document title, date, contributor's username, and words are sent to the \hyperlink{class_index}{Index} Handler.
 
-\subsection{Member Function Documentation}
-\hypertarget{class_document_parser_a08f89dbb39ae984c30158a38ac70be17}{\index{Document\-Parser@{Document\-Parser}!read\-Document@{read\-Document}}
-\index{read\-Document@{read\-Document}!DocumentParser@{Document\-Parser}}
-\subsubsection[{read\-Document}]{\setlength{\rightskip}{0pt plus 5cm}void Document\-Parser\-::read\-Document (
+Can also display the contents of a page in the xml file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_document_parser_a4504346e766df5c146df081b2439911d}{\index{Document\-Parser@{Document\-Parser}!Document\-Parser@{Document\-Parser}}
+\index{Document\-Parser@{Document\-Parser}!DocumentParser@{Document\-Parser}}
+\subsubsection[{Document\-Parser}]{\setlength{\rightskip}{0pt plus 5cm}Document\-Parser\-::\-Document\-Parser (
 \begin{DoxyParamCaption}
-\item[{char $\ast$}]{filename}
+\item[{{\bf Index\-Handler} $\ast$\&}]{ih}
 \end{DoxyParamCaption}
-)}}\label{class_document_parser_a08f89dbb39ae984c30158a38ac70be17}
+)}}\label{class_document_parser_a4504346e766df5c146df081b2439911d}
 
 
-reads/parses the xml document 
+\hyperlink{class_document_parser}{Document\-Parser} overloaded constructor. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em filename} & a character pointer \\
+{\em ih} & a pointer to an \hyperlink{class_index}{Index} Handler object \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_document_parser_a08d3e204701139484a63593dda11edac}{\index{Document\-Parser@{Document\-Parser}!get\-Page\-Number@{get\-Page\-Number}}
+\index{get\-Page\-Number@{get\-Page\-Number}!DocumentParser@{Document\-Parser}}
+\subsubsection[{get\-Page\-Number}]{\setlength{\rightskip}{0pt plus 5cm}void Document\-Parser\-::get\-Page\-Number (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_document_parser_a08d3e204701139484a63593dda11edac}
+
+
+get\-Page\-Number asks the user which page number they want to view the contents of from the search results. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & a character pointer that contains the xml filename \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_document_parser_a81d995055d3e5cab74e47db8557ad022}{\index{Document\-Parser@{Document\-Parser}!read\-Document@{read\-Document}}
+\index{read\-Document@{read\-Document}!DocumentParser@{Document\-Parser}}
+\subsubsection[{read\-Document}]{\setlength{\rightskip}{0pt plus 5cm}void Document\-Parser\-::read\-Document (
+\begin{DoxyParamCaption}
+\item[{char $\ast$\&}]{filename}
+\end{DoxyParamCaption}
+)}}\label{class_document_parser_a81d995055d3e5cab74e47db8557ad022}
+
+
+read\-Document parses the xml file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & a character pointer that contains the xml filename \\
 \hline
 \end{DoxyParams}
 

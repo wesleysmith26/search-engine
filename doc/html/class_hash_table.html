@@ -92,41 +92,383 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">HashTable Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>contains contain a word, page number, page title, page date, and page contributor's username for each page.  
+ <a href="class_hash_table.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for HashTable:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_hash_table.png" usemap="#HashTable_map" alt=""/>
+  <map id="HashTable_map" name="HashTable_map">
+<area href="class_index.html" title="an interface used for the AVL Tree and Hash Table " alt="Index" shape="rect" coords="0,0,72,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:adc3bf2b214c572819ba957ad314d7db3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc3bf2b214c572819ba957ad314d7db3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#adc3bf2b214c572819ba957ad314d7db3">HashTable</a> ()</td></tr>
+<tr class="memdesc:adc3bf2b214c572819ba957ad314d7db3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> default constructor. <br/></td></tr>
+<tr class="separator:adc3bf2b214c572819ba957ad314d7db3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac756b78d1ca5e613d68800b76c9bc55c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#ac756b78d1ca5e613d68800b76c9bc55c">HashTable</a> (const <a class="el" href="class_hash_table.html">HashTable</a> &amp;cp)</td></tr>
+<tr class="memdesc:ac756b78d1ca5e613d68800b76c9bc55c"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> copy constructor.  <a href="#ac756b78d1ca5e613d68800b76c9bc55c">More...</a><br/></td></tr>
+<tr class="separator:ac756b78d1ca5e613d68800b76c9bc55c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8ac131a52516b8cb16530584bdfb021"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_hash_table.html">HashTable</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#aa8ac131a52516b8cb16530584bdfb021">operator=</a> (const <a class="el" href="class_hash_table.html">HashTable</a> &amp;cp)</td></tr>
+<tr class="memdesc:aa8ac131a52516b8cb16530584bdfb021"><td class="mdescLeft">&#160;</td><td class="mdescRight">operator = overloaded assignment operator  <a href="#aa8ac131a52516b8cb16530584bdfb021">More...</a><br/></td></tr>
+<tr class="separator:aa8ac131a52516b8cb16530584bdfb021"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1d238b66fad676ed683172d8967f46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc1d238b66fad676ed683172d8967f46"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#adc1d238b66fad676ed683172d8967f46">~HashTable</a> ()</td></tr>
+<tr class="memdesc:adc1d238b66fad676ed683172d8967f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">~HashTable <a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> virtual destructor <br/></td></tr>
+<tr class="separator:adc1d238b66fad676ed683172d8967f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94a35e0cf2ce6fa291d48138f58635ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a94a35e0cf2ce6fa291d48138f58635ed"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#a94a35e0cf2ce6fa291d48138f58635ed">clear</a> ()</td></tr>
+<tr class="memdesc:a94a35e0cf2ce6fa291d48138f58635ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">clear clears all the buckets in the hash table. <br/></td></tr>
 <tr class="separator:a94a35e0cf2ce6fa291d48138f58635ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cef8973d866d3fd3af3696d8f6487fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cef8973d866d3fd3af3696d8f6487fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>insert</b> (string &amp;keyword, int &amp;pageNumber, double &amp;freq, string &amp;header)</td></tr>
-<tr class="separator:a3cef8973d866d3fd3af3696d8f6487fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc9f7516810e364c4a8ebed516cd6406"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc9f7516810e364c4a8ebed516cd6406"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setHashValue</b> (string &amp;keyword)</td></tr>
+<tr class="memitem:a3a194bb56855eb892b24455094a1edbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#a3a194bb56855eb892b24455094a1edbb">insert</a> (string &amp;keyword, int &amp;pageNumber, double &amp;freq, string &amp;header, string &amp;date, string &amp;user)</td></tr>
+<tr class="memdesc:a3a194bb56855eb892b24455094a1edbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert all the information into a node.  <a href="#a3a194bb56855eb892b24455094a1edbb">More...</a><br/></td></tr>
+<tr class="separator:a3a194bb56855eb892b24455094a1edbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096c63eedf8e85a5523d59929f7a7cb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#a096c63eedf8e85a5523d59929f7a7cb3">insertLL</a> (string &amp;keyword, <a class="el" href="class_linked_list.html">LinkedList</a> *&amp;ll)</td></tr>
+<tr class="memdesc:a096c63eedf8e85a5523d59929f7a7cb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">insertLL inserts a word and linked list into a linked list.  <a href="#a096c63eedf8e85a5523d59929f7a7cb3">More...</a><br/></td></tr>
+<tr class="separator:a096c63eedf8e85a5523d59929f7a7cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc9f7516810e364c4a8ebed516cd6406"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#afc9f7516810e364c4a8ebed516cd6406">setHashValue</a> (string &amp;keyword)</td></tr>
+<tr class="memdesc:afc9f7516810e364c4a8ebed516cd6406"><td class="mdescLeft">&#160;</td><td class="mdescRight">setHashValue sets a hash value for a word used to insert into a bucket.  <a href="#afc9f7516810e364c4a8ebed516cd6406">More...</a><br/></td></tr>
 <tr class="separator:afc9f7516810e364c4a8ebed516cd6406"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1968cb702792b31d8b259ce4b945543f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1968cb702792b31d8b259ce4b945543f"></a>
-int &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getSize</b> ()</td></tr>
+<tr class="memitem:a1968cb702792b31d8b259ce4b945543f"><td class="memItemLeft" align="right" valign="top">int &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#a1968cb702792b31d8b259ce4b945543f">getSize</a> ()</td></tr>
+<tr class="memdesc:a1968cb702792b31d8b259ce4b945543f"><td class="mdescLeft">&#160;</td><td class="mdescRight">getSize returns the size of the hash table  <a href="#a1968cb702792b31d8b259ce4b945543f">More...</a><br/></td></tr>
 <tr class="separator:a1968cb702792b31d8b259ce4b945543f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7d96c3bdf0871e7aec5c3fa71a6455c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab7d96c3bdf0871e7aec5c3fa71a6455c"></a>
-string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>findKeyword</b> (string &amp;keyword)</td></tr>
+<tr class="memitem:ab7d96c3bdf0871e7aec5c3fa71a6455c"><td class="memItemLeft" align="right" valign="top">string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#ab7d96c3bdf0871e7aec5c3fa71a6455c">findKeyword</a> (string &amp;keyword)</td></tr>
+<tr class="memdesc:ab7d96c3bdf0871e7aec5c3fa71a6455c"><td class="mdescLeft">&#160;</td><td class="mdescRight">findKeyword finds a keyword in a node in the hash table.  <a href="#ab7d96c3bdf0871e7aec5c3fa71a6455c">More...</a><br/></td></tr>
 <tr class="separator:ab7d96c3bdf0871e7aec5c3fa71a6455c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6aaef7b7ac0575661ead9475a852f151"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6aaef7b7ac0575661ead9475a852f151"></a>
-<a class="el" href="class_linked_list.html">LinkedList</a>&lt; int &gt; *&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>findPageNumber</b> (string &amp;keyword)</td></tr>
-<tr class="separator:a6aaef7b7ac0575661ead9475a852f151"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398ba998bcb3e3d725a50a66869c0ce7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a398ba998bcb3e3d725a50a66869c0ce7"></a>
-<a class="el" href="class_linked_list.html">LinkedList</a>&lt; double &gt; *&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>findFrequency</b> (string &amp;keyword)</td></tr>
-<tr class="separator:a398ba998bcb3e3d725a50a66869c0ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22cdb4ec99ae8c8439f97e2e4e5d88f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22cdb4ec99ae8c8439f97e2e4e5d88f7"></a>
-<a class="el" href="class_linked_list.html">LinkedList</a>&lt; string &gt; *&amp;&#160;</td><td class="memItemRight" valign="bottom"><b>findTitle</b> (string &amp;keyword)</td></tr>
-<tr class="separator:a22cdb4ec99ae8c8439f97e2e4e5d88f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a416e1aae0ecadc989c72d0e6b340a8a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_linked_list.html">LinkedList</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_table.html#a416e1aae0ecadc989c72d0e6b340a8a8">findData</a> (string &amp;keyword)</td></tr>
+<tr class="memdesc:a416e1aae0ecadc989c72d0e6b340a8a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">findData finds the data associated with a keyword in the linked list.  <a href="#a416e1aae0ecadc989c72d0e6b340a8a8">More...</a><br/></td></tr>
+<tr class="separator:a416e1aae0ecadc989c72d0e6b340a8a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>contains contain a word, page number, page title, page date, and page contributor's username for each page. </p>
+<p>subclass </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ac756b78d1ca5e613d68800b76c9bc55c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HashTable::HashTable </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_hash_table.html">HashTable</a> &amp;&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cp</td><td>a constant <a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a416e1aae0ecadc989c72d0e6b340a8a8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_linked_list.html">LinkedList</a>*&amp; HashTable::findData </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>keyword</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findData finds the data associated with a keyword in the linked list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword</td><td>a string containing a keyword </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to a linked list pointer </dd></dl>
+
+<p>Implements <a class="el" href="class_index.html#a72c1cd00b6fce902a5d08e9278954913">Index</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab7d96c3bdf0871e7aec5c3fa71a6455c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string&amp; HashTable::findKeyword </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>keyword</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findKeyword finds a keyword in a node in the hash table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword</td><td>a string containing a word </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Implements <a class="el" href="class_index.html#a8ee654f84f96668a451afcf39fe2cc69">Index</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1968cb702792b31d8b259ce4b945543f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int&amp; HashTable::getSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getSize returns the size of the hash table </p>
+<dl class="section return"><dt>Returns</dt><dd>an integer reference </dd></dl>
+
+<p>Implements <a class="el" href="class_index.html#a0eccb696eb6548d60df4a4bce323191b">Index</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a194bb56855eb892b24455094a1edbb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HashTable::insert </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>keyword</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>pageNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>date</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>insert all the information into a node. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword</td><td>a string containing a keyword </td></tr>
+    <tr><td class="paramname">pageNumber</td><td>an integer containing a page number </td></tr>
+    <tr><td class="paramname">freq</td><td>a double containing the frequency of a word </td></tr>
+    <tr><td class="paramname">header</td><td>a string containing the page number </td></tr>
+    <tr><td class="paramname">date</td><td>a string containing the page date </td></tr>
+    <tr><td class="paramname">user</td><td>a string containing the page contributor's username </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_index.html#ad44792ad4f81ef1e17a0c6cb6f57167c">Index</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a096c63eedf8e85a5523d59929f7a7cb3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HashTable::insertLL </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>keyword</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_linked_list.html">LinkedList</a> *&amp;&#160;</td>
+          <td class="paramname"><em>ll</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>insertLL inserts a word and linked list into a linked list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword</td><td>a string containing a word </td></tr>
+    <tr><td class="paramname">ll</td><td>a linked list pointer containing the page number, frequency, page title, page date, and page contributor's username for the word </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_index.html#a423c014174a0257d27b7e5c5834f92ed">Index</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8ac131a52516b8cb16530584bdfb021"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_hash_table.html">HashTable</a>&amp; HashTable::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_hash_table.html">HashTable</a> &amp;&#160;</td>
+          <td class="paramname"><em>cp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>operator = overloaded assignment operator </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cp</td><td>a constant <a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a reference to a <a class="el" href="class_hash_table.html" title="contains contain a word, page number, page title, page date, and page contributor&#39;s username for each...">HashTable</a> object </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afc9f7516810e364c4a8ebed516cd6406"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HashTable::setHashValue </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>keyword</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setHashValue sets a hash value for a word used to insert into a bucket. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyword</td><td>a string containing a word </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="hashtable_8h_source.html">hashtable.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 1 2015 21:48:11 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 7 2015 02:28:49 for BSSearch by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
