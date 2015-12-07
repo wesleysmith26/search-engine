@@ -1,4 +1,8 @@
-﻿#ifndef DOCUMENTPARSER_H
+﻿// Owner: Wesley
+// File History:
+// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/documentparser.h
+
+#ifndef DOCUMENTPARSER_H
 #define DOCUMENTPARSER_H
 
 #include <string>
@@ -24,10 +28,15 @@ class DocumentParser
 {
 private:
     /*!
-     * \var IndexHandler pointer used to add words to the AVL tree or the Hash
-     * table.
+     * \var myIndexHandler an IndexHandler pointer used to add words to the AVL
+     * tree or the Hash table.
      */
     IndexHandler* myIndexHandler;
+    /*!
+     * \var documentNumber an integer that contains the number of documents
+     * parsed
+     */
+    int documentNumber;
 
     /*!
      * \brief removeStopwords removes stopwords from the words in each document.
@@ -35,14 +44,12 @@ private:
      * Compares each word in the docWords vector with the stopwords array. If
      * there is a stopword in the vector it will be removed.
      * \param pageText a string containing the text in the particular page
-     * \param docNumber an integer containing the page number in the xml file
      * \param pageTitle a string containing the title of the page
      * \param pageDate a string containing the timestamp of the page
      * \param pageContributor a string containing the page contributor's username
      */
-    void removeStopwords(std::string& pageText, int docNumber,
-                         std::string& pageTitle, std::string& pageDate,
-                         std::string& pageContributor);
+    void removeStopwords(std::string& pageText, std::string& pageTitle,
+                         std::string& pageDate, std::string& pageContributor);
 
     /*!
      * \brief splitString splits the text for a page into individual words and
@@ -77,14 +84,13 @@ private:
      * Stores the word and frequency in a map and sends the map along with the
      * title, date, and contributor's username for the page.
      * \param terms a vector of strings containing the words for the page
-     * \param pageNumber an integer containing the page number of the document
      * \param docTitle a string containing the title of the page in the xml file
      * \param date a string containing the article date
      * \param contributor a string containing the article contributor's username
      */
     void calculateTermFrequency(std::vector<std::string>& terms,
-                                int& pageNumber, std::string& docTitle,
-                                std::string& date, std::string& contributor);
+                                std::string& docTitle, std::string& date,
+                                std::string& contributor);
 
     /*!
      * \brief checkForDuplicateTerm checks for duplicate terms in the map.
@@ -106,7 +112,7 @@ private:
      * \param documentNumber an integer containing the page number of the user
      * requested page
      */
-    void getDocumentContents(char*& docFilename, int& documentNumber);
+    void getDocumentContents(char*& docFilename, int& docNum);
 
 public:
     /*!
@@ -132,6 +138,12 @@ public:
      * \param file a character pointer that contains the xml filename
      */
     void getPageNumber(char*& file);
+
+    /*!
+     * \brief printNumberOfPagesIndexed prints the number of pages indexed by
+     * the index handler.
+     */
+    void printNumberOfPagesIndexed();
 };
 
 #endif // DOCUMENTPARSER_H

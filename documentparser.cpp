@@ -1,4 +1,8 @@
-﻿#include <sstream>
+﻿// Owner: Wesley
+// File History:
+// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/documentparser.cpp
+
+#include <sstream>
 #include <cctype>
 #include <algorithm>
 #include <utility>
@@ -13,11 +17,13 @@
 DocumentParser::DocumentParser()
 {
     myIndexHandler = nullptr;
+    documentNumber = 0;
 }
 
 DocumentParser::DocumentParser(IndexHandler*& ih)
 {
     myIndexHandler = ih;
+    documentNumber = 0;
 }
 
 void DocumentParser::readDocument(char*& filename)
@@ -36,14 +42,21 @@ void DocumentParser::readDocument(char*& filename)
 
     std::string documentTitle = title->value();
     std::string documentDate = date->value();
-    std::string documentContributor = username->value();
+    std::string documentContributor = "";
+
+    // some documents don't have a contributor username
+    if (username == nullptr)
+        documentContributor = "N/A";
+    else
+        documentContributor = username->value();
+
     std::string documentContents = text->value();
-    int documentNumber = 1;
+    documentNumber++;
 
     std::chrono::time_point<std::chrono::system_clock> start, end;
     start = std::chrono::system_clock::now();
-    removeStopwords(documentContents, documentNumber, documentTitle,
-                    documentDate, documentContributor);
+    removeStopwords(documentContents, documentTitle, documentDate,
+                    documentContributor);
 
     while (page->next_sibling("page") != nullptr)
     {
@@ -67,8 +80,8 @@ void DocumentParser::readDocument(char*& filename)
         documentContents = text->value();
         documentNumber++;
 
-        removeStopwords(documentContents, documentNumber, documentTitle,
-                        documentDate, documentContributor);
+        removeStopwords(documentContents, documentTitle, documentDate,
+                        documentContributor);
     }
 
     end = std::chrono::system_clock::now();
@@ -85,7 +98,7 @@ void DocumentParser::readDocument(char*& filename)
     text = nullptr;
 }
 
-void DocumentParser::removeStopwords(std::string& pageText, int docNumber,
+void DocumentParser::removeStopwords(std::string& pageText,
                                      std::string& pageTitle,
                                      std::string& pageDate,
                                      std::string& pageContributor)
@@ -192,8 +205,7 @@ void DocumentParser::removeStopwords(std::string& pageText, int docNumber,
     }
 
     removeStems(docWords);
-    calculateTermFrequency(docWords, docNumber, pageTitle, pageDate,
-                           pageContributor);
+    calculateTermFrequency(docWords, pageTitle, pageDate, pageContributor);
 }
 
 void DocumentParser::splitString(std::string& text,
@@ -235,7 +247,6 @@ void DocumentParser::removeStems(std::vector<std::string>& words)
 }
 
 void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
-                                            int& pageNumber,
                                             std::string& docTitle,
                                             std::string& date,
                                             std::string& contributor)
@@ -251,7 +262,7 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
         numberOfCalculations++;
     }
 
-    while (numberOfCalculations == pageNumber)
+    while (numberOfCalculations == documentNumber)
     {
         static int termNumber = 1;
 
@@ -285,7 +296,7 @@ void DocumentParser::calculateTermFrequency(std::vector<std::string>& terms,
         }
     }
 
-    myIndexHandler->addWord(pageTermFrequency, pageNumber, docTitle, date,
+    myIndexHandler->addWord(pageTermFrequency, documentNumber, docTitle, date,
                             contributor);
 }
 
@@ -323,8 +334,7 @@ void DocumentParser::getPageNumber(char*& file)
     }
 }
 
-void DocumentParser::getDocumentContents(char*& docFilename,
-                                         int& documentNumber)
+void DocumentParser::getDocumentContents(char*& docFilename, int& docNum)
 {
     rapidxml::file<> xmlFile(docFilename);
     rapidxml::xml_document<> doc;
@@ -335,7 +345,7 @@ void DocumentParser::getDocumentContents(char*& docFilename,
     rapidxml::xml_node<>* text = revision->first_node("text");
     int pageNumber = 1;
 
-    while (pageNumber != documentNumber)
+    while (pageNumber != docNum)
     {
         page = page->next_sibling("page");
         revision = page->first_node("revision");
@@ -343,11 +353,16 @@ void DocumentParser::getDocumentContents(char*& docFilename,
         pageNumber++;
     }
 
-    std::cout << "Document " << documentNumber << " Contents:\n" <<
-                    text->value() << std::endl;
+    std::cout << "Document " << docNum << " Contents:\n" << text->value()
+              << std::endl;
 
     root = nullptr;
     page = nullptr;
     revision = nullptr;
     text = nullptr;
+}
+
+void DocumentParser::printNumberOfPagesIndexed()
+{
+    std::cout << "Number of pages indexed: " << documentNumber << std::endl;
 }

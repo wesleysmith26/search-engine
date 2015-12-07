@@ -19,24 +19,41 @@
  * file path to a properly formatted xml document. The user can also clear the
  * index completely.
  *
- * In interactive mode the user indicate whether they want the index loaded into
- * the avl tree or hash table, allow the user to enter a properly formatted
- * query, and print out the total number of pages indexed, total number of
- * words indexed, and the top 50 words.
+ * In interactive mode the user indicates whether they want to enter a properly
+ * formatted query, and print out the total number of pages indexed and total
+ * number of words indexed.
  */
 class UserInterface
 {
 private:
+    /*!
+     * \var docParser a pointer to a DocumentParser object.
+     */
     DocumentParser* docParser;
+
+    /*!
+     * \var ih a pointer to an IndexHandler object.
+     */
     IndexHandler* ih;
+
+    /*!
+     * \var select an integer containing the user choices from the menu.
+     */
     int select;
-    bool avlTree;
+
+    /*!
+     * \var searchWords a string containing the user's search query.
+     */
     std::string searchWords;
+
+    /*!
+     * \var xmlFile a character pointer containing an xml filename.
+     */
     char* xmlFile;
 
     /*!
-     * \brief interactiveMode asks the user if they want to load the index into
-     * the avl tree or hash table, and if they want to enter a query.
+     * \brief interactiveMode asks the user if they want to enter a query or
+     * print the search engine statistics.
      */
     void interactiveMode();
 
@@ -45,8 +62,6 @@ private:
      * the index or clear the index.
      */
     void maintenanceMode();
-
-    void boolExpression();
 
 public:
     /*!

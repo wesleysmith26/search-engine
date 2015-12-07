@@ -14,7 +14,6 @@ UserInterface::UserInterface()
     docParser = nullptr;
     ih = nullptr;
     select = 0;
-    avlTree = true;
     searchWords = " ";
     xmlFile = nullptr;
 }
@@ -24,7 +23,6 @@ UserInterface::UserInterface(char*& xmlFilename)
     ih = new IndexHandler;
     docParser = new DocumentParser(ih);
     select = 0;
-    avlTree = true;
     searchWords = " ";
     xmlFile = xmlFilename;
     docParser->readDocument(xmlFile);
@@ -84,29 +82,16 @@ void UserInterface::maintenanceMode()
 
 void UserInterface::interactiveMode()
 {
-    std::cout << "\nPlease select one of the options:\n1) Load Index into AVL"
-              << "Tree\n2) Load Index into Hash Table\n3) Enter a Query"
-              << std::endl;
+    std::cout << "\nPlease select one of the options:\n1) Enter a Query"
+              << "\n2) Print Statistics" << std::endl;
     std::cin >> select;
     std::cin.ignore();
 
-    //ih->printSize();
-
     if (select == 1)
-    {
-        avlTree = true;
-        interactiveMode();
-    }
-    else if (select == 2)
-    {
-        avlTree = false;
-        interactiveMode();
-    }
-    else if (select == 3)
     {
         std::cout << "Please enter a properly formatted query: ";
         std::getline(cin, searchWords);
-        QueryProcessor qp(ih, searchWords, avlTree);
+        QueryProcessor qp(ih, searchWords);
         std::string answer = "";
         std::cout << "Do you want to view the contents of a page from the "
                   << "results? y/n? ";
@@ -119,6 +104,11 @@ void UserInterface::interactiveMode()
         }
 
         std::cout << std::endl;
+    }
+    else if (select == 2)
+    {
+        docParser->printNumberOfPagesIndexed();
+        ih->printSize();
     }
 
     startScreen();

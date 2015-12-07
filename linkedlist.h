@@ -93,6 +93,9 @@ public:
         }
     }
 
+    /*!
+     * \brief clear clears the linked list.
+     */
     void clear()
     {
         if(head != nullptr)
@@ -147,23 +150,6 @@ public:
             return true;
         else
             return false;
-    }
-
-
-    /*!
-     * \brief checkNext checks if the next node is a nullptr.
-     * \param index an integer representing the node number
-     * \return true if next node isn't a nullptr and true if it is a nullptr
-     */
-    bool checkNext(int index)
-    {
-        cur = head;
-        for(int counter = 0; counter < index; counter++)
-            cur = cur->next;
-        if(cur->next == nullptr)
-            return false;
-        else
-            return true;
     }
 
     /*!
@@ -304,6 +290,11 @@ public:
         }
     }
 
+    /*!
+     * \brief set_at updates the frequency of a word at a specified node.
+     * \param index an integer containing an index number
+     * \param freq a double containing the word frequency
+     */
     void set_at(int index, double freq)
     {
         cur = head;
@@ -312,6 +303,16 @@ public:
         cur->freqency += freq;
     }
 
+    /*!
+     * \brief set_at updates the page number, frequency, page title, page date,
+     * and contributor's username at a specified index.
+     * \param index an integer containing an index number
+     * \param pg an integer containing the page number
+     * \param freq a double containing the word frequency
+     * \param docName a string containing the page title
+     * \param dateMade a string containing the page date
+     * \param userName a string containing the page contributor's username
+     */
     void set_at(int index, int pg ,double freq, string docName, string dateMade, string userName)
     {
         cur = head;
@@ -324,6 +325,11 @@ public:
         cur->user = userName;
     }
 
+    /*!
+     * \brief findSet updates the word frequency for the page
+     * \param pg an integer containing a page number
+     * \param freq an integer containing the word frequency
+     */
     void findSet(int pg, double freq)
     {
         cur = head;
@@ -387,6 +393,13 @@ public:
         }
     }
 
+    /*!
+     * \brief partition recursive function that sorts the linked list.
+     * \param low an integer containing the size of first half of the linked list
+     * \param high an integer containing the size of the second half of the
+     * linked list
+     * \return
+     */
     int partition(int low, int high)
     {
         double pivot = getFrequency(high);
@@ -406,6 +419,11 @@ public:
 
     }
 
+    /*!
+     * \brief swap swaps the contents of a node in the linked list.
+     * \param a an integer containing a node number in the linked list
+     * \param b an integer containing a node number in the linked list
+     */
     void swap(int a, int b)
     {
         int pgTemp;
@@ -424,6 +442,11 @@ public:
         set_at(b, pgTemp, freqTemp, titleTemp, dateTemp, userTemp);
     }
 
+    /*!
+     * \brief contains checks if the linked list contains a page number
+     * \param pg an integer containing a page number
+     * \return true if the page is in the linked list, false if it isn't
+     */
     bool contains(int& pg)
     {
         cur = head;
@@ -436,6 +459,12 @@ public:
         return false;
     }
 
+    /*!
+     * \brief findIterator returns an integer representing the index number of
+     * a node containing a specific page number.
+     * \param pg an integer containing a page number
+     * \return
+     */
     int findIterator(int& pg)
     {
         cur = head;
@@ -450,6 +479,13 @@ public:
         return 0;
     }
 
+    /*!
+     * \brief output prints the contents of the nodes in the linked list for the
+     * first 15 nodes and the number of nodes for the particular word searched
+     * for.
+     *
+     * Prints 15 because the output only requires 15 pages to be printed.
+     */
     void output()
     {
         if(empty())

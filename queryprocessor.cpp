@@ -1,4 +1,8 @@
-﻿#include <iostream>
+﻿// Owners: Charlie, Wesley, Zach
+// File History:
+// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/queryprocessor.cpp
+
+#include <iostream>
 #include <sstream>
 #include <algorithm>
 
@@ -9,25 +13,20 @@ QueryProcessor::QueryProcessor()
 {
     myIndexHandler = nullptr;
     queryWords = "";
-    useAvl = false;
     index = nullptr;
     outputLL = new LinkedList();
     parentheses = "";
     nestCounter = 0;
-    //temp = "veda";
 }
 
-QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText,
-                               bool& avlTree)
+QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText)
 {
     myIndexHandler = ih;
     queryWords = searchText;
-    useAvl = avlTree;
     index = nullptr;
     outputLL = new LinkedList();
     parentheses = "";
     nestCounter = 0;
-    //temp = "veda";
     toLower();
 }
 
@@ -121,10 +120,8 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
     removeStopWords(keywords);
     removeStems(keywords);
 
-    if (useAvl == true)
-        index = myIndexHandler->searchAvl(keywords);
-    else
-        index = myIndexHandler->searchHash(keywords);
+    index = myIndexHandler->searchAvl(keywords);
+    //index = myIndexHandler->searchHash(keywords);
 
     separateKeywordsBool(queryWords);
 }
@@ -233,22 +230,6 @@ void QueryProcessor::separateKeywordsBool(string &searchQuery)
         keywords.erase(first, last+1);
         doubleNest(keywords, nestVector);
     }
-
-//    cout<<endl;
-
-//    for(int i = 0; i < keywords.size(); i++)
-//    {
-//        std::cout<<keywords[i]<<endl;
-//        if(keywords[i] == "(")
-//            nestCounter++;
-//    }
-
-//    cout<<endl;
-
-//    for(int i = 0; i < nestVector.size(); i++)
-//    {
-//        std::cout<<nestVector[i]<<endl;
-//    }
 }
 
 void QueryProcessor::seperateParenthesesFromWord(string &word)
@@ -682,12 +663,8 @@ void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<s
         }
     }
 
-//    outputLL->sort();
-//    outputLL->output();
-//    cout<<endl;
     delete tempOutput;
     noNest(restOfPhrase);
-
 }
 
 void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<string> &phrase)
@@ -824,10 +801,6 @@ void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<s
             }
         }
     }
-
-//    outputLL->sort();
-//    outputLL->output();
-//    cout<<endl;
 
     int parenthesesCount = 0;
     vector<string>::iterator first;

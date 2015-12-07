@@ -1,4 +1,8 @@
-﻿#include "indexhandler.h"
+﻿// Owner: Charlie
+// File History:
+// https://github.com/SMUCSE2341/BSSearch/commits/DocumentParser/indexhandler.cpp
+
+#include "indexhandler.h"
 #include <iostream>
 #include <algorithm>
 
@@ -10,7 +14,6 @@ IndexHandler::IndexHandler()
     avlSearch = new AvlTree();
     hash = new HashTable();
     hashSearch = new HashTable();
-    save.open("save.txt");
 }
 
 IndexHandler::~IndexHandler()
@@ -75,12 +78,7 @@ void IndexHandler::clear()
 
 void IndexHandler::printSize()
 {
-//    multimap<int,string>& tempMap = avl->findTopWords();
-//    multimap<int,string>::iterator it = tempMap.end();
-//    for(int counter = 0; counter < 50; it--, counter++)
-//    {
-//        int tempint = (*it).first;
-//        string tempstr = (*it).second;
-//    }
+    cout << "Words indexed into Hash Table: " << hash->getSize() << endl;
+    cout << "Words indexed into AVL Tree:  " << avl->getSize() << endl << endl;
 }
 
