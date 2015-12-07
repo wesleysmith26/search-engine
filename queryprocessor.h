@@ -59,9 +59,9 @@ private:
 
     void noNest(std::vector<std::string>& phrase);
 
-    void singleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& nestPhrase);
+    void singleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& phrase);
 
-    void doubleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& nestPhrase);
+    void doubleNest(std::vector<std::string>& restOfPhrase, std::vector<std::string>& phrase);
 
 public:
     /*!

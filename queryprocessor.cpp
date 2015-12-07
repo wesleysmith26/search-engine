@@ -33,6 +33,7 @@ QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText,
 
 void QueryProcessor::toLower()
 {
+    cout << "query before lower: " << queryWords << endl;
     std::stringstream ss(queryWords);
     std::string lowerQueryWords = "";
     std::string temp = "";
@@ -84,7 +85,10 @@ void QueryProcessor::toLower()
         {
             std::transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
             if (keywordCounter == 1)
+            {
                 lowerQueryWords = temp;
+                keywordCounter++;
+            }
             else
                 lowerQueryWords += " " + temp;
         }
@@ -96,7 +100,6 @@ void QueryProcessor::toLower()
 
 void QueryProcessor::separateKeywords(std::string& searchQuery)
 {
-    cout<<searchQuery<<endl;
     std::vector<std::string> keywords = {};
     std::stringstream ss(searchQuery);
     std::string temp = "";
@@ -111,7 +114,7 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
         else if (ss)
         {
             removeParenthesesFromWord(temp);
-            cout<<temp<<endl;
+            removeParenthesesFromWord(temp);
             keywords.push_back(temp);
         }
     }
@@ -425,12 +428,19 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
             if(phrase[0] == "NOT")
             {
                 phrase.erase(phrase.begin());
-                temp = index->findData(phrase[0]);
-                phrase.erase(phrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
@@ -466,12 +476,19 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
             if(phrase[0] == "NOT")
             {
                 phrase.erase(phrase.begin());
-                temp = index->findData(phrase[0]);
-                phrase.erase(phrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
@@ -496,7 +513,32 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
         } else
         {
+            while(phrase[0] != "NOT")
+            {
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                    outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
 
+            }
+            if(phrase[0] == "NOT")
+            {
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
+                {
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
+                }
+            }
         }
     }
     //outputLL->sort();
@@ -505,84 +547,136 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
     delete tempOutput;
 }
 
-void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<string> &nestPhrase)
+void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<string> &phrase)
 {
     LinkedList* temp;
+    LinkedList* tempOutput = new LinkedList();
     int it;
 
-    if(nestPhrase[0] == "AND")
+    if(phrase[0] == "AND")
     {
-        nestPhrase.erase(nestPhrase.begin());
+        phrase.erase(phrase.begin());
         if(outputLL->empty())
         {
-            temp = index->findData(nestPhrase[0]);
-            nestPhrase.erase(nestPhrase.begin());
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
             for(int i = 0; i < temp->size(); i++)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
         }
-        while(!nestPhrase.empty())
+        while(!phrase.empty())
         {
-            if(nestPhrase[0] == "NOT")
+            if(phrase[0] == "NOT")
             {
-                nestPhrase.erase(nestPhrase.begin());
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
                 for(int i = 0; i < outputLL->size(); i++)
                 {
                     if(temp->contains(outputLL->getPageNumber(i)))
                     {
                         it = temp->findIterator(outputLL->getPageNumber(i));
-                        outputLL->set_at(i, temp->getFrequency(it));
-                    } else
-                    {
-                        outputLL->deleteAt(i);
+                        outputLL->findSet(outputLL->getPageNumber(i), temp->getFrequency(it));
+                        tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
                     }
                 }
+                outputLL->clear();
+                for(int i = 0; i < tempOutput->size(); i++)
+                    outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                tempOutput->clear();
             }
         }
-    }
-
-    if(nestPhrase[0] == "OR")
+    } else if(phrase[0] == "OR")
     {
-        nestPhrase.erase(nestPhrase.begin());
+        phrase.erase(phrase.begin());
         if(outputLL->empty())
         {
-            temp = index->findData(nestPhrase[0]);
-            nestPhrase.erase(nestPhrase.begin());
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
             for(int i = 0; i < temp->size(); i++)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
         }
-        while(!nestPhrase.empty())
+        while(!phrase.empty())
         {
-            if(nestPhrase[0] == "NOT")
+            if(phrase[0] == "NOT")
             {
-                nestPhrase.erase(nestPhrase.begin());
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
                 for(int i = 0; i < temp->size(); i++)
                 {
                     if(outputLL->contains(temp->getPageNumber(i)))
                         outputLL->findSet(temp->getPageNumber(i), temp->getFrequency(i));
                     else
                         outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+                }
+            }
+        }
+    } else
+    {
+        if(phrase.size() == 1 && outputLL->empty())
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        } else
+        {
+            while(phrase[0] != "NOT")
+            {
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                    outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+
+            }
+            if(phrase[0] == "NOT")
+            {
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
+                {
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             }
         }
@@ -591,89 +685,141 @@ void QueryProcessor::singleNest(std::vector<string> &restOfPhrase, std::vector<s
 //    outputLL->sort();
 //    outputLL->output();
 //    cout<<endl;
-
+    delete tempOutput;
     noNest(restOfPhrase);
 
 }
 
-void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<string> &nestPhrase)
+void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<string> &phrase)
 {
     LinkedList* temp;
+    LinkedList* tempOutput = new LinkedList();
     int it;
 
-    if(nestPhrase[0] == "AND")
+    if(phrase[0] == "AND")
     {
-        nestPhrase.erase(nestPhrase.begin());
+        phrase.erase(phrase.begin());
         if(outputLL->empty())
         {
-            temp = index->findData(nestPhrase[0]);
-            nestPhrase.erase(nestPhrase.begin());
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
             for(int i = 0; i < temp->size(); i++)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
         }
-        while(!nestPhrase.empty())
+        while(!phrase.empty())
         {
-            if(nestPhrase[0] == "NOT")
+            if(phrase[0] == "NOT")
             {
-                nestPhrase.erase(nestPhrase.begin());
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
                 for(int i = 0; i < outputLL->size(); i++)
                 {
                     if(temp->contains(outputLL->getPageNumber(i)))
                     {
                         it = temp->findIterator(outputLL->getPageNumber(i));
-                        outputLL->set_at(i, temp->getFrequency(it));
-                    } else
-                    {
-                        outputLL->deleteAt(i);
+                        outputLL->findSet(outputLL->getPageNumber(i), temp->getFrequency(it));
+                        tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
                     }
                 }
+                outputLL->clear();
+                for(int i = 0; i < tempOutput->size(); i++)
+                    outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                tempOutput->clear();
             }
         }
-    }
-
-    if(nestPhrase[0] == "OR")
+    } else if(phrase[0] == "OR")
     {
-        nestPhrase.erase(nestPhrase.begin());
+        phrase.erase(phrase.begin());
         if(outputLL->empty())
         {
-            temp = index->findData(nestPhrase[0]);
-            nestPhrase.erase(nestPhrase.begin());
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
             for(int i = 0; i < temp->size(); i++)
                 outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
         }
-        while(!nestPhrase.empty())
+        while(!phrase.empty())
         {
-            if(nestPhrase[0] == "NOT")
+            if(phrase[0] == "NOT")
             {
-                nestPhrase.erase(nestPhrase.begin());
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
-                for(int i = 0; i < temp->size(); i++)
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
                 {
-                    if(outputLL->contains(temp->getPageNumber(i)))
-                        outputLL->deleteAt(outputLL->findIterator(temp->getPageNumber(i)));
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             } else
             {
-                temp = index->findData(nestPhrase[0]);
-                nestPhrase.erase(nestPhrase.begin());
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
                 for(int i = 0; i < temp->size(); i++)
                 {
                     if(outputLL->contains(temp->getPageNumber(i)))
                         outputLL->findSet(temp->getPageNumber(i), temp->getFrequency(i));
                     else
                         outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+                }
+            }
+        }
+    } else
+    {
+        if(phrase.size() == 1 && outputLL->empty())
+        {
+            temp = index->findData(phrase[0]);
+            phrase.erase(phrase.begin());
+            for(int i = 0; i < temp->size(); i++)
+                outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+        } else
+        {
+            while(phrase[0] != "NOT")
+            {
+                temp = index->findData(phrase[0]);
+                phrase.erase(phrase.begin());
+                for(int i = 0; i < temp->size(); i++)
+                    outputLL->push_back(temp->getPageNumber(i), temp->getFrequency(i), temp->getTitle(i), temp->getDate(i), temp->getUser(i));
+
+            }
+            if(phrase[0] == "NOT")
+            {
+                phrase.erase(phrase.begin());
+                while(!phrase.empty())
+                {
+                    temp = index->findData(phrase[0]);
+                    phrase.erase(phrase.begin());
+                    for(int i = 0; i < outputLL->size(); i++)
+                    {
+                        if(!temp->contains(outputLL->getPageNumber(i)))
+                            tempOutput->push_back(outputLL->getPageNumber(i), outputLL->getFrequency(i), outputLL->getTitle(i), outputLL->getDate(i), outputLL->getUser(i));
+                    }
+                    outputLL->clear();
+                    for(int i = 0; i < tempOutput->size(); i++)
+                        outputLL->push_back(tempOutput->getPageNumber(i), tempOutput->getFrequency(i), tempOutput->getTitle(i), tempOutput->getDate(i), tempOutput->getUser(i));
+                    tempOutput->clear();
                 }
             }
         }
@@ -700,9 +846,10 @@ void QueryProcessor::doubleNest(std::vector<string> &restOfPhrase, std::vector<s
                  parenthesesCount = 0;
              }
              else
-                 nestPhrase.push_back(*it);
+                 phrase.push_back(*it);
         }
     }
     restOfPhrase.erase(first, last+1);
-    singleNest(restOfPhrase, nestPhrase);
+    delete tempOutput;
+    singleNest(restOfPhrase, phrase);
 }
