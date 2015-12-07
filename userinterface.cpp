@@ -90,6 +90,8 @@ void UserInterface::interactiveMode()
     std::cin >> select;
     std::cin.ignore();
 
+    //ih->printSize();
+
     if (select == 1)
     {
         avlTree = true;
@@ -105,7 +107,6 @@ void UserInterface::interactiveMode()
         std::cout << "Please enter a properly formatted query: ";
         std::getline(cin, searchWords);
         QueryProcessor qp(ih, searchWords, avlTree);
-
         std::string answer = "";
         std::cout << "Do you want to view the contents of a page from the "
                   << "results? y/n? ";

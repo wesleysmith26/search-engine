@@ -2,6 +2,8 @@
 #define AVLTREE
 #include <iostream>
 #include <string>
+#include <utility>
+#include <map>
 #include "index.h"
 #include "linkedlist.h"
 
@@ -41,6 +43,7 @@ private:
     };
     AvlNode* error;
     AvlNode* root;
+    multimap<int, string> topWords;
     int size;
 
 public:
@@ -126,6 +129,12 @@ public:
     int& getSize()
     {
         return size;
+    }
+
+    multimap<int,string>& findTopWords()
+    {
+        findTopWords(root);
+        return topWords;
     }
 
 private:
@@ -275,5 +284,18 @@ private:
         else
             return findData(key, t->right);
     }
+
+    void findTopWords(AvlNode*& t)
+    {
+        if(t != nullptr)
+        {
+            int size = t->data->size();
+            string tempStr = t->keyword;
+            topWords.insert(pair<int,string>(size, tempStr));
+            findTopWords(t->left);
+            findTopWords(t->right);
+        }
+    }
+
 };
 #endif // AVLTREE

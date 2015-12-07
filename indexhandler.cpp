@@ -1,5 +1,6 @@
 ﻿#include "indexhandler.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ void IndexHandler::addWord(map<string, int>& table, int &pg, string &title, stri
     {
         string word = it->first;
         freq = (double)it->second/(double)table.size();
-        hash->insert(word, pg, freq, title, date, user);
+        avl->insert(word, pg, freq, title, date, user);
         //hash->insert(word, pg, freq, title);
     }
 }
@@ -74,13 +75,12 @@ void IndexHandler::clear()
 
 void IndexHandler::printSize()
 {
-//    LinkedList* ll;
-//    save.close();
-//    cout<<avl->getSize()<<endl;
-//    cout<<avl->findKeyword(test)<<endl;
-//    ll = avl->findData(test);
-//    ll->sort();
-//    ll->output();
-
+//    multimap<int,string>& tempMap = avl->findTopWords();
+//    multimap<int,string>::iterator it = tempMap.end();
+//    for(int counter = 0; counter < 50; it--, counter++)
+//    {
+//        int tempint = (*it).first;
+//        string tempstr = (*it).second;
+//    }
 }
 

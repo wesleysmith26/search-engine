@@ -312,6 +312,18 @@ public:
         cur->freqency += freq;
     }
 
+    void set_at(int index, int pg ,double freq, string docName, string dateMade, string userName)
+    {
+        cur = head;
+        for(int counter = 0; counter < index; counter++)
+            cur = cur->next;
+        cur->pageNumber = pg;
+        cur->freqency = freq;
+        cur->title = docName;
+        cur->date = dateMade;
+        cur->user = userName;
+    }
+
     void findSet(int pg, double freq)
     {
         cur = head;
@@ -365,29 +377,36 @@ public:
     /*!
      * \brief sort sorts the linked list by term frequency in descending order.
      */
-    void sort()
+    void sort(int start, int end)
     {
-        if(size() > 1)
+        if(start < end)
         {
-            cur = head;
-            temp = head->next;
-            while(temp != nullptr)
-            {
-                while(cur != nullptr)
-                {
-                    if(cur->freqency < temp->freqency)
-                    {
-                        swap(cur, temp);
-                    }
-                    cur = cur->next;
-                }
-                cur = head;
-                temp = temp->next;
-            }
+            int p = partition(start, end);
+            sort(start, p-1);
+            sort(p+1, end);
         }
     }
 
-    void swap(Node* a, Node* b)
+    int partition(int low, int high)
+    {
+        double pivot = getFrequency(high);
+        int left = low-1;
+
+        for(int right = low; right < high; right++)
+        {
+            if(getFrequency(right) > pivot)
+            {
+                left++;
+                swap(left, right);
+            }
+        }
+
+        swap(left+1, high);
+        return left+1;
+
+    }
+
+    void swap(int a, int b)
     {
         int pgTemp;
         double freqTemp;
@@ -395,23 +414,14 @@ public:
         string dateTemp;
         string userTemp;
 
-        pgTemp = a->pageNumber;
-        freqTemp = a->freqency;
-        titleTemp = a->title;
-        dateTemp = a->date;
-        userTemp = a->user;
+        pgTemp = getPageNumber(a);
+        freqTemp = getFrequency(a);
+        titleTemp = getTitle(a);
+        dateTemp = getDate(a);
+        userTemp = getUser(a);
 
-        a->pageNumber = b->pageNumber;
-        a->freqency = b->freqency;
-        a->title = b->title;
-        a->date = b->date;
-        a->user = b->user;
-
-        b->pageNumber = pgTemp;
-        b->freqency = freqTemp;
-        b->title = titleTemp;
-        b->date = dateTemp;
-        b->user = userTemp;
+        set_at(a, getPageNumber(b), getFrequency(b), getTitle(b), getDate(b), getUser(b));
+        set_at(b, pgTemp, freqTemp, titleTemp, dateTemp, userTemp);
     }
 
     bool contains(int& pg)

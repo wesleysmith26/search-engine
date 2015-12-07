@@ -33,7 +33,6 @@ QueryProcessor::QueryProcessor(IndexHandler*& ih ,std::string& searchText,
 
 void QueryProcessor::toLower()
 {
-    cout << "query before lower: " << queryWords << endl;
     std::stringstream ss(queryWords);
     std::string lowerQueryWords = "";
     std::string temp = "";
@@ -123,7 +122,7 @@ void QueryProcessor::separateKeywords(std::string& searchQuery)
     removeStems(keywords);
 
     if (useAvl == true)
-        index = myIndexHandler->searchHash(keywords);
+        index = myIndexHandler->searchAvl(keywords);
     else
         index = myIndexHandler->searchHash(keywords);
 
@@ -541,7 +540,8 @@ void QueryProcessor::noNest(std::vector<string> &phrase)
             }
         }
     }
-    //outputLL->sort();
+
+    outputLL->sort(0, outputLL->size()-1);
     outputLL->output();
     cout<<endl;
     delete tempOutput;

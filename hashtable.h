@@ -4,6 +4,7 @@
 #include <functional>
 #include <stdio.h>
 #include <string>
+#include <map>
 #include "linkedlist.h"
 #include "avltree.h"
 
@@ -33,6 +34,7 @@ private:
     int size;
     int load;
     AvlTree* error;
+    multimap<int, string> topWords;
 
 public:
     HashTable()
@@ -147,6 +149,10 @@ public:
             return bucket[hashValue]->avl->findData(keyword);
     }
 
+    multimap<int, string>& findTopWords()
+    {
+        return topWords;
+    }
 };
 #endif // HASHTABLE
 
