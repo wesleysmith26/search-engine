@@ -13,7 +13,7 @@ Step 2:
     - **Exit Maintenance Mode** - the user will be returned to the start screen
     
   ##### Interactive Mode:
-  - The user will be prompted to select the query processor by tentering 1 or the search engine statistics (total page numbers indexed and toatal number of words indexed) by entering 2
+  - The user will be prompted to select the query processor by entering 1 or the search engine statistics (total page numbers indexed and total number of words indexed) by entering 2
     - **Query Processor:**
       - The user will enter a simple prefix Boolean query
       - **Format:**  
